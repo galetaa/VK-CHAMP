@@ -1,0 +1,637 @@
+﻿Показатель,Значение
+published_including_unknown.market_buyers.denominator,295850.0
+published_including_unknown.market_buyers.published_groups,85
+published_including_unknown.market_buyers.hhi_fraction,0.03555956244355864
+published_including_unknown.market_buyers.effective_equal_sized_groups,28.121830846125693
+published_including_unknown.market_buyers.top_n.1.count,30488.0
+published_including_unknown.market_buyers.top_n.1.share,0.10305222241000507
+published_including_unknown.market_buyers.top_n.1.groups[0],г. Москва
+published_including_unknown.market_buyers.top_n.3.count,75640.0
+published_including_unknown.market_buyers.top_n.3.share,0.2556701030927835
+published_including_unknown.market_buyers.top_n.3.groups[0],г. Москва
+published_including_unknown.market_buyers.top_n.3.groups[1],г. Санкт-Петербург
+published_including_unknown.market_buyers.top_n.3.groups[2],Челябинская область
+published_including_unknown.market_buyers.top_n.5.count,100123.0
+published_including_unknown.market_buyers.top_n.5.share,0.33842487747169175
+published_including_unknown.market_buyers.top_n.5.groups[0],г. Москва
+published_including_unknown.market_buyers.top_n.5.groups[1],г. Санкт-Петербург
+published_including_unknown.market_buyers.top_n.5.groups[2],Челябинская область
+published_including_unknown.market_buyers.top_n.5.groups[3],Пермский край
+published_including_unknown.market_buyers.top_n.5.groups[4],Свердловская область
+published_including_unknown.market_buyers.top_n.10.count,139570.0
+published_including_unknown.market_buyers.top_n.10.share,0.4717593375021126
+published_including_unknown.market_buyers.top_n.10.groups[0],г. Москва
+published_including_unknown.market_buyers.top_n.10.groups[1],г. Санкт-Петербург
+published_including_unknown.market_buyers.top_n.10.groups[2],Челябинская область
+published_including_unknown.market_buyers.top_n.10.groups[3],Пермский край
+published_including_unknown.market_buyers.top_n.10.groups[4],Свердловская область
+published_including_unknown.market_buyers.top_n.10.groups[5],Нижегородская область
+published_including_unknown.market_buyers.top_n.10.groups[6],Самарская область
+published_including_unknown.market_buyers.top_n.10.groups[7],Удмуртская Республика
+published_including_unknown.market_buyers.top_n.10.groups[8],Республика Башкортостан
+published_including_unknown.market_buyers.top_n.10.groups[9],Новгородская область
+published_including_unknown.market_buyers.top_n.20.count,190485.0
+published_including_unknown.market_buyers.top_n.20.share,0.6438566841304715
+published_including_unknown.market_buyers.top_n.20.groups[0],г. Москва
+published_including_unknown.market_buyers.top_n.20.groups[1],г. Санкт-Петербург
+published_including_unknown.market_buyers.top_n.20.groups[2],Челябинская область
+published_including_unknown.market_buyers.top_n.20.groups[3],Пермский край
+published_including_unknown.market_buyers.top_n.20.groups[4],Свердловская область
+published_including_unknown.market_buyers.top_n.20.groups[5],Нижегородская область
+published_including_unknown.market_buyers.top_n.20.groups[6],Самарская область
+published_including_unknown.market_buyers.top_n.20.groups[7],Удмуртская Республика
+published_including_unknown.market_buyers.top_n.20.groups[8],Республика Башкортостан
+published_including_unknown.market_buyers.top_n.20.groups[9],Новгородская область
+published_including_unknown.market_buyers.top_n.20.groups[10],Московская область
+published_including_unknown.market_buyers.top_n.20.groups[11],Краснодарский край
+published_including_unknown.market_buyers.top_n.20.groups[12],Республика Татарстан (Татарстан)
+published_including_unknown.market_buyers.top_n.20.groups[13],Не указан
+published_including_unknown.market_buyers.top_n.20.groups[14],Архангельская область
+published_including_unknown.market_buyers.top_n.20.groups[15],Белгородская область
+published_including_unknown.market_buyers.top_n.20.groups[16],Курская область
+published_including_unknown.market_buyers.top_n.20.groups[17],Владимирская область
+published_including_unknown.market_buyers.top_n.20.groups[18],Вологодская область
+published_including_unknown.market_buyers.top_n.20.groups[19],Воронежская область
+published_including_unknown.market_orders.denominator,413334.0
+published_including_unknown.market_orders.published_groups,85
+published_including_unknown.market_orders.hhi_fraction,0.03623738399741833
+published_including_unknown.market_orders.effective_equal_sized_groups,27.595811002009505
+published_including_unknown.market_orders.top_n.1.count,42652.0
+published_including_unknown.market_orders.top_n.1.share,0.10319015614490944
+published_including_unknown.market_orders.top_n.1.groups[0],г. Москва
+published_including_unknown.market_orders.top_n.3.count,107317.0
+published_including_unknown.market_orders.top_n.3.share,0.25963748445567025
+published_including_unknown.market_orders.top_n.3.groups[0],г. Москва
+published_including_unknown.market_orders.top_n.3.groups[1],г. Санкт-Петербург
+published_including_unknown.market_orders.top_n.3.groups[2],Челябинская область
+published_including_unknown.market_orders.top_n.5.count,142432.0
+published_including_unknown.market_orders.top_n.5.share,0.3445929925919474
+published_including_unknown.market_orders.top_n.5.groups[0],г. Москва
+published_including_unknown.market_orders.top_n.5.groups[1],г. Санкт-Петербург
+published_including_unknown.market_orders.top_n.5.groups[2],Челябинская область
+published_including_unknown.market_orders.top_n.5.groups[3],Пермский край
+published_including_unknown.market_orders.top_n.5.groups[4],Свердловская область
+published_including_unknown.market_orders.top_n.10.count,196819.0
+published_including_unknown.market_orders.top_n.10.share,0.4761742319770452
+published_including_unknown.market_orders.top_n.10.groups[0],г. Москва
+published_including_unknown.market_orders.top_n.10.groups[1],г. Санкт-Петербург
+published_including_unknown.market_orders.top_n.10.groups[2],Челябинская область
+published_including_unknown.market_orders.top_n.10.groups[3],Пермский край
+published_including_unknown.market_orders.top_n.10.groups[4],Свердловская область
+published_including_unknown.market_orders.top_n.10.groups[5],Нижегородская область
+published_including_unknown.market_orders.top_n.10.groups[6],Самарская область
+published_including_unknown.market_orders.top_n.10.groups[7],Удмуртская Республика
+published_including_unknown.market_orders.top_n.10.groups[8],Новгородская область
+published_including_unknown.market_orders.top_n.10.groups[9],Республика Башкортостан
+published_including_unknown.market_orders.top_n.20.count,267734.0
+published_including_unknown.market_orders.top_n.20.share,0.6477425036411232
+published_including_unknown.market_orders.top_n.20.groups[0],г. Москва
+published_including_unknown.market_orders.top_n.20.groups[1],г. Санкт-Петербург
+published_including_unknown.market_orders.top_n.20.groups[2],Челябинская область
+published_including_unknown.market_orders.top_n.20.groups[3],Пермский край
+published_including_unknown.market_orders.top_n.20.groups[4],Свердловская область
+published_including_unknown.market_orders.top_n.20.groups[5],Нижегородская область
+published_including_unknown.market_orders.top_n.20.groups[6],Самарская область
+published_including_unknown.market_orders.top_n.20.groups[7],Удмуртская Республика
+published_including_unknown.market_orders.top_n.20.groups[8],Новгородская область
+published_including_unknown.market_orders.top_n.20.groups[9],Республика Башкортостан
+published_including_unknown.market_orders.top_n.20.groups[10],Московская область
+published_including_unknown.market_orders.top_n.20.groups[11],Краснодарский край
+published_including_unknown.market_orders.top_n.20.groups[12],Не указан
+published_including_unknown.market_orders.top_n.20.groups[13],Республика Татарстан (Татарстан)
+published_including_unknown.market_orders.top_n.20.groups[14],Архангельская область
+published_including_unknown.market_orders.top_n.20.groups[15],Владимирская область
+published_including_unknown.market_orders.top_n.20.groups[16],Курская область
+published_including_unknown.market_orders.top_n.20.groups[17],Белгородская область
+published_including_unknown.market_orders.top_n.20.groups[18],Вологодская область
+published_including_unknown.market_orders.top_n.20.groups[19],Тюменская область
+published_including_unknown.partner_buyers.denominator,2901162
+published_including_unknown.partner_buyers.published_groups,89
+published_including_unknown.partner_buyers.hhi_fraction,0.14600116828692172
+published_including_unknown.partner_buyers.effective_equal_sized_groups,6.8492602609507784
+published_including_unknown.partner_buyers.top_n.1.count,1065094
+published_including_unknown.partner_buyers.top_n.1.share,0.3671266892369333
+published_including_unknown.partner_buyers.top_n.1.groups[0],Не указан
+published_including_unknown.partner_buyers.top_n.3.count,1367006
+published_including_unknown.partner_buyers.top_n.3.share,0.4711925773190191
+published_including_unknown.partner_buyers.top_n.3.groups[0],Не указан
+published_including_unknown.partner_buyers.top_n.3.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_buyers.top_n.3.groups[2],г. Москва
+published_including_unknown.partner_buyers.top_n.5.count,1496017
+published_including_unknown.partner_buyers.top_n.5.share,0.5156613108816398
+published_including_unknown.partner_buyers.top_n.5.groups[0],Не указан
+published_including_unknown.partner_buyers.top_n.5.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_buyers.top_n.5.groups[2],г. Москва
+published_including_unknown.partner_buyers.top_n.5.groups[3],Челябинская область
+published_including_unknown.partner_buyers.top_n.5.groups[4],Свердловская область
+published_including_unknown.partner_buyers.top_n.10.count,1765209
+published_including_unknown.partner_buyers.top_n.10.share,0.6084489594169509
+published_including_unknown.partner_buyers.top_n.10.groups[0],Не указан
+published_including_unknown.partner_buyers.top_n.10.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_buyers.top_n.10.groups[2],г. Москва
+published_including_unknown.partner_buyers.top_n.10.groups[3],Челябинская область
+published_including_unknown.partner_buyers.top_n.10.groups[4],Свердловская область
+published_including_unknown.partner_buyers.top_n.10.groups[5],Нижегородская область
+published_including_unknown.partner_buyers.top_n.10.groups[6],Московская область
+published_including_unknown.partner_buyers.top_n.10.groups[7],Пермский край
+published_including_unknown.partner_buyers.top_n.10.groups[8],Самарская область
+published_including_unknown.partner_buyers.top_n.10.groups[9],Краснодарский край
+published_including_unknown.partner_buyers.top_n.20.count,2113924
+published_including_unknown.partner_buyers.top_n.20.share,0.7286473488898586
+published_including_unknown.partner_buyers.top_n.20.groups[0],Не указан
+published_including_unknown.partner_buyers.top_n.20.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_buyers.top_n.20.groups[2],г. Москва
+published_including_unknown.partner_buyers.top_n.20.groups[3],Челябинская область
+published_including_unknown.partner_buyers.top_n.20.groups[4],Свердловская область
+published_including_unknown.partner_buyers.top_n.20.groups[5],Нижегородская область
+published_including_unknown.partner_buyers.top_n.20.groups[6],Московская область
+published_including_unknown.partner_buyers.top_n.20.groups[7],Пермский край
+published_including_unknown.partner_buyers.top_n.20.groups[8],Самарская область
+published_including_unknown.partner_buyers.top_n.20.groups[9],Краснодарский край
+published_including_unknown.partner_buyers.top_n.20.groups[10],Республика Башкортостан
+published_including_unknown.partner_buyers.top_n.20.groups[11],Республика Татарстан (Татарстан)
+published_including_unknown.partner_buyers.top_n.20.groups[12],Красноярский край
+published_including_unknown.partner_buyers.top_n.20.groups[13],Вологодская область
+published_including_unknown.partner_buyers.top_n.20.groups[14],Ростовская область
+published_including_unknown.partner_buyers.top_n.20.groups[15],Воронежская область
+published_including_unknown.partner_buyers.top_n.20.groups[16],Архангельская область
+published_including_unknown.partner_buyers.top_n.20.groups[17],Удмуртская Республика
+published_including_unknown.partner_buyers.top_n.20.groups[18],Тюменская область
+published_including_unknown.partner_buyers.top_n.20.groups[19],Новосибирская область
+published_including_unknown.partner_orders.denominator,4557253
+published_including_unknown.partner_orders.published_groups,89
+published_including_unknown.partner_orders.hhi_fraction,0.1467608093117309
+published_including_unknown.partner_orders.effective_equal_sized_groups,6.813808159615183
+published_including_unknown.partner_orders.top_n.1.count,1677589
+published_including_unknown.partner_orders.top_n.1.share,0.3681140810044999
+published_including_unknown.partner_orders.top_n.1.groups[0],Не указан
+published_including_unknown.partner_orders.top_n.3.count,2155801
+published_including_unknown.partner_orders.top_n.3.share,0.47304834732677775
+published_including_unknown.partner_orders.top_n.3.groups[0],Не указан
+published_including_unknown.partner_orders.top_n.3.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_orders.top_n.3.groups[2],г. Москва
+published_including_unknown.partner_orders.top_n.5.count,2357085
+published_including_unknown.partner_orders.top_n.5.share,0.5172161826433599
+published_including_unknown.partner_orders.top_n.5.groups[0],Не указан
+published_including_unknown.partner_orders.top_n.5.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_orders.top_n.5.groups[2],г. Москва
+published_including_unknown.partner_orders.top_n.5.groups[3],Челябинская область
+published_including_unknown.partner_orders.top_n.5.groups[4],Свердловская область
+published_including_unknown.partner_orders.top_n.10.count,2774119
+published_including_unknown.partner_orders.top_n.10.share,0.6087261339232208
+published_including_unknown.partner_orders.top_n.10.groups[0],Не указан
+published_including_unknown.partner_orders.top_n.10.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_orders.top_n.10.groups[2],г. Москва
+published_including_unknown.partner_orders.top_n.10.groups[3],Челябинская область
+published_including_unknown.partner_orders.top_n.10.groups[4],Свердловская область
+published_including_unknown.partner_orders.top_n.10.groups[5],Нижегородская область
+published_including_unknown.partner_orders.top_n.10.groups[6],Московская область
+published_including_unknown.partner_orders.top_n.10.groups[7],Пермский край
+published_including_unknown.partner_orders.top_n.10.groups[8],Самарская область
+published_including_unknown.partner_orders.top_n.10.groups[9],Краснодарский край
+published_including_unknown.partner_orders.top_n.20.count,3320506
+published_including_unknown.partner_orders.top_n.20.share,0.7286200700290284
+published_including_unknown.partner_orders.top_n.20.groups[0],Не указан
+published_including_unknown.partner_orders.top_n.20.groups[1],г. Санкт-Петербург
+published_including_unknown.partner_orders.top_n.20.groups[2],г. Москва
+published_including_unknown.partner_orders.top_n.20.groups[3],Челябинская область
+published_including_unknown.partner_orders.top_n.20.groups[4],Свердловская область
+published_including_unknown.partner_orders.top_n.20.groups[5],Нижегородская область
+published_including_unknown.partner_orders.top_n.20.groups[6],Московская область
+published_including_unknown.partner_orders.top_n.20.groups[7],Пермский край
+published_including_unknown.partner_orders.top_n.20.groups[8],Самарская область
+published_including_unknown.partner_orders.top_n.20.groups[9],Краснодарский край
+published_including_unknown.partner_orders.top_n.20.groups[10],Республика Башкортостан
+published_including_unknown.partner_orders.top_n.20.groups[11],Республика Татарстан (Татарстан)
+published_including_unknown.partner_orders.top_n.20.groups[12],Красноярский край
+published_including_unknown.partner_orders.top_n.20.groups[13],Вологодская область
+published_including_unknown.partner_orders.top_n.20.groups[14],Архангельская область
+published_including_unknown.partner_orders.top_n.20.groups[15],Воронежская область
+published_including_unknown.partner_orders.top_n.20.groups[16],Ростовская область
+published_including_unknown.partner_orders.top_n.20.groups[17],Удмуртская Республика
+published_including_unknown.partner_orders.top_n.20.groups[18],Тюменская область
+published_including_unknown.partner_orders.top_n.20.groups[19],Кировская область
+published_known_regions.market_buyers.denominator,290661.0
+published_known_regions.market_buyers.published_groups,84
+published_known_regions.market_buyers.hhi_fraction,0.0365218348963237
+published_known_regions.market_buyers.effective_equal_sized_groups,27.380880583868482
+published_known_regions.market_buyers.top_n.1.count,30488.0
+published_known_regions.market_buyers.top_n.1.share,0.10489195316881178
+published_known_regions.market_buyers.top_n.1.groups[0],г. Москва
+published_known_regions.market_buyers.top_n.3.count,75640.0
+published_known_regions.market_buyers.top_n.3.share,0.26023443117583717
+published_known_regions.market_buyers.top_n.3.groups[0],г. Москва
+published_known_regions.market_buyers.top_n.3.groups[1],г. Санкт-Петербург
+published_known_regions.market_buyers.top_n.3.groups[2],Челябинская область
+published_known_regions.market_buyers.top_n.5.count,100123.0
+published_known_regions.market_buyers.top_n.5.share,0.3444665779034683
+published_known_regions.market_buyers.top_n.5.groups[0],г. Москва
+published_known_regions.market_buyers.top_n.5.groups[1],г. Санкт-Петербург
+published_known_regions.market_buyers.top_n.5.groups[2],Челябинская область
+published_known_regions.market_buyers.top_n.5.groups[3],Пермский край
+published_known_regions.market_buyers.top_n.5.groups[4],Свердловская область
+published_known_regions.market_buyers.top_n.10.count,139570.0
+published_known_regions.market_buyers.top_n.10.share,0.4801813796828608
+published_known_regions.market_buyers.top_n.10.groups[0],г. Москва
+published_known_regions.market_buyers.top_n.10.groups[1],г. Санкт-Петербург
+published_known_regions.market_buyers.top_n.10.groups[2],Челябинская область
+published_known_regions.market_buyers.top_n.10.groups[3],Пермский край
+published_known_regions.market_buyers.top_n.10.groups[4],Свердловская область
+published_known_regions.market_buyers.top_n.10.groups[5],Нижегородская область
+published_known_regions.market_buyers.top_n.10.groups[6],Самарская область
+published_known_regions.market_buyers.top_n.10.groups[7],Удмуртская Республика
+published_known_regions.market_buyers.top_n.10.groups[8],Республика Башкортостан
+published_known_regions.market_buyers.top_n.10.groups[9],Новгородская область
+published_known_regions.market_buyers.top_n.20.count,189913.0
+published_known_regions.market_buyers.top_n.20.share,0.6533831508183072
+published_known_regions.market_buyers.top_n.20.groups[0],г. Москва
+published_known_regions.market_buyers.top_n.20.groups[1],г. Санкт-Петербург
+published_known_regions.market_buyers.top_n.20.groups[2],Челябинская область
+published_known_regions.market_buyers.top_n.20.groups[3],Пермский край
+published_known_regions.market_buyers.top_n.20.groups[4],Свердловская область
+published_known_regions.market_buyers.top_n.20.groups[5],Нижегородская область
+published_known_regions.market_buyers.top_n.20.groups[6],Самарская область
+published_known_regions.market_buyers.top_n.20.groups[7],Удмуртская Республика
+published_known_regions.market_buyers.top_n.20.groups[8],Республика Башкортостан
+published_known_regions.market_buyers.top_n.20.groups[9],Новгородская область
+published_known_regions.market_buyers.top_n.20.groups[10],Московская область
+published_known_regions.market_buyers.top_n.20.groups[11],Краснодарский край
+published_known_regions.market_buyers.top_n.20.groups[12],Республика Татарстан (Татарстан)
+published_known_regions.market_buyers.top_n.20.groups[13],Архангельская область
+published_known_regions.market_buyers.top_n.20.groups[14],Белгородская область
+published_known_regions.market_buyers.top_n.20.groups[15],Курская область
+published_known_regions.market_buyers.top_n.20.groups[16],Владимирская область
+published_known_regions.market_buyers.top_n.20.groups[17],Вологодская область
+published_known_regions.market_buyers.top_n.20.groups[18],Воронежская область
+published_known_regions.market_buyers.top_n.20.groups[19],Тюменская область
+published_known_regions.market_orders.denominator,405888.0
+published_known_regions.market_orders.published_groups,84
+published_known_regions.market_orders.hhi_fraction,0.03724258848064594
+published_known_regions.market_orders.effective_equal_sized_groups,26.85098004183236
+published_known_regions.market_orders.top_n.1.count,42652.0
+published_known_regions.market_orders.top_n.1.share,0.10508317565436771
+published_known_regions.market_orders.top_n.1.groups[0],г. Москва
+published_known_regions.market_orders.top_n.3.count,107317.0
+published_known_regions.market_orders.top_n.3.share,0.2644005242825607
+published_known_regions.market_orders.top_n.3.groups[0],г. Москва
+published_known_regions.market_orders.top_n.3.groups[1],г. Санкт-Петербург
+published_known_regions.market_orders.top_n.3.groups[2],Челябинская область
+published_known_regions.market_orders.top_n.5.count,142432.0
+published_known_regions.market_orders.top_n.5.share,0.3509145380006307
+published_known_regions.market_orders.top_n.5.groups[0],г. Москва
+published_known_regions.market_orders.top_n.5.groups[1],г. Санкт-Петербург
+published_known_regions.market_orders.top_n.5.groups[2],Челябинская область
+published_known_regions.market_orders.top_n.5.groups[3],Пермский край
+published_known_regions.market_orders.top_n.5.groups[4],Свердловская область
+published_known_regions.market_orders.top_n.10.count,196819.0
+published_known_regions.market_orders.top_n.10.share,0.48490963024282563
+published_known_regions.market_orders.top_n.10.groups[0],г. Москва
+published_known_regions.market_orders.top_n.10.groups[1],г. Санкт-Петербург
+published_known_regions.market_orders.top_n.10.groups[2],Челябинская область
+published_known_regions.market_orders.top_n.10.groups[3],Пермский край
+published_known_regions.market_orders.top_n.10.groups[4],Свердловская область
+published_known_regions.market_orders.top_n.10.groups[5],Нижегородская область
+published_known_regions.market_orders.top_n.10.groups[6],Самарская область
+published_known_regions.market_orders.top_n.10.groups[7],Удмуртская Республика
+published_known_regions.market_orders.top_n.10.groups[8],Новгородская область
+published_known_regions.market_orders.top_n.10.groups[9],Республика Башкортостан
+published_known_regions.market_orders.top_n.20.count,266680.0
+published_known_regions.market_orders.top_n.20.share,0.6570285398927783
+published_known_regions.market_orders.top_n.20.groups[0],г. Москва
+published_known_regions.market_orders.top_n.20.groups[1],г. Санкт-Петербург
+published_known_regions.market_orders.top_n.20.groups[2],Челябинская область
+published_known_regions.market_orders.top_n.20.groups[3],Пермский край
+published_known_regions.market_orders.top_n.20.groups[4],Свердловская область
+published_known_regions.market_orders.top_n.20.groups[5],Нижегородская область
+published_known_regions.market_orders.top_n.20.groups[6],Самарская область
+published_known_regions.market_orders.top_n.20.groups[7],Удмуртская Республика
+published_known_regions.market_orders.top_n.20.groups[8],Новгородская область
+published_known_regions.market_orders.top_n.20.groups[9],Республика Башкортостан
+published_known_regions.market_orders.top_n.20.groups[10],Московская область
+published_known_regions.market_orders.top_n.20.groups[11],Краснодарский край
+published_known_regions.market_orders.top_n.20.groups[12],Республика Татарстан (Татарстан)
+published_known_regions.market_orders.top_n.20.groups[13],Архангельская область
+published_known_regions.market_orders.top_n.20.groups[14],Владимирская область
+published_known_regions.market_orders.top_n.20.groups[15],Курская область
+published_known_regions.market_orders.top_n.20.groups[16],Белгородская область
+published_known_regions.market_orders.top_n.20.groups[17],Вологодская область
+published_known_regions.market_orders.top_n.20.groups[18],Тюменская область
+published_known_regions.market_orders.top_n.20.groups[19],Воронежская область
+published_known_regions.partner_buyers.denominator,1836068
+published_known_regions.partner_buyers.published_groups,88
+published_known_regions.partner_buyers.hhi_fraction,0.02801088753017148
+published_known_regions.partner_buyers.effective_equal_sized_groups,35.70040395624258
+published_known_regions.partner_buyers.top_n.1.count,155546
+published_known_regions.partner_buyers.top_n.1.share,0.08471690590980291
+published_known_regions.partner_buyers.top_n.1.groups[0],г. Санкт-Петербург
+published_known_regions.partner_buyers.top_n.3.count,369791
+published_known_regions.partner_buyers.top_n.3.share,0.20140376064503057
+published_known_regions.partner_buyers.top_n.3.groups[0],г. Санкт-Петербург
+published_known_regions.partner_buyers.top_n.3.groups[1],г. Москва
+published_known_regions.partner_buyers.top_n.3.groups[2],Челябинская область
+published_known_regions.partner_buyers.top_n.5.count,489916
+published_known_regions.partner_buyers.top_n.5.share,0.2668288974046713
+published_known_regions.partner_buyers.top_n.5.groups[0],г. Санкт-Петербург
+published_known_regions.partner_buyers.top_n.5.groups[1],г. Москва
+published_known_regions.partner_buyers.top_n.5.groups[2],Челябинская область
+published_known_regions.partner_buyers.top_n.5.groups[3],Свердловская область
+published_known_regions.partner_buyers.top_n.5.groups[4],Нижегородская область
+published_known_regions.partner_buyers.top_n.10.count,742734
+published_known_regions.partner_buyers.top_n.10.share,0.4045242333072631
+published_known_regions.partner_buyers.top_n.10.groups[0],г. Санкт-Петербург
+published_known_regions.partner_buyers.top_n.10.groups[1],г. Москва
+published_known_regions.partner_buyers.top_n.10.groups[2],Челябинская область
+published_known_regions.partner_buyers.top_n.10.groups[3],Свердловская область
+published_known_regions.partner_buyers.top_n.10.groups[4],Нижегородская область
+published_known_regions.partner_buyers.top_n.10.groups[5],Московская область
+published_known_regions.partner_buyers.top_n.10.groups[6],Пермский край
+published_known_regions.partner_buyers.top_n.10.groups[7],Самарская область
+published_known_regions.partner_buyers.top_n.10.groups[8],Краснодарский край
+published_known_regions.partner_buyers.top_n.10.groups[9],Республика Башкортостан
+published_known_regions.partner_buyers.top_n.20.count,1075820
+published_known_regions.partner_buyers.top_n.20.share,0.5859369042976622
+published_known_regions.partner_buyers.top_n.20.groups[0],г. Санкт-Петербург
+published_known_regions.partner_buyers.top_n.20.groups[1],г. Москва
+published_known_regions.partner_buyers.top_n.20.groups[2],Челябинская область
+published_known_regions.partner_buyers.top_n.20.groups[3],Свердловская область
+published_known_regions.partner_buyers.top_n.20.groups[4],Нижегородская область
+published_known_regions.partner_buyers.top_n.20.groups[5],Московская область
+published_known_regions.partner_buyers.top_n.20.groups[6],Пермский край
+published_known_regions.partner_buyers.top_n.20.groups[7],Самарская область
+published_known_regions.partner_buyers.top_n.20.groups[8],Краснодарский край
+published_known_regions.partner_buyers.top_n.20.groups[9],Республика Башкортостан
+published_known_regions.partner_buyers.top_n.20.groups[10],Республика Татарстан (Татарстан)
+published_known_regions.partner_buyers.top_n.20.groups[11],Красноярский край
+published_known_regions.partner_buyers.top_n.20.groups[12],Вологодская область
+published_known_regions.partner_buyers.top_n.20.groups[13],Ростовская область
+published_known_regions.partner_buyers.top_n.20.groups[14],Воронежская область
+published_known_regions.partner_buyers.top_n.20.groups[15],Архангельская область
+published_known_regions.partner_buyers.top_n.20.groups[16],Удмуртская Республика
+published_known_regions.partner_buyers.top_n.20.groups[17],Тюменская область
+published_known_regions.partner_buyers.top_n.20.groups[18],Новосибирская область
+published_known_regions.partner_buyers.top_n.20.groups[19],Кировская область
+published_known_regions.partner_orders.denominator,2879664
+published_known_regions.partner_orders.published_groups,88
+published_known_regions.partner_orders.hhi_fraction,0.028182823838760668
+published_known_regions.partner_orders.effective_equal_sized_groups,35.48260478514117
+published_known_regions.partner_orders.top_n.1.count,248956
+published_known_regions.partner_orders.top_n.1.share,0.08645314175542702
+published_known_regions.partner_orders.top_n.1.groups[0],г. Санкт-Петербург
+published_known_regions.partner_orders.top_n.3.count,585894
+published_known_regions.partner_orders.top_n.3.share,0.20345915356791625
+published_known_regions.partner_orders.top_n.3.groups[0],г. Санкт-Петербург
+published_known_regions.partner_orders.top_n.3.groups[1],г. Москва
+published_known_regions.partner_orders.top_n.3.groups[2],Челябинская область
+published_known_regions.partner_orders.top_n.5.count,771403
+published_known_regions.partner_orders.top_n.5.share,0.2678795164991471
+published_known_regions.partner_orders.top_n.5.groups[0],г. Санкт-Петербург
+published_known_regions.partner_orders.top_n.5.groups[1],г. Москва
+published_known_regions.partner_orders.top_n.5.groups[2],Челябинская область
+published_known_regions.partner_orders.top_n.5.groups[3],Свердловская область
+published_known_regions.partner_orders.top_n.5.groups[4],Нижегородская область
+published_known_regions.partner_orders.top_n.10.count,1160572
+published_known_regions.partner_orders.top_n.10.share,0.40302340828652233
+published_known_regions.partner_orders.top_n.10.groups[0],г. Санкт-Петербург
+published_known_regions.partner_orders.top_n.10.groups[1],г. Москва
+published_known_regions.partner_orders.top_n.10.groups[2],Челябинская область
+published_known_regions.partner_orders.top_n.10.groups[3],Свердловская область
+published_known_regions.partner_orders.top_n.10.groups[4],Нижегородская область
+published_known_regions.partner_orders.top_n.10.groups[5],Московская область
+published_known_regions.partner_orders.top_n.10.groups[6],Пермский край
+published_known_regions.partner_orders.top_n.10.groups[7],Самарская область
+published_known_regions.partner_orders.top_n.10.groups[8],Краснодарский край
+published_known_regions.partner_orders.top_n.10.groups[9],Республика Башкортостан
+published_known_regions.partner_orders.top_n.20.count,1684861
+published_known_regions.partner_orders.top_n.20.share,0.5850894409903378
+published_known_regions.partner_orders.top_n.20.groups[0],г. Санкт-Петербург
+published_known_regions.partner_orders.top_n.20.groups[1],г. Москва
+published_known_regions.partner_orders.top_n.20.groups[2],Челябинская область
+published_known_regions.partner_orders.top_n.20.groups[3],Свердловская область
+published_known_regions.partner_orders.top_n.20.groups[4],Нижегородская область
+published_known_regions.partner_orders.top_n.20.groups[5],Московская область
+published_known_regions.partner_orders.top_n.20.groups[6],Пермский край
+published_known_regions.partner_orders.top_n.20.groups[7],Самарская область
+published_known_regions.partner_orders.top_n.20.groups[8],Краснодарский край
+published_known_regions.partner_orders.top_n.20.groups[9],Республика Башкортостан
+published_known_regions.partner_orders.top_n.20.groups[10],Республика Татарстан (Татарстан)
+published_known_regions.partner_orders.top_n.20.groups[11],Красноярский край
+published_known_regions.partner_orders.top_n.20.groups[12],Вологодская область
+published_known_regions.partner_orders.top_n.20.groups[13],Архангельская область
+published_known_regions.partner_orders.top_n.20.groups[14],Воронежская область
+published_known_regions.partner_orders.top_n.20.groups[15],Ростовская область
+published_known_regions.partner_orders.top_n.20.groups[16],Удмуртская Республика
+published_known_regions.partner_orders.top_n.20.groups[17],Тюменская область
+published_known_regions.partner_orders.top_n.20.groups[18],Кировская область
+published_known_regions.partner_orders.top_n.20.groups[19],Новосибирская область
+published_common_regions.market_buyers.denominator,290661.0
+published_common_regions.market_buyers.published_groups,84
+published_common_regions.market_buyers.hhi_fraction,0.0365218348963237
+published_common_regions.market_buyers.effective_equal_sized_groups,27.380880583868482
+published_common_regions.market_buyers.top_n.1.count,30488.0
+published_common_regions.market_buyers.top_n.1.share,0.10489195316881178
+published_common_regions.market_buyers.top_n.1.groups[0],г. Москва
+published_common_regions.market_buyers.top_n.3.count,75640.0
+published_common_regions.market_buyers.top_n.3.share,0.26023443117583717
+published_common_regions.market_buyers.top_n.3.groups[0],г. Москва
+published_common_regions.market_buyers.top_n.3.groups[1],г. Санкт-Петербург
+published_common_regions.market_buyers.top_n.3.groups[2],Челябинская область
+published_common_regions.market_buyers.top_n.5.count,100123.0
+published_common_regions.market_buyers.top_n.5.share,0.3444665779034683
+published_common_regions.market_buyers.top_n.5.groups[0],г. Москва
+published_common_regions.market_buyers.top_n.5.groups[1],г. Санкт-Петербург
+published_common_regions.market_buyers.top_n.5.groups[2],Челябинская область
+published_common_regions.market_buyers.top_n.5.groups[3],Пермский край
+published_common_regions.market_buyers.top_n.5.groups[4],Свердловская область
+published_common_regions.market_buyers.top_n.10.count,139570.0
+published_common_regions.market_buyers.top_n.10.share,0.4801813796828608
+published_common_regions.market_buyers.top_n.10.groups[0],г. Москва
+published_common_regions.market_buyers.top_n.10.groups[1],г. Санкт-Петербург
+published_common_regions.market_buyers.top_n.10.groups[2],Челябинская область
+published_common_regions.market_buyers.top_n.10.groups[3],Пермский край
+published_common_regions.market_buyers.top_n.10.groups[4],Свердловская область
+published_common_regions.market_buyers.top_n.10.groups[5],Нижегородская область
+published_common_regions.market_buyers.top_n.10.groups[6],Самарская область
+published_common_regions.market_buyers.top_n.10.groups[7],Удмуртская Республика
+published_common_regions.market_buyers.top_n.10.groups[8],Республика Башкортостан
+published_common_regions.market_buyers.top_n.10.groups[9],Новгородская область
+published_common_regions.market_buyers.top_n.20.count,189913.0
+published_common_regions.market_buyers.top_n.20.share,0.6533831508183072
+published_common_regions.market_buyers.top_n.20.groups[0],г. Москва
+published_common_regions.market_buyers.top_n.20.groups[1],г. Санкт-Петербург
+published_common_regions.market_buyers.top_n.20.groups[2],Челябинская область
+published_common_regions.market_buyers.top_n.20.groups[3],Пермский край
+published_common_regions.market_buyers.top_n.20.groups[4],Свердловская область
+published_common_regions.market_buyers.top_n.20.groups[5],Нижегородская область
+published_common_regions.market_buyers.top_n.20.groups[6],Самарская область
+published_common_regions.market_buyers.top_n.20.groups[7],Удмуртская Республика
+published_common_regions.market_buyers.top_n.20.groups[8],Республика Башкортостан
+published_common_regions.market_buyers.top_n.20.groups[9],Новгородская область
+published_common_regions.market_buyers.top_n.20.groups[10],Московская область
+published_common_regions.market_buyers.top_n.20.groups[11],Краснодарский край
+published_common_regions.market_buyers.top_n.20.groups[12],Республика Татарстан (Татарстан)
+published_common_regions.market_buyers.top_n.20.groups[13],Архангельская область
+published_common_regions.market_buyers.top_n.20.groups[14],Белгородская область
+published_common_regions.market_buyers.top_n.20.groups[15],Курская область
+published_common_regions.market_buyers.top_n.20.groups[16],Владимирская область
+published_common_regions.market_buyers.top_n.20.groups[17],Вологодская область
+published_common_regions.market_buyers.top_n.20.groups[18],Воронежская область
+published_common_regions.market_buyers.top_n.20.groups[19],Тюменская область
+published_common_regions.market_orders.denominator,405888.0
+published_common_regions.market_orders.published_groups,84
+published_common_regions.market_orders.hhi_fraction,0.03724258848064594
+published_common_regions.market_orders.effective_equal_sized_groups,26.85098004183236
+published_common_regions.market_orders.top_n.1.count,42652.0
+published_common_regions.market_orders.top_n.1.share,0.10508317565436771
+published_common_regions.market_orders.top_n.1.groups[0],г. Москва
+published_common_regions.market_orders.top_n.3.count,107317.0
+published_common_regions.market_orders.top_n.3.share,0.2644005242825607
+published_common_regions.market_orders.top_n.3.groups[0],г. Москва
+published_common_regions.market_orders.top_n.3.groups[1],г. Санкт-Петербург
+published_common_regions.market_orders.top_n.3.groups[2],Челябинская область
+published_common_regions.market_orders.top_n.5.count,142432.0
+published_common_regions.market_orders.top_n.5.share,0.3509145380006307
+published_common_regions.market_orders.top_n.5.groups[0],г. Москва
+published_common_regions.market_orders.top_n.5.groups[1],г. Санкт-Петербург
+published_common_regions.market_orders.top_n.5.groups[2],Челябинская область
+published_common_regions.market_orders.top_n.5.groups[3],Пермский край
+published_common_regions.market_orders.top_n.5.groups[4],Свердловская область
+published_common_regions.market_orders.top_n.10.count,196819.0
+published_common_regions.market_orders.top_n.10.share,0.48490963024282563
+published_common_regions.market_orders.top_n.10.groups[0],г. Москва
+published_common_regions.market_orders.top_n.10.groups[1],г. Санкт-Петербург
+published_common_regions.market_orders.top_n.10.groups[2],Челябинская область
+published_common_regions.market_orders.top_n.10.groups[3],Пермский край
+published_common_regions.market_orders.top_n.10.groups[4],Свердловская область
+published_common_regions.market_orders.top_n.10.groups[5],Нижегородская область
+published_common_regions.market_orders.top_n.10.groups[6],Самарская область
+published_common_regions.market_orders.top_n.10.groups[7],Удмуртская Республика
+published_common_regions.market_orders.top_n.10.groups[8],Новгородская область
+published_common_regions.market_orders.top_n.10.groups[9],Республика Башкортостан
+published_common_regions.market_orders.top_n.20.count,266680.0
+published_common_regions.market_orders.top_n.20.share,0.6570285398927783
+published_common_regions.market_orders.top_n.20.groups[0],г. Москва
+published_common_regions.market_orders.top_n.20.groups[1],г. Санкт-Петербург
+published_common_regions.market_orders.top_n.20.groups[2],Челябинская область
+published_common_regions.market_orders.top_n.20.groups[3],Пермский край
+published_common_regions.market_orders.top_n.20.groups[4],Свердловская область
+published_common_regions.market_orders.top_n.20.groups[5],Нижегородская область
+published_common_regions.market_orders.top_n.20.groups[6],Самарская область
+published_common_regions.market_orders.top_n.20.groups[7],Удмуртская Республика
+published_common_regions.market_orders.top_n.20.groups[8],Новгородская область
+published_common_regions.market_orders.top_n.20.groups[9],Республика Башкортостан
+published_common_regions.market_orders.top_n.20.groups[10],Московская область
+published_common_regions.market_orders.top_n.20.groups[11],Краснодарский край
+published_common_regions.market_orders.top_n.20.groups[12],Республика Татарстан (Татарстан)
+published_common_regions.market_orders.top_n.20.groups[13],Архангельская область
+published_common_regions.market_orders.top_n.20.groups[14],Владимирская область
+published_common_regions.market_orders.top_n.20.groups[15],Курская область
+published_common_regions.market_orders.top_n.20.groups[16],Белгородская область
+published_common_regions.market_orders.top_n.20.groups[17],Вологодская область
+published_common_regions.market_orders.top_n.20.groups[18],Тюменская область
+published_common_regions.market_orders.top_n.20.groups[19],Воронежская область
+published_common_regions.partner_buyers.denominator,1834516
+published_common_regions.partner_buyers.published_groups,84
+published_common_regions.partner_buyers.hhi_fraction,0.028058093536253093
+published_common_regions.partner_buyers.effective_equal_sized_groups,35.64034023580139
+published_common_regions.partner_buyers.top_n.1.count,155546
+published_common_regions.partner_buyers.top_n.1.share,0.08478857638745042
+published_common_regions.partner_buyers.top_n.1.groups[0],г. Санкт-Петербург
+published_common_regions.partner_buyers.top_n.3.count,369791
+published_common_regions.partner_buyers.top_n.3.share,0.2015741481676911
+published_common_regions.partner_buyers.top_n.3.groups[0],г. Санкт-Петербург
+published_common_regions.partner_buyers.top_n.3.groups[1],г. Москва
+published_common_regions.partner_buyers.top_n.3.groups[2],Челябинская область
+published_common_regions.partner_buyers.top_n.5.count,489916
+published_common_regions.partner_buyers.top_n.5.share,0.2670546345739149
+published_common_regions.partner_buyers.top_n.5.groups[0],г. Санкт-Петербург
+published_common_regions.partner_buyers.top_n.5.groups[1],г. Москва
+published_common_regions.partner_buyers.top_n.5.groups[2],Челябинская область
+published_common_regions.partner_buyers.top_n.5.groups[3],Свердловская область
+published_common_regions.partner_buyers.top_n.5.groups[4],Нижегородская область
+published_common_regions.partner_buyers.top_n.10.count,742734
+published_common_regions.partner_buyers.top_n.10.share,0.4048664606904491
+published_common_regions.partner_buyers.top_n.10.groups[0],г. Санкт-Петербург
+published_common_regions.partner_buyers.top_n.10.groups[1],г. Москва
+published_common_regions.partner_buyers.top_n.10.groups[2],Челябинская область
+published_common_regions.partner_buyers.top_n.10.groups[3],Свердловская область
+published_common_regions.partner_buyers.top_n.10.groups[4],Нижегородская область
+published_common_regions.partner_buyers.top_n.10.groups[5],Московская область
+published_common_regions.partner_buyers.top_n.10.groups[6],Пермский край
+published_common_regions.partner_buyers.top_n.10.groups[7],Самарская область
+published_common_regions.partner_buyers.top_n.10.groups[8],Краснодарский край
+published_common_regions.partner_buyers.top_n.10.groups[9],Республика Башкортостан
+published_common_regions.partner_buyers.top_n.20.count,1075820
+published_common_regions.partner_buyers.top_n.20.share,0.5864326067475018
+published_common_regions.partner_buyers.top_n.20.groups[0],г. Санкт-Петербург
+published_common_regions.partner_buyers.top_n.20.groups[1],г. Москва
+published_common_regions.partner_buyers.top_n.20.groups[2],Челябинская область
+published_common_regions.partner_buyers.top_n.20.groups[3],Свердловская область
+published_common_regions.partner_buyers.top_n.20.groups[4],Нижегородская область
+published_common_regions.partner_buyers.top_n.20.groups[5],Московская область
+published_common_regions.partner_buyers.top_n.20.groups[6],Пермский край
+published_common_regions.partner_buyers.top_n.20.groups[7],Самарская область
+published_common_regions.partner_buyers.top_n.20.groups[8],Краснодарский край
+published_common_regions.partner_buyers.top_n.20.groups[9],Республика Башкортостан
+published_common_regions.partner_buyers.top_n.20.groups[10],Республика Татарстан (Татарстан)
+published_common_regions.partner_buyers.top_n.20.groups[11],Красноярский край
+published_common_regions.partner_buyers.top_n.20.groups[12],Вологодская область
+published_common_regions.partner_buyers.top_n.20.groups[13],Ростовская область
+published_common_regions.partner_buyers.top_n.20.groups[14],Воронежская область
+published_common_regions.partner_buyers.top_n.20.groups[15],Архангельская область
+published_common_regions.partner_buyers.top_n.20.groups[16],Удмуртская Республика
+published_common_regions.partner_buyers.top_n.20.groups[17],Тюменская область
+published_common_regions.partner_buyers.top_n.20.groups[18],Новосибирская область
+published_common_regions.partner_buyers.top_n.20.groups[19],Кировская область
+published_common_regions.partner_orders.denominator,2877166
+published_common_regions.partner_orders.published_groups,84
+published_common_regions.partner_orders.hhi_fraction,0.02823156288219288
+published_common_regions.partner_orders.effective_equal_sized_groups,35.42134752414831
+published_common_regions.partner_orders.top_n.1.count,248956
+published_common_regions.partner_orders.top_n.1.share,0.08652820170959896
+published_common_regions.partner_orders.top_n.1.groups[0],г. Санкт-Петербург
+published_common_regions.partner_orders.top_n.3.count,585894
+published_common_regions.partner_orders.top_n.3.share,0.20363579995036782
+published_common_regions.partner_orders.top_n.3.groups[0],г. Санкт-Петербург
+published_common_regions.partner_orders.top_n.3.groups[1],г. Москва
+published_common_regions.partner_orders.top_n.3.groups[2],Челябинская область
+published_common_regions.partner_orders.top_n.5.count,771403
+published_common_regions.partner_orders.top_n.5.share,0.26811209363658545
+published_common_regions.partner_orders.top_n.5.groups[0],г. Санкт-Петербург
+published_common_regions.partner_orders.top_n.5.groups[1],г. Москва
+published_common_regions.partner_orders.top_n.5.groups[2],Челябинская область
+published_common_regions.partner_orders.top_n.5.groups[3],Свердловская область
+published_common_regions.partner_orders.top_n.5.groups[4],Нижегородская область
+published_common_regions.partner_orders.top_n.10.count,1160572
+published_common_regions.partner_orders.top_n.10.share,0.4033733194400323
+published_common_regions.partner_orders.top_n.10.groups[0],г. Санкт-Петербург
+published_common_regions.partner_orders.top_n.10.groups[1],г. Москва
+published_common_regions.partner_orders.top_n.10.groups[2],Челябинская область
+published_common_regions.partner_orders.top_n.10.groups[3],Свердловская область
+published_common_regions.partner_orders.top_n.10.groups[4],Нижегородская область
+published_common_regions.partner_orders.top_n.10.groups[5],Московская область
+published_common_regions.partner_orders.top_n.10.groups[6],Пермский край
+published_common_regions.partner_orders.top_n.10.groups[7],Самарская область
+published_common_regions.partner_orders.top_n.10.groups[8],Краснодарский край
+published_common_regions.partner_orders.top_n.10.groups[9],Республика Башкортостан
+published_common_regions.partner_orders.top_n.20.count,1684861
+published_common_regions.partner_orders.top_n.20.share,0.5855974246880438
+published_common_regions.partner_orders.top_n.20.groups[0],г. Санкт-Петербург
+published_common_regions.partner_orders.top_n.20.groups[1],г. Москва
+published_common_regions.partner_orders.top_n.20.groups[2],Челябинская область
+published_common_regions.partner_orders.top_n.20.groups[3],Свердловская область
+published_common_regions.partner_orders.top_n.20.groups[4],Нижегородская область
+published_common_regions.partner_orders.top_n.20.groups[5],Московская область
+published_common_regions.partner_orders.top_n.20.groups[6],Пермский край
+published_common_regions.partner_orders.top_n.20.groups[7],Самарская область
+published_common_regions.partner_orders.top_n.20.groups[8],Краснодарский край
+published_common_regions.partner_orders.top_n.20.groups[9],Республика Башкортостан
+published_common_regions.partner_orders.top_n.20.groups[10],Республика Татарстан (Татарстан)
+published_common_regions.partner_orders.top_n.20.groups[11],Красноярский край
+published_common_regions.partner_orders.top_n.20.groups[12],Вологодская область
+published_common_regions.partner_orders.top_n.20.groups[13],Архангельская область
+published_common_regions.partner_orders.top_n.20.groups[14],Воронежская область
+published_common_regions.partner_orders.top_n.20.groups[15],Ростовская область
+published_common_regions.partner_orders.top_n.20.groups[16],Удмуртская Республика
+published_common_regions.partner_orders.top_n.20.groups[17],Тюменская область
+published_common_regions.partner_orders.top_n.20.groups[18],Кировская область
+published_common_regions.partner_orders.top_n.20.groups[19],Новосибирская область

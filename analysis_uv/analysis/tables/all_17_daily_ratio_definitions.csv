@@ -1,0 +1,52 @@
+﻿Показатель,Значение
+imp_open_vk.numerator,opens_vk
+imp_open_vk.denominator,impressions_vk
+imp_open_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+imp_open_partner.numerator,opens_partner
+imp_open_partner.denominator,impressions_partner
+imp_open_partner.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+open_button_vk.numerator,buttons_vk
+open_button_vk.denominator,opens_vk
+open_button_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+open_button_partner.numerator,buttons_partner
+open_button_partner.denominator,opens_partner
+open_button_partner.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+open_order_vk.numerator,orders_vk
+open_order_vk.denominator,opens_vk
+open_order_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+open_order_partner.numerator,orders_partner
+open_order_partner.denominator,opens_partner
+open_order_partner.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+button_order_vk.numerator,orders_vk
+button_order_vk.denominator,buttons_vk
+button_order_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+button_order_partner.numerator,orders_partner
+button_order_partner.denominator,buttons_partner
+button_order_partner.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+imp_order_vk.numerator,orders_vk
+imp_order_vk.denominator,impressions_vk
+imp_order_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+imp_order_partner.numerator,orders_partner
+imp_order_partner.denominator,impressions_partner
+imp_order_partner.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+paid_order_share_vk.numerator,paid_orders_vk
+paid_order_share_vk.denominator,orders_vk
+paid_order_share_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+aov_vk.numerator,gmv_vk
+aov_vk.denominator,orders_vk
+aov_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+aov_partner.numerator,gmv_partner
+aov_partner.denominator,orders_partner
+aov_partner.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+orders_per_daily_buyer_vk.numerator,orders_vk
+orders_per_daily_buyer_vk.denominator,buyers_vk
+orders_per_daily_buyer_vk.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+orders_per_daily_buyer_partner.numerator,orders_partner
+orders_per_daily_buyer_partner.denominator,buyers_partner
+orders_per_daily_buyer_partner.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+search_open_ratio.numerator,search_queries_with_card
+search_open_ratio.denominator,search_queries
+search_open_ratio.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.
+daily_unique_openers_per_viewers.numerator,users_opened_cards
+daily_unique_openers_per_viewers.denominator,users_saw_products
+daily_unique_openers_per_viewers.warning,Unlinked aggregate quotient; partner card/order ratios include a bypass route.

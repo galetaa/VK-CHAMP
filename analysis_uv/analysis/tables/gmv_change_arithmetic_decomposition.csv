@@ -1,0 +1,21 @@
+﻿Показатель,Значение
+vk.orders_first7,103415
+vk.orders_last7,92393
+vk.gmv_first7,381129027
+vk.gmv_last7,354010745
+vk.aov_first7,3685.4327418653
+vk.aov_last7,3831.575389910491
+vk.gmv_change,-27118282
+vk.orders_component_symmetric,-41426231.81421638
+vk.aov_component_symmetric,14307949.814216377
+vk.method,Exact two-factor arithmetic decomposition using mean counterpart factor. It does not identify causes.
+partner.orders_first7,1119795
+partner.orders_last7,1321119
+partner.gmv_first7,985349998
+partner.gmv_last7,1493946385
+partner.aov_first7,879.9378439803714
+partner.aov_last7,1130.8189383393926
+partner.gmv_change,508596387
+partner.orders_component_symmetric,202406799.2218721
+partner.aov_component_symmetric,306189587.7781279
+partner.method,Exact two-factor arithmetic decomposition using mean counterpart factor. It does not identify causes.

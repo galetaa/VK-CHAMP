@@ -1,0 +1,15 @@
+﻿Показатель,value
+definition_source,PDF p.34: average ticket = GMV / orders
+denominator_nonmissing_with_orders,291
+all_positive_orders_n,298
+exact_equal_n,0
+abs_diff_le_half_ruble_n,1
+abs_diff_le_one_ruble_n,4
+abs_diff_gt_one_ruble_n,287
+abs_relative_error_gt_1pct_n,262
+abs_relative_error_gt_5pct_n,215
+abs_relative_error_gt_10pct_n,203
+abs_relative_error_gt_20pct_n,5
+all_business_gmv_over_orders,2867.460322024152
+order_weighted_reported_aov_where_available,2854.978926096998
+same_rows_gmv_over_orders,2879.0493648960737

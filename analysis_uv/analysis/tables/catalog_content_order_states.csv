@@ -1,0 +1,8 @@
+﻿goods,product_pubs,seller,n,sellers,seller_rate,orders,gmv,ad_spend,content_opens,product_views,median_subscribers,median_active_products,median_pubs,median_content_opens,median_product_views,median_ad_spend,ad_users,product_publishers,checkout_users,delivery_users,payment_users,referral_users,median_orders_sellers,median_gmv_sellers,weighted_aov
+False,False,False,5723,0,0.0,0,0.0,31091172.0,170,387218,360.0,0.0,3.0,0.0,0.0,0.0,268,0,2063,108,37,66,,,
+False,False,True,13,13,1.0,20,107960.0,0.0,0,175,1400.0,0.0,4.0,0.0,0.0,0.0,0,0,6,1,2,0,1.0,3750.0,5398.0
+False,True,False,57,0,0.0,0,0.0,1451800.0,31208,8706711,1700.0,0.0,21.0,6.0,3600.0,0.0,9,57,27,2,3,33,,,
+True,False,False,3472,0,0.0,0,0.0,46262564.0,518,503361,700.0,10.0,3.0,0.0,0.0,0.0,195,0,3204,594,167,59,,,
+True,False,True,243,243,1.0,2807,7752797.0,8474552.0,266,84697,3200.0,62.0,8.0,0.0,0.0,0.0,29,0,236,101,20,8,2.0,5250.0,2761.9511934449592
+True,True,False,204,0,0.0,0,0.0,2092226.0,6362,4223024,865.0,30.0,15.0,2.5,1500.0,0.0,29,204,159,89,18,26,,,
+True,True,True,42,42,1.0,651,2112270.0,2991100.0,14544,4461523,5500.0,205.0,29.0,25.0,11000.0,0.0,12,42,42,24,8,9,5.0,17580.0,3244.6543778801843

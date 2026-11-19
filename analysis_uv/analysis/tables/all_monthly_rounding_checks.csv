@@ -1,0 +1,11 @@
+﻿channel,metric,difference
+vk,aov_difference_rub,-0.4732440663219677
+vk,orders_per_buyer_difference,0.0029282655969311566
+vk,impression_card_difference_pp,-0.00028434029479551537
+vk,card_order_difference_pp,-0.003805352824281464
+vk,impression_order_difference_pp,0.0003402752758460917
+partner,aov_difference_rub,0.037298643842405
+partner,orders_per_buyer_difference,0.001634696315556905
+partner,impression_card_difference_pp,0.0036221475353205926
+partner,card_order_difference_pp,-0.0014605793996882999
+partner,impression_order_difference_pp,-7.721372818686109e-07

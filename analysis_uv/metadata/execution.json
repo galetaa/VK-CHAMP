@@ -1,0 +1,9 @@
+{
+  "engine": "ipython",
+  "python": "3.12.14",
+  "code_cells": 38,
+  "error_outputs": 0,
+  "fresh_process": true,
+  "source_file": "VK_full_analysis.ipynb",
+  "note": "Все ячейки выполнены последовательно; результаты получены вычислениями. Режим ipython не проверяет сетевой запуск Jupyter Server."
+}

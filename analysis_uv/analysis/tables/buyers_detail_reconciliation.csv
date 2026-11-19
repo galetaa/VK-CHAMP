@@ -1,0 +1,5 @@
+﻿metric,demographic_sum,regional_sum,control_total,detail_minus_control,demographics_minus_regions,overall_total,overall_minus_published,published_coverage_of_overall
+market_buyers,295850.0,295850.0,295850,0.0,0.0,296148,298.0,0.9989937463700582
+market_orders,413334.0,413334.0,413334,0.0,0.0,413740,406.0,0.9990187074007831
+partner_buyers,2901162.0,2901162.0,2901162,0.0,0.0,2901334,172.0,0.9999407169253868
+partner_orders,4557253.0,4557253.0,4557253,0.0,0.0,4927525,370272.0,0.9248563934226615

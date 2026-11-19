@@ -1,0 +1,11 @@
+﻿group,variant,baseline_n,retained_n,excluded_n,excluded_ids
+strict_1817,baseline,1817,1817,0,[]
+strict_1817,exclude_publication_counter_subset,1817,1817,0,[]
+strict_1817,exclude_single_reaction_above_view,1817,1814,3,"[792, 308, 4455]"
+strict_1817,exclude_content_open_without_product_view,1817,1812,5,"[4234, 4917, 5411, 7179, 8308]"
+strict_1817,exclude_counter_union,1817,1809,8,"[792, 308, 4234, 4455, 4917, 5411, 7179, 8308]"
+pilot_366,baseline,366,366,0,[]
+pilot_366,exclude_publication_counter_subset,366,366,0,[]
+pilot_366,exclude_single_reaction_above_view,366,365,1,[792]
+pilot_366,exclude_content_open_without_product_view,366,365,1,[7179]
+pilot_366,exclude_counter_union,366,364,2,"[792, 7179]"

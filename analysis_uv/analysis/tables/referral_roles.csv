@@ -1,0 +1,4 @@
+﻿Сегмент,n,sellers,seller_rate,orders,gmv,ad_spend,content_opens,product_views,median_subscribers,median_active_products,median_pubs,median_content_opens,median_product_views,median_ad_spend,ad_users,product_publishers,checkout_users,delivery_users,payment_users,referral_users,median_orders_sellers,median_gmv_sellers,weighted_aov
+goods_no_referral,3859,268,0.06944804353459445,3159,9144537.0,58863942.0,10856,5773898,760.0,12.0,3.0,0.0,0.0,0.0,253,211,3550,772,203,0,2.0,5910.0,2894.7568850902185
+goods_referral,102,17,0.16666666666666666,299,720530.0,956500.0,10834,3498707,1850.0,16.0,12.0,0.0,44.0,0.0,12,35,91,36,10,102,4.0,6740.0,2409.799331103679
+referral_no_goods,99,0,0.0,0,0.0,702200.0,30881,8284440,1600.0,0.0,11.0,0.0,0.0,0.0,9,33,33,2,2,99,,,

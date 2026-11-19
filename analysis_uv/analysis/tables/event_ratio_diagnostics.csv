@@ -1,0 +1,6 @@
+﻿Отношение,numerator,denominator,eligible_n,ratio_of_totals,warning
+ordinary_likes_per_view,J,I,9613,0.010694571086024361,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+ordinary_reposts_per_view,K,I,9613,0.004255789621011793,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+product_likes_per_view,M,L,1316,0.012031170091495434,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+product_reposts_per_view,N,L,1316,0.002790646925369156,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+content_opens_per_product_view,O,L,1316,0.0028809733959415376,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."

@@ -1,0 +1,20 @@
+﻿Показатель,Значение
+primary_totals.vk,193512461
+primary_totals.partner,86882822
+primary_reported_share_sums_pct.vk,100.00000000000003
+primary_reported_share_sums_pct.partner,100.0
+feed_clips.vk.opens,36034762.0
+feed_clips.vk.share_total_opens,0.1862141683992123
+feed_clips.partner.opens,80539495
+feed_clips.partner.share_total_opens,0.9269898599748521
+standalone_home.vk.opens,412818
+standalone_home.vk.share_total_opens,0.002133288977188916
+standalone_home.partner.opens,88383
+standalone_home.partner.share_total_opens,0.001017266681323956
+reported_content_opens,86321893
+feed_clips_total_both_sides,116574257
+referral_partner_row8.opens,82324081
+referral_partner_row8.share_partner_opens,0.9475300077154492
+referral_partner_row8.excess_over_partner_feed_plus_clips,1784586
+warning,Row 8 is nested and excluded from primary sums. Feed vs posts and surface/attribution definitions remain unresolved.
+feed_clips_minus_reported_content,30252364

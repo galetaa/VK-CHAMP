@@ -1,0 +1,66 @@
+﻿Показатель,Значение
+ordinary_likes_per_view.numerator,J
+ordinary_likes_per_view.denominator,I
+ordinary_likes_per_view.eligible_n,9613
+ordinary_likes_per_view.ratio_of_totals,0.010694571086024361
+ordinary_likes_per_view.community_ratio_quantiles.0.0,0.0
+ordinary_likes_per_view.community_ratio_quantiles.0.25,0.0006
+ordinary_likes_per_view.community_ratio_quantiles.0.5,0.006896551724137931
+ordinary_likes_per_view.community_ratio_quantiles.0.75,0.02021276595744681
+ordinary_likes_per_view.community_ratio_quantiles.0.9,0.04331531531531541
+ordinary_likes_per_view.community_ratio_quantiles.0.95,0.06601426024955424
+ordinary_likes_per_view.community_ratio_quantiles.0.99,0.17022499999999943
+ordinary_likes_per_view.community_ratio_quantiles.1.0,10.625
+ordinary_likes_per_view.warning,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+ordinary_reposts_per_view.numerator,K
+ordinary_reposts_per_view.denominator,I
+ordinary_reposts_per_view.eligible_n,9613
+ordinary_reposts_per_view.ratio_of_totals,0.004255789621011793
+ordinary_reposts_per_view.community_ratio_quantiles.0.0,0.0
+ordinary_reposts_per_view.community_ratio_quantiles.0.25,0.0
+ordinary_reposts_per_view.community_ratio_quantiles.0.5,0.0
+ordinary_reposts_per_view.community_ratio_quantiles.0.75,0.0009302325581395349
+ordinary_reposts_per_view.community_ratio_quantiles.0.9,0.0025454545454545456
+ordinary_reposts_per_view.community_ratio_quantiles.0.95,0.005
+ordinary_reposts_per_view.community_ratio_quantiles.0.99,0.022303496503496473
+ordinary_reposts_per_view.community_ratio_quantiles.1.0,54.426086956521736
+ordinary_reposts_per_view.warning,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+product_likes_per_view.numerator,M
+product_likes_per_view.denominator,L
+product_likes_per_view.eligible_n,1316
+product_likes_per_view.ratio_of_totals,0.012031170091495434
+product_likes_per_view.community_ratio_quantiles.0.0,0.0
+product_likes_per_view.community_ratio_quantiles.0.25,0.0
+product_likes_per_view.community_ratio_quantiles.0.5,0.0
+product_likes_per_view.community_ratio_quantiles.0.75,0.005
+product_likes_per_view.community_ratio_quantiles.0.9,0.020166060606060604
+product_likes_per_view.community_ratio_quantiles.0.95,0.03510339123242349
+product_likes_per_view.community_ratio_quantiles.0.99,0.07953846153846127
+product_likes_per_view.community_ratio_quantiles.1.0,0.305
+product_likes_per_view.warning,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+product_reposts_per_view.numerator,N
+product_reposts_per_view.denominator,L
+product_reposts_per_view.eligible_n,1316
+product_reposts_per_view.ratio_of_totals,0.002790646925369156
+product_reposts_per_view.community_ratio_quantiles.0.0,0.0
+product_reposts_per_view.community_ratio_quantiles.0.25,0.0
+product_reposts_per_view.community_ratio_quantiles.0.5,0.0
+product_reposts_per_view.community_ratio_quantiles.0.75,0.0
+product_reposts_per_view.community_ratio_quantiles.0.9,0.00125
+product_reposts_per_view.community_ratio_quantiles.0.95,0.003884615384615385
+product_reposts_per_view.community_ratio_quantiles.0.99,0.02631578947368421
+product_reposts_per_view.community_ratio_quantiles.1.0,1.4584615384615385
+product_reposts_per_view.warning,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."
+content_opens_per_product_view.numerator,O
+content_opens_per_product_view.denominator,L
+content_opens_per_product_view.eligible_n,1316
+content_opens_per_product_view.ratio_of_totals,0.0028809733959415376
+content_opens_per_product_view.community_ratio_quantiles.0.0,0.0
+content_opens_per_product_view.community_ratio_quantiles.0.25,0.0
+content_opens_per_product_view.community_ratio_quantiles.0.5,0.0
+content_opens_per_product_view.community_ratio_quantiles.0.75,0.0010526315789473684
+content_opens_per_product_view.community_ratio_quantiles.0.9,0.00603030303030303
+content_opens_per_product_view.community_ratio_quantiles.0.95,0.013333333333333334
+content_opens_per_product_view.community_ratio_quantiles.0.99,0.07588461538461476
+content_opens_per_product_view.community_ratio_quantiles.1.0,0.6923076923076923
+content_opens_per_product_view.warning,"Event-count diagnostic, not a unique-user causal conversion. Counter coverage and periods need confirmation."

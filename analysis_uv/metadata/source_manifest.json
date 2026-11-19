@@ -1,0 +1,22 @@
+{
+  "project": "VK CaseChamp 2026",
+  "analysis_date": "2026-11-19",
+  "period": "2026-09-01/2026-09-30",
+  "data_status": "Синтетический учебный датасет; не фактические показатели VK",
+  "files": [
+    {
+      "path": "source/case_dataset.xlsx",
+      "original_name": "VK_CaseChamp_2026_Отборочныи__этап_Датасет (1).xlsx",
+      "bytes": 1123405,
+      "sha256": "f31d02d4c5f8b48b6582229d6dbf8da3c64efcf0567c90151fb7edcfed160a24",
+      "library_file_id": "libfile_fde3_f-7713bf9bc2a48191b93eefe2ad641c46_815b888fc9a88191ad22761f192388db"
+    },
+    {
+      "path": "source/case.pdf",
+      "original_name": "VK CASE СHAMP 2026.pdf",
+      "bytes": 8240630,
+      "sha256": "122493c23cef8ac68680f35500dc97f45322eb2ccd5a29af338ea59d336f891f",
+      "library_file_id": "libfile_fde3_f-c47c7b7c4b348191b37cb446d2b8ac34_815b888fc9a88191ad22761f192388db"
+    }
+  ]
+}

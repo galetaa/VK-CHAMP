@@ -1,0 +1,17 @@
+﻿Показатель,Значение
+signed_relative_error_quantiles.0.0,-0.18461538461538463
+signed_relative_error_quantiles.0.1,-0.15416666666666667
+signed_relative_error_quantiles.0.25,-0.15279563106796118
+signed_relative_error_quantiles.0.5,-0.15219123505976095
+signed_relative_error_quantiles.0.75,0.007474582054573631
+signed_relative_error_quantiles.0.9,0.1289293849658315
+signed_relative_error_quantiles.0.95,0.12996591594059959
+signed_relative_error_quantiles.1.0,3.230769230769231
+absolute_error_quantiles_rub.0.0,0.04016064257029939
+absolute_error_quantiles_rub.0.1,10.263157894736878
+absolute_error_quantiles_rub.0.25,52.954545454545496
+absolute_error_quantiles_rub.0.5,222.0
+absolute_error_quantiles_rub.0.75,635.5
+absolute_error_quantiles_rub.0.9,1525.0
+absolute_error_quantiles_rub.0.95,3673.5
+absolute_error_quantiles_rub.1.0,38122.0

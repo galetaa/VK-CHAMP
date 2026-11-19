@@ -1,0 +1,189 @@
+﻿Показатель,Значение
+market_buyers.denominator,295850.0
+market_buyers.published_groups,13
+market_buyers.hhi_fraction,0.13517846404871353
+market_buyers.effective_equal_sized_groups,7.397628069214009
+market_buyers.top_n.1.count,66329.0
+market_buyers.top_n.1.share,0.2241980733479804
+market_buyers.top_n.1.groups[0],Ж 35–44
+market_buyers.top_n.3.count,158748.0
+market_buyers.top_n.3.share,0.5365827277336488
+market_buyers.top_n.3.groups[0],Ж 35–44
+market_buyers.top_n.3.groups[1],Ж 25–34
+market_buyers.top_n.3.groups[2],Ж 45–54
+market_buyers.top_n.5.count,217776.0
+market_buyers.top_n.5.share,0.7361027547743789
+market_buyers.top_n.5.groups[0],Ж 35–44
+market_buyers.top_n.5.groups[1],Ж 25–34
+market_buyers.top_n.5.groups[2],Ж 45–54
+market_buyers.top_n.5.groups[3],Ж 18–24
+market_buyers.top_n.5.groups[4],М 25–34
+market_buyers.top_n.10.count,289503.0
+market_buyers.top_n.10.share,0.9785465607571404
+market_buyers.top_n.10.groups[0],Ж 35–44
+market_buyers.top_n.10.groups[1],Ж 25–34
+market_buyers.top_n.10.groups[2],Ж 45–54
+market_buyers.top_n.10.groups[3],Ж 18–24
+market_buyers.top_n.10.groups[4],М 25–34
+market_buyers.top_n.10.groups[5],Ж 55+
+market_buyers.top_n.10.groups[6],М 35–44
+market_buyers.top_n.10.groups[7],М 18–24
+market_buyers.top_n.10.groups[8],М 45–54
+market_buyers.top_n.10.groups[9],М 55+
+market_buyers.top_n.20.count,295850.0
+market_buyers.top_n.20.share,1.0
+market_buyers.top_n.20.groups[0],Ж 35–44
+market_buyers.top_n.20.groups[1],Ж 25–34
+market_buyers.top_n.20.groups[2],Ж 45–54
+market_buyers.top_n.20.groups[3],Ж 18–24
+market_buyers.top_n.20.groups[4],М 25–34
+market_buyers.top_n.20.groups[5],Ж 55+
+market_buyers.top_n.20.groups[6],М 35–44
+market_buyers.top_n.20.groups[7],М 18–24
+market_buyers.top_n.20.groups[8],М 45–54
+market_buyers.top_n.20.groups[9],М 55+
+market_buyers.top_n.20.groups[10],Ж до 18
+market_buyers.top_n.20.groups[11],М до 18
+market_buyers.top_n.20.groups[12],Ж н/д
+market_orders.denominator,413334.0
+market_orders.published_groups,13
+market_orders.hhi_fraction,0.13420750933546882
+market_orders.effective_equal_sized_groups,7.451147889946845
+market_orders.top_n.1.count,91318.0
+market_orders.top_n.1.share,0.2209302888221148
+market_orders.top_n.1.groups[0],Ж 35–44
+market_orders.top_n.3.count,220983.0
+market_orders.top_n.3.share,0.5346354280073742
+market_orders.top_n.3.groups[0],Ж 35–44
+market_orders.top_n.3.groups[1],Ж 25–34
+market_orders.top_n.3.groups[2],Ж 45–54
+market_orders.top_n.5.count,303859.0
+market_orders.top_n.5.share,0.7351415562232965
+market_orders.top_n.5.groups[0],Ж 35–44
+market_orders.top_n.5.groups[1],Ж 25–34
+market_orders.top_n.5.groups[2],Ж 45–54
+market_orders.top_n.5.groups[3],Ж 18–24
+market_orders.top_n.5.groups[4],М 25–34
+market_orders.top_n.10.count,403809.0
+market_orders.top_n.10.share,0.9769556823295447
+market_orders.top_n.10.groups[0],Ж 35–44
+market_orders.top_n.10.groups[1],Ж 25–34
+market_orders.top_n.10.groups[2],Ж 45–54
+market_orders.top_n.10.groups[3],Ж 18–24
+market_orders.top_n.10.groups[4],М 25–34
+market_orders.top_n.10.groups[5],Ж 55+
+market_orders.top_n.10.groups[6],М 35–44
+market_orders.top_n.10.groups[7],М 18–24
+market_orders.top_n.10.groups[8],М 45–54
+market_orders.top_n.10.groups[9],М 55+
+market_orders.top_n.20.count,413334.0
+market_orders.top_n.20.share,1.0
+market_orders.top_n.20.groups[0],Ж 35–44
+market_orders.top_n.20.groups[1],Ж 25–34
+market_orders.top_n.20.groups[2],Ж 45–54
+market_orders.top_n.20.groups[3],Ж 18–24
+market_orders.top_n.20.groups[4],М 25–34
+market_orders.top_n.20.groups[5],Ж 55+
+market_orders.top_n.20.groups[6],М 35–44
+market_orders.top_n.20.groups[7],М 18–24
+market_orders.top_n.20.groups[8],М 45–54
+market_orders.top_n.20.groups[9],М 55+
+market_orders.top_n.20.groups[10],М до 18
+market_orders.top_n.20.groups[11],Ж до 18
+market_orders.top_n.20.groups[12],Ж н/д
+partner_buyers.denominator,2901162
+partner_buyers.published_groups,15
+partner_buyers.hhi_fraction,0.14724422875983517
+partner_buyers.effective_equal_sized_groups,6.791437657166615
+partner_buyers.top_n.1.count,700024
+partner_buyers.top_n.1.share,0.24129090343800175
+partner_buyers.top_n.1.groups[0],Ж 35–44
+partner_buyers.top_n.3.count,1666971
+partner_buyers.top_n.3.share,0.574587354997756
+partner_buyers.top_n.3.groups[0],Ж 35–44
+partner_buyers.top_n.3.groups[1],Ж 45–54
+partner_buyers.top_n.3.groups[2],Ж 55+
+partner_buyers.top_n.5.count,2285316
+partner_buyers.top_n.5.share,0.7877243669950179
+partner_buyers.top_n.5.groups[0],Ж 35–44
+partner_buyers.top_n.5.groups[1],Ж 45–54
+partner_buyers.top_n.5.groups[2],Ж 55+
+partner_buyers.top_n.5.groups[3],Ж 25–34
+partner_buyers.top_n.5.groups[4],М 35–44
+partner_buyers.top_n.10.count,2875968
+partner_buyers.top_n.10.share,0.9913158934247726
+partner_buyers.top_n.10.groups[0],Ж 35–44
+partner_buyers.top_n.10.groups[1],Ж 45–54
+partner_buyers.top_n.10.groups[2],Ж 55+
+partner_buyers.top_n.10.groups[3],Ж 25–34
+partner_buyers.top_n.10.groups[4],М 35–44
+partner_buyers.top_n.10.groups[5],М 45–54
+partner_buyers.top_n.10.groups[6],М 55+
+partner_buyers.top_n.10.groups[7],М 25–34
+partner_buyers.top_n.10.groups[8],Ж 18–24
+partner_buyers.top_n.10.groups[9],М 18–24
+partner_buyers.top_n.20.count,2901162
+partner_buyers.top_n.20.share,1.0
+partner_buyers.top_n.20.groups[0],Ж 35–44
+partner_buyers.top_n.20.groups[1],Ж 45–54
+partner_buyers.top_n.20.groups[2],Ж 55+
+partner_buyers.top_n.20.groups[3],Ж 25–34
+partner_buyers.top_n.20.groups[4],М 35–44
+partner_buyers.top_n.20.groups[5],М 45–54
+partner_buyers.top_n.20.groups[6],М 55+
+partner_buyers.top_n.20.groups[7],М 25–34
+partner_buyers.top_n.20.groups[8],Ж 18–24
+partner_buyers.top_n.20.groups[9],М 18–24
+partner_buyers.top_n.20.groups[10],Ж до 18
+partner_buyers.top_n.20.groups[11],М до 18
+partner_buyers.top_n.20.groups[12],Ж н/д
+partner_buyers.top_n.20.groups[13],М н/д
+partner_buyers.top_n.20.groups[14],н/д н/д
+partner_orders.denominator,4557253
+partner_orders.published_groups,15
+partner_orders.hhi_fraction,0.15147344251711975
+partner_orders.effective_equal_sized_groups,6.601817344231669
+partner_orders.top_n.1.count,1113644
+partner_orders.top_n.1.share,0.24436738535253583
+partner_orders.top_n.1.groups[0],Ж 35–44
+partner_orders.top_n.3.count,2694987
+partner_orders.top_n.3.share,0.5913621648830996
+partner_orders.top_n.3.groups[0],Ж 35–44
+partner_orders.top_n.3.groups[1],Ж 45–54
+partner_orders.top_n.3.groups[2],Ж 55+
+partner_orders.top_n.5.count,3637927
+partner_orders.top_n.5.share,0.7982718975663629
+partner_orders.top_n.5.groups[0],Ж 35–44
+partner_orders.top_n.5.groups[1],Ж 45–54
+partner_orders.top_n.5.groups[2],Ж 55+
+partner_orders.top_n.5.groups[3],Ж 25–34
+partner_orders.top_n.5.groups[4],М 35–44
+partner_orders.top_n.10.count,4518402
+partner_orders.top_n.10.share,0.9914749082396785
+partner_orders.top_n.10.groups[0],Ж 35–44
+partner_orders.top_n.10.groups[1],Ж 45–54
+partner_orders.top_n.10.groups[2],Ж 55+
+partner_orders.top_n.10.groups[3],Ж 25–34
+partner_orders.top_n.10.groups[4],М 35–44
+partner_orders.top_n.10.groups[5],М 45–54
+partner_orders.top_n.10.groups[6],М 55+
+partner_orders.top_n.10.groups[7],М 25–34
+partner_orders.top_n.10.groups[8],Ж 18–24
+partner_orders.top_n.10.groups[9],М 18–24
+partner_orders.top_n.20.count,4557253
+partner_orders.top_n.20.share,1.0
+partner_orders.top_n.20.groups[0],Ж 35–44
+partner_orders.top_n.20.groups[1],Ж 45–54
+partner_orders.top_n.20.groups[2],Ж 55+
+partner_orders.top_n.20.groups[3],Ж 25–34
+partner_orders.top_n.20.groups[4],М 35–44
+partner_orders.top_n.20.groups[5],М 45–54
+partner_orders.top_n.20.groups[6],М 55+
+partner_orders.top_n.20.groups[7],М 25–34
+partner_orders.top_n.20.groups[8],Ж 18–24
+partner_orders.top_n.20.groups[9],М 18–24
+partner_orders.top_n.20.groups[10],Ж до 18
+partner_orders.top_n.20.groups[11],М до 18
+partner_orders.top_n.20.groups[12],Ж н/д
+partner_orders.top_n.20.groups[13],М н/д
+partner_orders.top_n.20.groups[14],н/д н/д

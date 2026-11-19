@@ -1,0 +1,9 @@
+﻿metric,value
+dau_mau_ratio,0.042506341453975374
+monthly_card_openers_per_monthly_product_viewers,0.41030912876701864
+all_card_events_per_monthly_card_opener,10.25812882582692
+all_product_impressions_per_monthly_product_viewer,157.7259001764494
+referral_share_of_reported_posts_clips_opens,0.9536871602201773
+nonreferral_posts_clips_difference_events,3997812
+search_queries_per_market_mau_if_same_scope,9.536867176607533
+scope_warning,Only DAU/MAU labels clearly reference the same service; other mixed-surface quotients require scope confirmation. Event ratios are not unique-person conversion probabilities.

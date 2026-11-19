@@ -1,0 +1,23 @@
+[project]
+name = "vk-casechamp-analysis"
+version = "1.0.0"
+description = "Воспроизводимый анализ синтетического датасета VK CaseChamp 2026"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy==2.3.5",
+  "pandas==2.2.3",
+  "openpyxl==3.1.5",
+  "scipy==1.17.0",
+  "scikit-learn==1.8.0",
+  "matplotlib==3.10.8",
+  "pypdf==6.21.4",
+  "nbformat>=5.10,<6",
+  "nbclient>=0.10,<1",
+  "nbconvert>=7.16,<8",
+  "ipykernel>=6.29,<8",
+  "jupyterlab>=4.4,<5",
+]
+
+[tool.uv]
+package = false
+

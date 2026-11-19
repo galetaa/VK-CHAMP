@@ -1,0 +1,11 @@
+﻿Показатель,Значение
+scope,"Six known age bands; synthetic descriptive decomposition, not causal"
+market_orders_per_buyer_known_age,1.397107359764098
+partner_orders_per_buyer_known_age,1.570838057274006
+partner_rate_with_market_age_weights,1.5470132927024618
+market_rate_with_partner_age_weights,1.4049632457624441
+gap_partner_minus_market,0.173730697509908
+symmetric_within_age_component,0.15789037222496277
+symmetric_age_mix_component,0.015840325284945223
+age_mix_fraction_of_gap,0.09117746899071671
+formula,within=sum((fp-fm)*(wp+wm)/2); mix=sum((wp-wm)*(fp+fm)/2)

@@ -1,0 +1,656 @@
+{
+  "schema_version": 1,
+  "scope": "Полнота прежнего анализа VK Case Champ при переносе в воспроизводимый notebook",
+  "source_snapshot": {
+    "period": "2026-09-01/2026-09-30",
+    "business_rows": 9754,
+    "business_columns": 28,
+    "sheets": 7,
+    "synthetic": true,
+    "xlsx_sha256": "f31d02d4c5f8b48b6582229d6dbf8da3c64efcf0567c90151fb7edcfed160a24",
+    "pdf_sha256": "122493c23cef8ac68680f35500dc97f45322eb2ccd5a29af338ea59d336f891f"
+  },
+  "execution_order": [
+    "audit_analysis.py",
+    "core_analysis.py",
+    "extended_analysis.py",
+    "agg_analysis.py",
+    "buyers_analysis.py",
+    "make_charts.py"
+  ],
+  "sections": [
+    {
+      "id": "sources",
+      "title": "Источники, цель кейса и определения",
+      "paths": [
+        "raw_sheets.json",
+        "audit.source",
+        "audit.structure",
+        "buyers.pdf_and_workbook_definitions",
+        "buyers.case_requirements_affecting_analysis"
+      ],
+      "show": [
+        "7 исходных таблиц: имена, размеры, заголовки, пропуски и читаемые первые строки",
+        "Словарь 28 полей, буквы Excel и английские имена",
+        "Синтетика, период, цель о числе продающих бизнесов; GMV, чекаут, неизвестная оплата и отсутствие ключей между уровнями"
+      ],
+      "charts": []
+    },
+    {
+      "id": "audit_distributions",
+      "title": "Аудит всех полей",
+      "paths": [
+        "audit.distributions",
+        "audit.binary_value_counts",
+        "audit.missingness_analysis"
+      ],
+      "show": [
+        "28 строк профиля: тип, пропуски, нули, уникальные, диапазон, квантили, среднее/std",
+        "5 бинарных полей, 42 тематики, 4 исходных типа",
+        "Полные частоты каждого поля кроме ID; положительные квантили и верхние хвосты доступны в раскрываемых таблицах/экспорте",
+        "Отдельно U, Y, AB и их связи с заказами, GMV, типом, активностью и ассортиментом"
+      ],
+      "expected": {
+        "fields": 28,
+        "binary_fields": 5
+      }
+    },
+    {
+      "id": "audit_consistency",
+      "title": "Все проверки согласованности",
+      "paths": [
+        "audit.checks",
+        "audit.type_vs_actual_setup",
+        "audit.commerce_flag_combinations",
+        "audit.identical_non_id_profiles",
+        "audit.event_ratio_diagnostics"
+      ],
+      "show": [
+        "Все 85 проверок, включая нулевые; правило, класс, количество и затронутые ID/строки",
+        "14 сочетаний исходного типа и фактических товаров/услуг",
+        "18 групп/44 совпадающих профиля без удаления строк",
+        "5 отношений событий с ограничениями охвата"
+      ],
+      "expected": {
+        "checks": 85,
+        "type_setup_rows": 14,
+        "duplicate_groups": 18,
+        "duplicate_rows": 44,
+        "event_ratios": 5
+      }
+    },
+    {
+      "id": "average_ticket",
+      "title": "Средний чек",
+      "paths": [
+        "audit.average_ticket_identity"
+      ],
+      "show": [
+        "Все 291 сравнение Y и X/W",
+        "Пороги абсолютной и относительной ошибки, квантили ошибок, крупнейшие расхождения",
+        "Отношение общих сумм, взвешенный исходный чек и чек на одинаковой базе"
+      ],
+      "expected": {
+        "compared_rows": 291,
+        "difference_over_one_ruble": 287
+      }
+    },
+    {
+      "id": "segments",
+      "title": "Основные бизнес-сегменты",
+      "paths": [
+        "core.segments",
+        "core.states",
+        "audit.reconstructed_groups"
+      ],
+      "show": [
+        "Все 26 пересекающихся сегментов с точными фильтрами и всеми сводными показателями",
+        "Четыре непересекающихся состояния товары/услуги",
+        "Все 7 наблюдаемых состояний товары × товарные публикации × заказы",
+        "Независимое восстановление 13 контрольных групп и разбиение 204"
+      ],
+      "expected": {
+        "segments": 26,
+        "observed_states": 7,
+        "reconstructed_named_groups": 13
+      },
+      "charts": [
+        "01_catalog_state.png",
+        "04_content_order_matrix.png"
+      ]
+    },
+    {
+      "id": "themes_types",
+      "title": "Тематики, типы и цены по тематике",
+      "paths": [
+        "core.profiles.business_type",
+        "core.profiles.theme",
+        "core.strict_theme_opportunity",
+        "extended.theme_prices"
+      ],
+      "show": [
+        "Все исходные типы и все 42 тематики в полной выборке; товары и товары без рефералов отдельно",
+        "41 тематика строгой группы с долями подписчиков/просмотров ≥1000",
+        "22 тематики с ≥30 активными каталогами: медианная цена, суммарный чек, пропуски"
+      ],
+      "expected": {
+        "all_themes": 42,
+        "goods_themes": 41,
+        "strict_themes": 41,
+        "theme_price_rows": 22
+      }
+    },
+    {
+      "id": "binned",
+      "title": "Размер, ассортимент, цена и активность",
+      "paths": [
+        "core.profiles.subscriber_band",
+        "core.binned"
+      ],
+      "show": [
+        "Все 165 интервальных срезов по 10 полям для 3 баз",
+        "Границы интервалов, отдельная группа пропусков, размер группы и доля с заказами",
+        "Подписчики, активные товары/услуги, публикации, товарные публикации, просмотры, открытия, реклама, цена"
+      ],
+      "expected": {
+        "binned_rows": 165
+      },
+      "charts": [
+        "02_subscribers_sales.png"
+      ]
+    },
+    {
+      "id": "content",
+      "title": "Контент, форматы и интерес без заказа",
+      "paths": [
+        "extended.content_formats",
+        "extended.no_order_interest",
+        "core.segments",
+        "audit.reconstructed_groups.204_partition",
+        "audit.event_ratio_diagnostics"
+      ],
+      "show": [
+        "Все 12 строк форматов по 3 базам: только посты, только клипы, оба, нет новых публикаций",
+        "15 строк интереса без заказа: 3 базы × 5 диапазонов O",
+        "206 продающих каталогов без O; их заказы/GMV; 243 продавца без новых публикаций",
+        "204 публикующих без заказов: 55/108/29/12 по открытиям; не приписывать отсутствие всего спроса"
+      ],
+      "expected": {
+        "formats": 12,
+        "interest_rows": 15
+      },
+      "charts": [
+        "04_content_order_matrix.png"
+      ]
+    },
+    {
+      "id": "referral",
+      "title": "Реферальные авторы и собственные продавцы",
+      "paths": [
+        "core.segments.goods_referral",
+        "core.segments.goods_no_referral",
+        "core.segments.referral_no_goods",
+        "core.binary",
+        "core.profiles"
+      ],
+      "show": [
+        "201 участник и его вклад в товарные просмотры/открытия относительно всей выборки",
+        "99 без своего каталога, 102 с каталогом; собственные заказы не равны атрибутированному результату автора",
+        "Все базовые сравнения повторены без реферальных участников"
+      ]
+    },
+    {
+      "id": "tools_ads",
+      "title": "Инструменты и рекламные расходы",
+      "paths": [
+        "core.binary",
+        "core.tool_combos",
+        "audit.commerce_flag_combinations",
+        "core.segments.goods_ad",
+        "core.segments.goods_ad_no_orders"
+      ],
+      "show": [
+        "76 строк состояний признаков для 4 баз, включая неизвестную U",
+        "Все 8 сочетаний оформления, доставки и оплаты",
+        "Все рекламодатели, расходы без внутреннего заказа, разделение всех расходов и checkout-only GMV"
+      ],
+      "expected": {
+        "binary_rows": 76,
+        "goods_tool_combinations": 8
+      },
+      "charts": [
+        "03_tools_associations.png"
+      ]
+    },
+    {
+      "id": "concentration",
+      "title": "Концентрация, медианы и крупнейшие записи",
+      "paths": [
+        "core.concentration",
+        "extended.top_records",
+        "audit.distributions"
+      ],
+      "show": [
+        "126 строк: 3 базы × 7 метрик × 6 порогов; доли и Gini",
+        "Топ-20 по 6 метрикам, независимое ранжирование каждого показателя",
+        "Медианы заказов/GMV среди продающих, среднее и доля нулей",
+        "Вклад ID4206 в расходы 366 и 1817, не называть эти суммы доступным бюджетом"
+      ],
+      "expected": {
+        "concentration_rows": 126,
+        "top_record_lists": 6,
+        "records_per_top_list": 20
+      },
+      "charts": [
+        "05_concentration.png"
+      ]
+    },
+    {
+      "id": "strata_sensitivity",
+      "title": "Сравнения внутри групп и устойчивость",
+      "paths": [
+        "core.stratified_content",
+        "core.sensitivity"
+      ],
+      "show": [
+        "64 строки контентных страт по подписчикам, типу, доставке, рекламе, оригинальности",
+        "Неизвестная U сохранена как отдельная страта",
+        "20 строк чувствительности: исходная база, исключение верхнего 1% подписчиков/GMV, включённое оформление, отсутствие услуг"
+      ],
+      "expected": {
+        "stratified_rows": 64,
+        "sensitivity_rows": 20
+      }
+    },
+    {
+      "id": "standardisation",
+      "title": "Выравнивание по размеру",
+      "paths": [
+        "extended.standardized",
+        "extended.strata_rows"
+      ],
+      "show": [
+        "Все 20 итогов: 2 базы × 2 фактора × 5 признаков",
+        "Все 100 строк исходных страт: n0/n1, sellers0/sellers1, ставки, охват",
+        "Исходные и стандартизованные доли/отношения; поправка за один фактор, малые ячейки, нет причинного эффекта"
+      ],
+      "expected": {
+        "standardised_results": 20,
+        "strata_rows": 100
+      },
+      "charts": [
+        "11_standardization.png"
+      ]
+    },
+    {
+      "id": "correlations",
+      "title": "Корреляции",
+      "paths": [
+        "core.correlations"
+      ],
+      "show": [
+        "3 полные матрицы 28×28 и 1134 пары с rho и попарным n",
+        "Показывать неопределённые корреляции констант как отсутствующие",
+        "Спирмен, отсутствие причинности; не превращать W/GMV-связь в рычаг роста"
+      ],
+      "expected": {
+        "scopes": 3,
+        "pairs_per_scope": 378,
+        "total_pairs": 1134
+      },
+      "charts": [
+        "12_correlations.png"
+      ]
+    },
+    {
+      "id": "models",
+      "title": "Диагностические модели",
+      "paths": [
+        "core.models"
+      ],
+      "show": [
+        "Все 4 модели: context/with_content в goods/goods_no_referral",
+        "ROC AUC, AP, Brier, базовый Brier, положительные исходы и распространённость",
+        "Все 234 коэффициента и 40 калибровочных строк",
+        "Pipeline внутри 5 CV-разбиений; random_state42, n_jobs1; нет W/X/Y/ID в признаках",
+        "Коэффициенты нормированы, категориального эталона нет; цель и признаки одновременны, AUC не accuracy"
+      ],
+      "expected": {
+        "models": 4,
+        "coefficients": 234,
+        "calibration_rows": 40
+      }
+    },
+    {
+      "id": "pilot",
+      "title": "Отбор и чувствительность пилота",
+      "paths": [
+        "extended.readiness",
+        "core.strict_theme_opportunity",
+        "audit.reconstructed_groups"
+      ],
+      "show": [
+        "Все 11 правил готовности, включая 1817→684→430→366 и 1670 с включённым оформлением",
+        "Пороги 100/500/1000/5000/10000 для подписчиков и обычных просмотров",
+        "Явный фильтр Q>0 W=0 G+H=0 E+F>0 AA=0 V=0; далее D/I≥1000 Q≥10 R=1",
+        "Пороги не оптимизированы; синтетические ID не контакты, месяц без заказа не первая продажа за жизнь"
+      ],
+      "expected": {
+        "readiness_rules": 11
+      }
+    },
+    {
+      "id": "monthly",
+      "title": "Месячные агрегаты и общий охват",
+      "paths": [
+        "agg.monthly",
+        "agg.quality",
+        "agg.monthly_cross_channel_descriptive",
+        "agg.general_derived",
+        "agg.partner_bypass"
+      ],
+      "show": [
+        "Все месячные показатели VK/Партнёра и общие метрики",
+        "Отношения событий, чек, частота, GMV на покупателя/1000 показов/открытие, проверки округления",
+        "106914679 обходных переходов Партнёра и оба альтернативных знаменателя как чувствительность",
+        "Оплата4903/413740, повторность2+ в месяце, DAU/MAU, поиск",
+        "Сверка аддитивных дневных сумм; четыре проверки неаддитивных уникальных аудиторий"
+      ]
+    },
+    {
+      "id": "daily",
+      "title": "Ежедневная динамика",
+      "paths": [
+        "agg.daily_ratio_definitions",
+        "agg.daily_all_rows_with_derived_metrics",
+        "agg.daily_metric_statistics",
+        "agg.daily_groups",
+        "agg.weekday_groups",
+        "agg.daily_comparisons",
+        "agg.first_last_7_gmv_arithmetic_decomposition"
+      ],
+      "show": [
+        "Все 30 дней:18 исходных числовых и17 производных показателей",
+        "35 статистических рядов: среднее/медиана/SD/CV/квантили/MAD/min/max/дат/описательный наклон/R²/IQR-флаги",
+        "12 периодов,7 групп дней недели,4 полных сравнения",
+        "Отношения сумм, а не средние процентов; для неаддитивных метрик сумма не трактуется как аудитория",
+        "Чувствительность к1сентября и точное симметричное разложение GMV"
+      ],
+      "expected": {
+        "days": 30,
+        "raw_numeric": 18,
+        "ratios": 17,
+        "statistics": 35,
+        "groups": 12,
+        "weekday_groups": 7,
+        "comparisons": 4
+      },
+      "charts": [
+        "08_daily_dynamics.png"
+      ]
+    },
+    {
+      "id": "sources_traffic",
+      "title": "Все источники открытий",
+      "paths": [
+        "agg.sources"
+      ],
+      "show": [
+        "Все6 основных строк, пересчитанные доли и округления; вложенная строка отдельно",
+        "Главная, витрина, лента+клипы, Другое",
+        "Проверка сумм;82,324млн рефералов против источников и30,252млн несведения ленты/клипов с D24",
+        "Низкая доля главной не доказывает отсутствие ценности инфраструктуры Маркета"
+      ],
+      "charts": [
+        "06_traffic_sources.png"
+      ]
+    },
+    {
+      "id": "categories",
+      "title": "Все товарные категории",
+      "paths": [
+        "agg.categories"
+      ],
+      "show": [
+        "Все18 строк с открытиями, заказами, долями от своего листа и от общего итога, отношениями, индексами и разрывом долей",
+        "Сверки категорий с итогами:VK+21545,Партнёр−370008 заказов",
+        "4 рейтинга иHHI;5 сценариев исключения",
+        "8 вариантов стандартизации:2 набора × 4 весовых схемы, все веса",
+        "Нулевые открытия с заказами — отношение неопределено; Все товары не итог"
+      ],
+      "expected": {
+        "categories": 18,
+        "sensitivity_scenarios": 5,
+        "standardisation_scenarios": 8
+      },
+      "charts": [
+        "07_categories.png"
+      ]
+    },
+    {
+      "id": "buyer_controls",
+      "title": "Аудит покупателей и определения",
+      "paths": [
+        "buyers.metadata",
+        "buyers.quality",
+        "buyers.published_totals",
+        "buyers.overall_totals",
+        "buyers.reconciliation",
+        "buyers.frequency_and_scope"
+      ],
+      "show": [
+        "Качество15 демографических/89 региональных строк, скрытые группы, контрольные суммы",
+        "4 точных сверки между демографией/регионами/контролем и отличия от общего итога",
+        "Частота в опубликованной и общей базе, дополнительные заказы сверх первого, не число повторных покупателей",
+        "172 покупателя/370272 заказа вне разрезов Партнёра как неразрешённая аномалия"
+      ],
+      "expected": {
+        "reconciliations": 4
+      }
+    },
+    {
+      "id": "demography",
+      "title": "Пол, возраст и совместные группы",
+      "paths": [
+        "buyers.demographics"
+      ],
+      "show": [
+        "Все15 исходных строк;3 гендерные и7 возрастных агрегатов",
+        "Доли покупателей/заказов, ранги, индексы, частоты, доли внутри пола/возраста",
+        "6 составных возрастных диапазонов и3 группы пол×возраст",
+        "Возрастные квартильные интервалы;6 известных возрастов для симметричного разложения частоты",
+        "4 концентрации по метрикам и3 исключения частоты в половозрастных ячейках"
+      ],
+      "expected": {
+        "source_rows": 15,
+        "gender_rows": 3,
+        "age_rows": 7,
+        "age_ranges": 6,
+        "selected_joint_groups": 3
+      },
+      "charts": [
+        "09_buyer_age.png"
+      ]
+    },
+    {
+      "id": "regions",
+      "title": "География и неизвестный регион",
+      "paths": [
+        "buyers.regions"
+      ],
+      "show": [
+        "Все89 строк и88 именованных регионов;84 опубликованы уVK,88 уПартнёра",
+        "Доли от всей опубликованной базы, известных регионов и общих84 регионов",
+        "Индексы, разрывы долей, ранги, частоты,4 исключения",
+        "Неизвестный регион1,75%/36,71%;Санкт-Петербург8,49%/8,47% на известной базе",
+        "Границы доли при неизвестном регионе — не доверительные интервалы и не прогноз",
+        "Концентрации для3 баз ×4 метрик,HHI/effectiveN/топ1,3,5,10,20;полные списки лидеров и отстающих"
+      ],
+      "expected": {
+        "source_rows": 89,
+        "named_rows": 88,
+        "market_published_named": 84,
+        "partner_published_named": 88,
+        "frequency_exceptions": 4
+      },
+      "charts": [
+        "10_regions_known.png"
+      ]
+    },
+    {
+      "id": "interpretation",
+      "title": "Доказательства, гипотезы, пилот и недостающие данные",
+      "paths": [
+        "evidence_matrix.md",
+        "audit.limitations",
+        "agg.limitations",
+        "buyers.pdf_and_workbook_definitions",
+        "buyers.case_requirements_affecting_analysis",
+        "audit_findings.md",
+        "agg_findings.md",
+        "buyers_findings.md"
+      ],
+      "show": [
+        "15 строк матрицы факт→знаменатель→допустимый вывод→недопустимый вывод→следующая проверка",
+        "Все содержательные выводы3 подробных разборов, включая6 гипотез покупателей и10 запросов данных",
+        "Приоритет подготовленных сообществ, разные проблемы до/после открытия, выбранная категория, роль Маркета",
+        "Метрика пилота: заранее определённые бизнесы с квалифицирующим заказом; контроль, история первой продажи, выполнение/оплата, затраты и перенос старых продаж"
+      ],
+      "expected": {
+        "evidence_rows": 15,
+        "buyer_hypotheses": 6,
+        "data_requests_buyers": 10
+      }
+    },
+    {
+      "id": "reproducibility",
+      "title": "Контроль полного запуска и экспорт",
+      "paths": [
+        "README_RU.md",
+        "requirements.txt"
+      ],
+      "show": [
+        "Версии Python/пакетов/uv,хеши исходников до и после",
+        "Все5results JSON,prepared CSV,raw7sheets,3findings,12PNG созданы из исходника текущим запуском",
+        "Сбои subprocess останавливают notebook; готовые старые JSON не используются как незаметный fallback",
+        "Фактические числа и допуски сравнения с прежним snapshot, чёткое отделение runtime metadata"
+      ]
+    }
+  ],
+  "completeness_policy": [
+    "Не ограничиваться head(10) или только красивыми итогами: все аналитические строки доступны в notebook через раскрываемые таблицы или явные полные экспорты.",
+    "Полные исходные 9754 строки можно оставить в исходном XLSX/CSV с читаемым просмотром схемы; это не повод печатать 270 тысяч ячеек в notebook.",
+    "Три findings и evidence_matrix встроить полностью; они не заменяют таблиц core/extended, которых в этих отчётах нет.",
+    "Сохранить 12 графиков. Графики01/04 и числовые аннотации пересчитывать, не использовать готовые PNG как вход.",
+    "Проверить all/goods/goods_no_referral и goods_only_no_referral: эти базы нельзя незаметно объединить.",
+    "Проценты изbuyers/core обычно0..1, audit.*_pct обычно0..100, *_pp уже в процентных пунктах."
+  ],
+  "exact_snapshot_controls": {
+    "all_businesses": 9754,
+    "all_sellers": 298,
+    "active_catalogs": 3961,
+    "catalog_sellers": 285,
+    "checkout_catalogs": 3641,
+    "catalog_product_publishers": 246,
+    "posting_sellers": 42,
+    "posting_no_orders": 204,
+    "posting_no_orders_lt10_opens": 163,
+    "catalog_sellers_zero_content_opens": 206,
+    "strict": 1817,
+    "strict_checkout": 1670,
+    "readiness_chain": [
+      1817,
+      684,
+      430,
+      366
+    ],
+    "orders": 3478,
+    "gmv_rub": 9973027,
+    "duplicate_nonid_groups": 18,
+    "duplicate_nonid_rows": 44,
+    "buyer_published": [
+      295850,
+      413334,
+      2901162,
+      4557253
+    ]
+  },
+  "risks": [
+    {
+      "id": "paths_and_kernel",
+      "priority": "required",
+      "kind": "notebook integration",
+      "detail": "__file__ отсутствует в ячейке; buyers argparse читает argv ядра. Subprocess с sys.executable, check=True и явным путём скрипта решает это без потери анализа.",
+      "status": "root uses subprocess"
+    },
+    {
+      "id": "hardcoded_xlsx",
+      "priority": "required",
+      "kind": "path",
+      "detail": "agg_analysis.py использует полное старое кириллическое имя XLSX; в новом проекте case_dataset.xlsx. Другие скрипты выбирают next(glob), что неоднозначно при нескольких XLSX.",
+      "status": "root fixes agg; validate exactly one workbook"
+    },
+    {
+      "id": "frozen_charts",
+      "priority": "required",
+      "kind": "calculation presentation",
+      "detail": "В старом make_charts.py графики01/04 использовали жёсткие массивы; числовые подписи были фиксированы. В рабочем проекте заменены данными core/ext/raw; текущие01/04 проверены отдельно.",
+      "status": "fixed only in working project"
+    },
+    {
+      "id": "output_dependency",
+      "priority": "required",
+      "kind": "execution",
+      "detail": "extended читает prepared CSV; charts читает CSV/core/extended. Нужен порядок и запрет fallback на старые результаты."
+    },
+    {
+      "id": "schema_positions",
+      "priority": "required",
+      "kind": "input validation",
+      "detail": "core/agg/audit и некоторые графики полагаются на порядок столбцов, названия листов и Excel-адреса. Проверить схему/хеш до расчёта; не обещать универсальность к любому XLSX."
+    },
+    {
+      "id": "snapshot_annotations",
+      "priority": "required",
+      "kind": "documentation",
+      "detail": "Дата анализа, диапазонA1:AB9755, имена strict_1817 и многие абзацы findings содержат прежние фиксированные числа. Это допустимо для того же snapshot с контролями, но нельзя выдавать за динамический отчёт по заменённым данным."
+    },
+    {
+      "id": "uv_resolution",
+      "priority": "required",
+      "kind": "environment",
+      "detail": "README подтверждает прежний runtime, не установку с нуля. uv.lock должен действительно разрешаться и устанавливаться; добавить ipykernel/nbformat/nbclient и Jupyter/nbconvert по выбранному способу запуска, не полагаться на глобальные пакеты."
+    },
+    {
+      "id": "scope_precision",
+      "priority": "required",
+      "kind": "interpretation",
+      "detail": "Пустые группы, unknown автора и неизвестный регион не заменять нулём; формулы и шкалы процентов сохранять раздельно."
+    },
+    {
+      "id": "null_ratios",
+      "priority": "recommended",
+      "kind": "future-input robustness",
+      "detail": "Часть делений вagg/buyers не защищена от нулевых новых знаменателей; для исходного snapshot они корректны. В notebook отделять текущую воспроизводимость от поддержки иных данных."
+    },
+    {
+      "id": "sort_dates",
+      "priority": "recommended",
+      "kind": "future-input robustness",
+      "detail": "Первое/последнее окно берутся через iloc; текущий исходник упорядочен. Проверять монотонность, 30 уникальных дат и границы месяца перед выводом о времени."
+    },
+    {
+      "id": "declared_ci",
+      "priority": "required",
+      "kind": "interpretation",
+      "detail": "Ни модели, ни корреляции, ни стандартизация не дают причинного эффекта; p-values/доверительные интервалы ранее не считались. Региональные lower/upper — границы при неизвестном регионе, не confidence interval."
+    },
+    {
+      "id": "table_truncation",
+      "priority": "required",
+      "kind": "coverage",
+      "detail": "Обычный pandas display обрежет165 срезов,1134 пары,89 регионов и коэффициенты. Использовать полные раскрываемыеHTML-таблицы или явные экспорты с размерами/ссылками."
+    }
+  ],
+  "prior_arithmetic_review": "Существенных арифметических ошибок текущего snapshot при чтении формул не обнаружено. Обнаружены риски интеграции, захардкоженные графики и ограничения переносимости на новые данные; не переименовывать их в ошибки исходного анализа."
+}

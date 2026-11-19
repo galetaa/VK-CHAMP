@@ -1,0 +1,235 @@
+﻿model,feature,coefficient,exp_coefficient,unit
+goods_context,cat__theme_Кулинария и еда,0.9948230531764349,2.704245791238847,one encoded category unit
+goods_context,cat__theme_Товары и магазины,0.8804408573889232,2.4119628036866616,one encoded category unit
+goods_context,cat__theme_Литература,0.8451208298439984,2.3282591207611505,one encoded category unit
+goods_context,num__subscribers,0.8193319185173779,2.268983465221185,one standard deviation after log1p where applicable
+goods_context,cat__theme_Дом и ремонт,-0.7751307574021693,0.4606435445076622,one encoded category unit
+goods_context,cat__theme_Образование,0.7473987356483834,2.1115002961516676,one encoded category unit
+goods_context,num__checkout,0.6551889520795633,1.9255063114272155,one standard deviation after log1p where applicable
+goods_context,cat__theme_Услуги,-0.6485841594556341,0.5227854338324446,one encoded category unit
+goods_context,cat__theme_Другое,0.5965045918630687,1.815760869763759,one encoded category unit
+goods_context,num__active_products,0.5893077609439535,1.8027400562913785,one standard deviation after log1p where applicable
+goods_context,cat__theme_Личный блог,0.5748340978599685,1.7768357216115995,one encoded category unit
+goods_context,cat__theme_Психология и отношения,-0.5149700975967557,0.5975184615890878,one encoded category unit
+goods_context,cat__theme_Развлечения и хобби,0.5146035461433646,1.6729751128691168,one encoded category unit
+goods_context,cat__theme_Музыка,0.4930573244411705,1.6373143768307115,one encoded category unit
+goods_context,cat__theme_Недвижимость,-0.48685510735925286,0.6145560711460205,one encoded category unit
+goods_context,cat__theme_Объявления,-0.47401683817934215,0.6224967707671737,one encoded category unit
+goods_context,cat__theme_Игры,0.46105665378554295,1.5857486874018059,one encoded category unit
+goods_context,cat__theme_Мода и стиль,-0.44687758457101323,0.6396222031088383,one encoded category unit
+goods_context,cat__theme_Красота и здоровье,-0.4385600103702219,0.6449644948986667,one encoded category unit
+goods_context,cat__business_type_товарное,-0.42798008714148245,0.6518243943564446,one encoded category unit
+goods_context,cat__theme_Юмор,-0.4077729592782033,0.6651298732473223,one encoded category unit
+goods_context,cat__theme_Сад и огород,-0.39836613896167855,0.6714161510398551,one encoded category unit
+goods_context,cat__theme_Без тематики,0.38555450037483124,1.4704294491066532,one encoded category unit
+goods_context,cat__theme_Технологии,-0.3633042237163766,0.6953748517949528,one encoded category unit
+goods_context,cat__theme_СМИ,-0.3206678795039328,0.7256642189331001,one encoded category unit
+goods_context,num__active_services,-0.3173274415137762,0.7280923084415157,one standard deviation after log1p where applicable
+goods_context,cat__theme_Фанаты и персоны,-0.283271688290644,0.7533150931644222,one encoded category unit
+goods_context,cat__theme_Животные,0.28141221297793784,1.324999673440212,one encoded category unit
+goods_context,cat__theme_Охота и рыбалка,0.26271815178123287,1.3004601349210179,one encoded category unit
+goods_context,cat__theme_Бизнес и работа,-0.262543437393463,0.7690929562496447,one encoded category unit
+goods_context,cat__theme_Кино и сериалы,-0.25446913362437573,0.7753279842862283,one encoded category unit
+goods_context,num__price_missing,-0.25009103692797835,0.7787298866677512,one standard deviation after log1p where applicable
+goods_context,num__author_missing,-0.23445783298887315,0.7909995872765652,one standard deviation after log1p where applicable
+goods_context,num__original_author,0.22414819110502215,1.2512564307630085,one standard deviation after log1p where applicable
+goods_context,num__median_price,-0.21990411366019447,0.8025957522420134,one standard deviation after log1p where applicable
+goods_context,cat__theme_Транспорт,-0.21410726917158257,0.8072617860750233,one encoded category unit
+goods_context,cat__theme_Общество и политика,-0.2105933439949197,0.8101034333332158,one encoded category unit
+goods_context,cat__theme_Творчество и хендмейд,0.2079996456973018,1.231212733326797,one encoded category unit
+goods_context,cat__theme_Путешествия и отдых,-0.2075332513972953,0.8125862216965781,one encoded category unit
+goods_context,cat__theme_Финансы,-0.19444505302491674,0.8232914143865501,one encoded category unit
+goods_context,num__delivery,0.1897935673261856,1.2089999947934778,one standard deviation after log1p where applicable
+goods_context,cat__theme_Объединения людей,-0.17810054038882991,0.8368582812020022,one encoded category unit
+goods_context,cat__theme_Культура и искусство,-0.1731482676864876,0.8410129105614887,one encoded category unit
+goods_context,cat__theme_Спорт,-0.1431396596025533,0.8666330268192565,one encoded category unit
+goods_context,num__ad_spend,0.140202413802299,1.1505066537162625,one standard deviation after log1p where applicable
+goods_context,cat__theme_Танцы,0.139139903620623,1.1492848778721814,one encoded category unit
+goods_context,cat__theme_Наука и история,-0.12198162831651713,0.8851646303176666,one encoded category unit
+goods_context,cat__theme_Фотография,-0.12053938147883574,0.8864421772541347,one encoded category unit
+goods_context,cat__theme_Медицина,-0.11259626125088265,0.8935113324501033,one encoded category unit
+goods_context,cat__theme_Город и местная жизнь,-0.09829020195238596,0.906385830645934,one encoded category unit
+goods_context,cat__business_type_товарное и услужное,-0.07972147958815409,0.9233734889396756,one encoded category unit
+goods_context,cat__theme_Семья и дети,-0.042263238525899534,0.9586174023242134,one encoded category unit
+goods_context,cat__theme_Благотворительность,-0.03882638421919572,0.9619176987422693,one encoded category unit
+goods_context,cat__business_type_без каталога,-0.038588825380951736,0.962146237937947,one encoded category unit
+goods_context,num__referral,0.037350173676805314,1.0380564572478774,one standard deviation after log1p where applicable
+goods_context,num__payment,-0.0032478865133965815,0.9967573821644393,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Кулинария и еда,0.989075746369782,2.688748238250859,one encoded category unit
+goods_with_content,cat__theme_Товары и магазины,0.9277205772351172,2.5287385390616097,one encoded category unit
+goods_with_content,cat__theme_Литература,0.8442510487227173,2.326234925363545,one encoded category unit
+goods_with_content,cat__theme_Услуги,-0.8074356546009035,0.4460002998731824,one encoded category unit
+goods_with_content,num__views,0.7949833196657132,2.2144040594960535,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Образование,0.72463384918113,2.063975235372152,one encoded category unit
+goods_with_content,num__checkout,0.6963194089051403,2.006354530372254,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Личный блог,0.6648244319588653,1.9441491609118624,one encoded category unit
+goods_with_content,cat__theme_Другое,0.6088101196157318,1.8382428079005353,one encoded category unit
+goods_with_content,cat__theme_Дом и ремонт,-0.5777637674468092,0.5611518305152849,one encoded category unit
+goods_with_content,cat__theme_Психология и отношения,-0.5757331803159678,0.5622924558784423,one encoded category unit
+goods_with_content,num__active_products,0.5682084415671033,1.765101933779323,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Без тематики,0.5143481811816882,1.6725479481873013,one encoded category unit
+goods_with_content,cat__theme_Объявления,-0.5065348020711853,0.6025800242705063,one encoded category unit
+goods_with_content,cat__theme_Развлечения и хобби,0.49980211250692386,1.648395041660476,one encoded category unit
+goods_with_content,num__subscribers,0.4393855061017227,1.5517533824929706,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Мода и стиль,-0.413043327339746,0.6616336153823698,one encoded category unit
+goods_with_content,num__active_services,-0.40495534033098124,0.6670065984872384,one standard deviation after log1p where applicable
+goods_with_content,num__product_views,0.37727779983629134,1.458309371210149,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Музыка,0.3519180274480065,1.421791971025313,one encoded category unit
+goods_with_content,cat__theme_Юмор,-0.3443396901974725,0.7086881527387693,one encoded category unit
+goods_with_content,num__pubs,-0.3267170506407396,0.7212878020774969,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Фанаты и персоны,-0.3168788376475015,0.7284190067396683,one encoded category unit
+goods_with_content,cat__theme_Сад и огород,-0.3024570779711138,0.7390002069664541,one encoded category unit
+goods_with_content,cat__theme_Красота и здоровье,-0.29563544675814457,0.7440586275686495,one encoded category unit
+goods_with_content,num__price_missing,-0.29494490603380547,0.7445726077939959,one standard deviation after log1p where applicable
+goods_with_content,num__median_price,-0.29257590490054447,0.7463385921291842,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Фотография,-0.2842034062504287,0.7526135428370152,one encoded category unit
+goods_with_content,cat__theme_Охота и рыбалка,0.26621377848531846,1.305014012787646,one encoded category unit
+goods_with_content,cat__theme_Недвижимость,-0.2565909574388227,0.7736846189875304,one encoded category unit
+goods_with_content,cat__theme_СМИ,-0.25014431392043207,0.7786883993866244,one encoded category unit
+goods_with_content,cat__theme_Путешествия и отдых,-0.23502237442021787,0.7905531612622182,one encoded category unit
+goods_with_content,cat__business_type_товарное,-0.2328543534719091,0.7922689563443622,one encoded category unit
+goods_with_content,cat__theme_Кино и сериалы,-0.2229433360242405,0.8001601882675105,one encoded category unit
+goods_with_content,cat__theme_Игры,0.21760722825485188,1.243098717667579,one encoded category unit
+goods_with_content,cat__theme_Общество и политика,-0.20522333442741877,0.8144653979345411,one encoded category unit
+goods_with_content,cat__theme_Культура и искусство,-0.18988942616127294,0.8270505790448976,one encoded category unit
+goods_with_content,cat__theme_Бизнес и работа,-0.1778305255400275,0.8370842758738556,one encoded category unit
+goods_with_content,cat__theme_Спорт,-0.17755148940169485,0.8373178852288647,one encoded category unit
+goods_with_content,cat__theme_Технологии,-0.15579741734140337,0.8557325293835368,one encoded category unit
+goods_with_content,cat__theme_Животные,0.13747831215767764,1.147376821574638,one encoded category unit
+goods_with_content,num__delivery,0.1254187502994517,1.1336230586845584,one standard deviation after log1p where applicable
+goods_with_content,num__original_author,0.12533726466393785,1.1335306884526628,one standard deviation after log1p where applicable
+goods_with_content,num__ad_spend,0.11543097122293293,1.1223570369405251,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Транспорт,-0.11403913561977842,0.8922230374975834,one encoded category unit
+goods_with_content,cat__theme_Наука и история,-0.111392589393595,0.8945874744261181,one encoded category unit
+goods_with_content,cat__theme_Медицина,-0.10807787583574449,0.8975576956530016,one encoded category unit
+goods_with_content,cat__theme_Объединения людей,-0.10657137680378813,0.8989108844855347,one encoded category unit
+goods_with_content,cat__theme_Город и местная жизнь,-0.10364693831789487,0.9015435417172954,one encoded category unit
+goods_with_content,cat__theme_Творчество и хендмейд,0.10296581110083664,1.1084535116228387,one encoded category unit
+goods_with_content,num__product_pubs,-0.08487157787901976,0.9186302492716538,one standard deviation after log1p where applicable
+goods_with_content,cat__business_type_товарное и услужное,0.08277858367293867,1.0863012570837844,one encoded category unit
+goods_with_content,cat__theme_Финансы,-0.0799260977059175,0.9231845693232236,one encoded category unit
+goods_with_content,num__content_opens,0.0670878170667252,1.069389384690193,one standard deviation after log1p where applicable
+goods_with_content,num__referral,-0.05677591421588531,0.9448057631871295,one standard deviation after log1p where applicable
+goods_with_content,cat__theme_Танцы,-0.05253919935588363,0.9488171273065787,one encoded category unit
+goods_with_content,cat__theme_Благотворительность,-0.04792533302256079,0.9532049573534827,one encoded category unit
+goods_with_content,num__author_missing,-0.04678747799820867,0.9542901837014828,one standard deviation after log1p where applicable
+goods_with_content,num__payment,0.03931231284216215,1.040095268039631,one standard deviation after log1p where applicable
+goods_with_content,cat__business_type_без каталога,-0.034207827051932344,0.9663706458038887,one encoded category unit
+goods_with_content,cat__theme_Семья и дети,-0.01479590973958305,0.9853130118731042,one encoded category unit
+goods_no_referral_context,cat__theme_Кулинария и еда,1.0278571030632384,2.795069865968209,one encoded category unit
+goods_no_referral_context,cat__theme_Товары и магазины,0.900216767882126,2.460136331904704,one encoded category unit
+goods_no_referral_context,num__subscribers,0.8205685055946891,2.2717909963735208,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Литература,0.7633471743848105,2.1454453954357073,one encoded category unit
+goods_no_referral_context,cat__theme_Дом и ремонт,-0.7266486173993117,0.4835267608649176,one encoded category unit
+goods_no_referral_context,num__checkout,0.6243357972422089,1.8670054753264864,one standard deviation after log1p where applicable
+goods_no_referral_context,num__active_products,0.6120144839779934,1.8441426552253328,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Другое,0.6068456074502356,1.8346351023922296,one encoded category unit
+goods_no_referral_context,cat__theme_Образование,0.6052134721014155,1.8316431718713864,one encoded category unit
+goods_no_referral_context,cat__theme_Личный блог,0.5917199467202017,1.8070938491809818,one encoded category unit
+goods_no_referral_context,cat__theme_Услуги,-0.5597595760059777,0.5713464127236881,one encoded category unit
+goods_no_referral_context,cat__theme_Красота и здоровье,-0.5341974824735292,0.5861394886608905,one encoded category unit
+goods_no_referral_context,cat__theme_Развлечения и хобби,0.5127322403357537,1.6698473921980619,one encoded category unit
+goods_no_referral_context,cat__theme_Психология и отношения,-0.49785277960440827,0.6078344139386334,one encoded category unit
+goods_no_referral_context,cat__theme_Объявления,-0.4869460451503564,0.6145001873154158,one encoded category unit
+goods_no_referral_context,cat__theme_Мода и стиль,-0.48160681932899374,0.6177899170726805,one encoded category unit
+goods_no_referral_context,cat__theme_Недвижимость,-0.46833408033968504,0.6260443396117276,one encoded category unit
+goods_no_referral_context,cat__theme_Музыка,0.44595225304046415,1.5619768851061109,one encoded category unit
+goods_no_referral_context,cat__theme_Бизнес и работа,-0.4151410185099822,0.6602471670680441,one encoded category unit
+goods_no_referral_context,cat__theme_Игры,0.41179175745026175,1.5095200572907235,one encoded category unit
+goods_no_referral_context,cat__theme_Без тематики,0.40863969821647744,1.5047694516839858,one encoded category unit
+goods_no_referral_context,cat__theme_Сад и огород,-0.35897913926841074,0.6983889201034228,one encoded category unit
+goods_no_referral_context,cat__theme_Технологии,-0.33779794531945756,0.7133394069038124,one encoded category unit
+goods_no_referral_context,cat__theme_СМИ,-0.3371132195033733,0.7138280160739157,one encoded category unit
+goods_no_referral_context,cat__theme_Творчество и хендмейд,0.3337454874500804,1.3961877510458092,one encoded category unit
+goods_no_referral_context,cat__theme_Культура и искусство,-0.3313253949024367,0.7179715067579804,one encoded category unit
+goods_no_referral_context,cat__business_type_товарное,-0.3206989185003648,0.7256416953935536,one encoded category unit
+goods_no_referral_context,cat__theme_Охота и рыбалка,0.3180166704179771,1.3743991728452662,one encoded category unit
+goods_no_referral_context,num__active_services,-0.306358655568994,0.7361225576505487,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Животные,0.30601634012441553,1.358004496329027,one encoded category unit
+goods_no_referral_context,cat__theme_Фанаты и персоны,-0.26930902567041953,0.7639071522492102,one encoded category unit
+goods_no_referral_context,cat__theme_Кино и сериалы,-0.25716871371554045,0.7732377469467042,one encoded category unit
+goods_no_referral_context,num__author_missing,-0.2504692093280766,0.7784354481952429,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Спорт,-0.25016362651579777,0.7786733610378663,one encoded category unit
+goods_no_referral_context,num__price_missing,-0.24651262188071707,0.7815214972036361,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Общество и политика,-0.24399809927970664,0.7834891234551238,one encoded category unit
+goods_no_referral_context,num__median_price,-0.20902069882845226,0.8113784408864384,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Финансы,-0.20221269185346655,0.8169211569880427,one encoded category unit
+goods_no_referral_context,num__original_author,0.1915899246724565,1.2111737426451887,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Путешествия и отдых,-0.1805415504852449,0.8348179928836053,one encoded category unit
+goods_no_referral_context,num__delivery,0.1572110626619361,1.1702425823516296,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Объединения людей,-0.1548706076892772,0.8565259981918854,one encoded category unit
+goods_no_referral_context,cat__theme_Танцы,0.14035721611185542,1.150684768589359,one encoded category unit
+goods_no_referral_context,cat__theme_Транспорт,-0.12603991130104036,0.8815796610900225,one encoded category unit
+goods_no_referral_context,num__ad_spend,0.11176193290655526,1.1182466112332001,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__business_type_товарное и услужное,0.10920808019058281,1.1153944176793082,one encoded category unit
+goods_no_referral_context,cat__theme_Наука и история,-0.10827104297430049,0.8973843337456943,one encoded category unit
+goods_no_referral_context,cat__theme_Город и местная жизнь,-0.10405766974279121,0.901173325488724,one encoded category unit
+goods_no_referral_context,cat__theme_Медицина,-0.09828669826267417,0.9063890063462071,one encoded category unit
+goods_no_referral_context,cat__theme_Юмор,-0.049529534752092506,0.9516770501756343,one encoded category unit
+goods_no_referral_context,cat__theme_Благотворительность,-0.04149151400513244,0.9593574764095507,one encoded category unit
+goods_no_referral_context,cat__business_type_без каталога,-0.03627941964330408,0.9643707916902021,one encoded category unit
+goods_no_referral_context,num__payment,0.014881707687797723,1.0149929916461535,one standard deviation after log1p where applicable
+goods_no_referral_context,cat__theme_Семья и дети,0.013984660311415448,1.0140829031032492,one encoded category unit
+goods_no_referral_context,cat__theme_Фотография,-0.012563848960396114,0.9875147466909909,one encoded category unit
+goods_no_referral_context,num__referral,0.0,1.0,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Кулинария и еда,0.9849780953335662,2.6777532284873704,one encoded category unit
+goods_no_referral_with_content,cat__theme_Товары и магазины,0.9121476925141009,2.489663827968479,one encoded category unit
+goods_no_referral_with_content,cat__theme_Услуги,-0.8915743151644473,0.4100097598050892,one encoded category unit
+goods_no_referral_with_content,cat__theme_Литература,0.8304149073756596,2.2942704525468267,one encoded category unit
+goods_no_referral_with_content,num__views,0.7564687983712387,2.1307388518406905,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Личный блог,0.6716025180134884,1.9573715317890674,one encoded category unit
+goods_no_referral_with_content,num__checkout,0.6651094071129472,1.9447032740690424,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Образование,0.6106516810688338,1.8416311639723812,one encoded category unit
+goods_no_referral_with_content,cat__theme_Другое,0.6056647606823424,1.8324699580647366,one encoded category unit
+goods_no_referral_with_content,num__active_products,0.5953755667644396,1.8137119870063578,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Психология и отношения,-0.5898963638483983,0.5543847360579903,one encoded category unit
+goods_no_referral_with_content,cat__theme_Дом и ремонт,-0.5861945016539948,0.5564407952294339,one encoded category unit
+goods_no_referral_with_content,cat__theme_Без тематики,0.5323480842033353,1.7029262319340361,one encoded category unit
+goods_no_referral_with_content,cat__theme_Объявления,-0.5101154043111783,0.6004262830322202,one encoded category unit
+goods_no_referral_with_content,cat__theme_Развлечения и хобби,0.4663127285137441,1.5941054436316908,one encoded category unit
+goods_no_referral_with_content,num__subscribers,0.434571477693054,1.5443011496487498,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Мода и стиль,-0.4215380305001064,0.6560370385024682,one encoded category unit
+goods_no_referral_with_content,cat__theme_Красота и здоровье,-0.41826168685224635,0.6581899662259921,one encoded category unit
+goods_no_referral_with_content,num__active_services,-0.40287576613296505,0.6683951314776415,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Музыка,0.345263248790088,1.4123616732353197,one encoded category unit
+goods_no_referral_with_content,num__product_views,0.3279384856300533,1.3881035813458271,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Недвижимость,-0.32787781851337183,0.7204510401070832,one encoded category unit
+goods_no_referral_with_content,cat__business_type_товарное,-0.3197350325129588,0.7263414684521653,one encoded category unit
+goods_no_referral_with_content,cat__theme_Охота и рыбалка,0.31707264898076426,1.373102322786251,one encoded category unit
+goods_no_referral_with_content,cat__theme_Бизнес и работа,-0.31258829431898644,0.7315510342946365,one encoded category unit
+goods_no_referral_with_content,num__pubs,-0.30397520997435096,0.7378791582671222,one standard deviation after log1p where applicable
+goods_no_referral_with_content,num__price_missing,-0.29257347486857715,0.7463404057580251,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Сад и огород,-0.29246989485411073,0.7464177157118643,one encoded category unit
+goods_no_referral_with_content,cat__theme_Фанаты и персоны,-0.29007812046447506,0.7482051151643108,one encoded category unit
+goods_no_referral_with_content,num__median_price,-0.28429658788152423,0.7525434163468101,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_СМИ,-0.2594784642225582,0.7714538216728971,one encoded category unit
+goods_no_referral_with_content,cat__theme_Культура и искусство,-0.2519163519638215,0.7773097557841798,one encoded category unit
+goods_no_referral_with_content,cat__theme_Спорт,-0.2488493353901282,0.7796974373458629,one encoded category unit
+goods_no_referral_with_content,cat__theme_Игры,0.22335654173095537,1.2502662663760187,one encoded category unit
+goods_no_referral_with_content,cat__theme_Общество и политика,-0.22177291104875652,0.8010972640177031,one encoded category unit
+goods_no_referral_with_content,cat__theme_Кино и сериалы,-0.21959042064817447,0.8028475604141357,one encoded category unit
+goods_no_referral_with_content,cat__theme_Творчество и хендмейд,0.21684674249793387,1.2421537181732218,one encoded category unit
+goods_no_referral_with_content,cat__theme_Путешествия и отдых,-0.20333013235792333,0.8160088060421629,one encoded category unit
+goods_no_referral_with_content,cat__theme_Фотография,-0.17258025883028894,0.8414907490382612,one encoded category unit
+goods_no_referral_with_content,cat__theme_Технологии,-0.12842991076356472,0.8794752020036272,one encoded category unit
+goods_no_referral_with_content,cat__theme_Медицина,-0.12739844487601987,0.8803828186807868,one encoded category unit
+goods_no_referral_with_content,num__content_opens,0.12035784765239566,1.1279003958801808,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Животные,0.11022553782491251,1.1165298617800463,one encoded category unit
+goods_no_referral_with_content,cat__theme_Город и местная жизнь,-0.10847335243782916,0.8972028027658918,one encoded category unit
+goods_no_referral_with_content,cat__theme_Транспорт,-0.10264223805501597,0.902449777922301,one encoded category unit
+goods_no_referral_with_content,cat__theme_Объединения людей,-0.10260194678622214,0.9024861395013983,one encoded category unit
+goods_no_referral_with_content,num__delivery,0.0968100662135444,1.1016511129815654,one standard deviation after log1p where applicable
+goods_no_referral_with_content,num__original_author,0.09576391279603645,1.1004992195385055,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Танцы,-0.09401206704257269,0.9102717778861963,one encoded category unit
+goods_no_referral_with_content,cat__business_type_товарное и услужное,0.09382216429872309,1.0983644001446051,one encoded category unit
+goods_no_referral_with_content,num__ad_spend,0.08531867360823557,1.0890640673814345,one standard deviation after log1p where applicable
+goods_no_referral_with_content,num__product_pubs,-0.08485544060836409,0.9186450735762305,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Наука и история,-0.0827742771186088,0.9205589149810536,one encoded category unit
+goods_no_referral_with_content,cat__theme_Финансы,-0.08088068233308353,0.9223037320090774,one encoded category unit
+goods_no_referral_with_content,num__author_missing,-0.05738646594803889,0.9442290864552698,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Благотворительность,-0.047131388150834536,0.9539620500462386,one encoded category unit
+goods_no_referral_with_content,num__payment,0.04550915125976993,1.0465605819178765,one standard deviation after log1p where applicable
+goods_no_referral_with_content,cat__theme_Юмор,-0.04238367249072618,0.958501959181477,one encoded category unit
+goods_no_referral_with_content,cat__theme_Семья и дети,0.041933901393258914,1.0428255471569061,one encoded category unit
+goods_no_referral_with_content,cat__business_type_без каталога,-0.04010832786022828,0.9606853645254425,one encoded category unit
+goods_no_referral_with_content,num__referral,0.0,1.0,one standard deviation after log1p where applicable

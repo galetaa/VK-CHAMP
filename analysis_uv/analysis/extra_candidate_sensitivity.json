@@ -1,0 +1,108 @@
+[
+  {
+    "group": "strict_1817",
+    "variant": "baseline",
+    "baseline_n": 1817,
+    "retained_n": 1817,
+    "excluded_n": 0,
+    "excluded_ids": []
+  },
+  {
+    "group": "strict_1817",
+    "variant": "exclude_publication_counter_subset",
+    "baseline_n": 1817,
+    "retained_n": 1817,
+    "excluded_n": 0,
+    "excluded_ids": []
+  },
+  {
+    "group": "strict_1817",
+    "variant": "exclude_single_reaction_above_view",
+    "baseline_n": 1817,
+    "retained_n": 1814,
+    "excluded_n": 3,
+    "excluded_ids": [
+      792,
+      308,
+      4455
+    ]
+  },
+  {
+    "group": "strict_1817",
+    "variant": "exclude_content_open_without_product_view",
+    "baseline_n": 1817,
+    "retained_n": 1812,
+    "excluded_n": 5,
+    "excluded_ids": [
+      4234,
+      4917,
+      5411,
+      7179,
+      8308
+    ]
+  },
+  {
+    "group": "strict_1817",
+    "variant": "exclude_counter_union",
+    "baseline_n": 1817,
+    "retained_n": 1809,
+    "excluded_n": 8,
+    "excluded_ids": [
+      792,
+      308,
+      4234,
+      4455,
+      4917,
+      5411,
+      7179,
+      8308
+    ]
+  },
+  {
+    "group": "pilot_366",
+    "variant": "baseline",
+    "baseline_n": 366,
+    "retained_n": 366,
+    "excluded_n": 0,
+    "excluded_ids": []
+  },
+  {
+    "group": "pilot_366",
+    "variant": "exclude_publication_counter_subset",
+    "baseline_n": 366,
+    "retained_n": 366,
+    "excluded_n": 0,
+    "excluded_ids": []
+  },
+  {
+    "group": "pilot_366",
+    "variant": "exclude_single_reaction_above_view",
+    "baseline_n": 366,
+    "retained_n": 365,
+    "excluded_n": 1,
+    "excluded_ids": [
+      792
+    ]
+  },
+  {
+    "group": "pilot_366",
+    "variant": "exclude_content_open_without_product_view",
+    "baseline_n": 366,
+    "retained_n": 365,
+    "excluded_n": 1,
+    "excluded_ids": [
+      7179
+    ]
+  },
+  {
+    "group": "pilot_366",
+    "variant": "exclude_counter_union",
+    "baseline_n": 366,
+    "retained_n": 364,
+    "excluded_n": 2,
+    "excluded_ids": [
+      792,
+      7179
+    ]
+  }
+]

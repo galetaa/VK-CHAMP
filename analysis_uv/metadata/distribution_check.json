@@ -1,0 +1,63 @@
+{
+  "checked_at_utc": "2026-11-19T13:34:44.959436+00:00",
+  "method": "Extracted archive into a separate directory, removed 166 generated files and all notebook outputs, created a fresh .venv with uv sync --locked, recomputed all notebook cells through IPython.",
+  "commands": [
+    "uv sync --locked",
+    "uv run --locked python scripts/execute_notebook.py"
+  ],
+  "environment": "Linux, CPython 3.12.14, uv 0.13.9",
+  "engine": "ipython",
+  "code_cells": 38,
+  "error_outputs": 0,
+  "passed_control_checks": 21,
+  "all_analysis_results_reproduced": true,
+  "results_comparison": [
+    {
+      "file": "analysis/agg_results.json",
+      "all_analysis_values_identical": true,
+      "ignored_execution_metadata": []
+    },
+    {
+      "file": "analysis/audit_results.json",
+      "all_analysis_values_identical": true,
+      "ignored_execution_metadata": [
+        "source.path"
+      ]
+    },
+    {
+      "file": "analysis/buyers_results.json",
+      "all_analysis_values_identical": true,
+      "ignored_execution_metadata": []
+    },
+    {
+      "file": "analysis/core_results.json",
+      "all_analysis_values_identical": true,
+      "ignored_execution_metadata": []
+    },
+    {
+      "file": "analysis/extended_results.json",
+      "all_analysis_values_identical": true,
+      "ignored_execution_metadata": []
+    },
+    {
+      "file": "analysis/extra_audit_results.json",
+      "all_analysis_values_identical": true,
+      "ignored_execution_metadata": []
+    },
+    {
+      "file": "analysis/robustness_results.json",
+      "all_analysis_values_identical": true,
+      "ignored_execution_metadata": []
+    }
+  ],
+  "source_sha256": {
+    "case_dataset.xlsx": "f31d02d4c5f8b48b6582229d6dbf8da3c64efcf0567c90151fb7edcfed160a24",
+    "case.pdf": "122493c23cef8ac68680f35500dc97f45322eb2ccd5a29af338ea59d336f891f"
+  },
+  "interactive_jupyter_server_tested": false,
+  "interactive_jupyter_note": "Local socket binding is blocked in the preparation environment; the complete computational notebook was executed without a server.",
+  "delivery_only_changes_after_test": [
+    "README verification paragraph",
+    "metadata/distribution_check.json"
+  ]
+}

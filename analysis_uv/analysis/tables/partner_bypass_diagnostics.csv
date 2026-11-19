@@ -1,0 +1,8 @@
+﻿metric,value
+direct_events,106914679
+card_open_events,86882822
+direct_to_card_event_ratio,1.2305617674343037
+direct_share_of_sum_entry_events,0.5516824440372944
+orders_divided_by_cards_plus_direct_events_descriptive_only,0.025426153456952986
+orders_divided_by_buttons_plus_direct_events_descriptive_only,0.034328404043356214
+warning,"Alternative denominators are sensitivity illustrations, not corrected conversions: attribution and overlap are unknown."

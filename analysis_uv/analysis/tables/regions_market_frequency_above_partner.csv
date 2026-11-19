@@ -1,0 +1,33 @@
+﻿Показатель,Значение
+[0].excel_row,35
+[0].region,Ивановская область
+[0].market_buyers,2464.0
+[0].market_orders,3912.0
+[0].partner_buyers,12314
+[0].partner_orders,18880
+[0].market_orders_per_buyer,1.5876623376623376
+[0].partner_orders_per_buyer,1.5332142277082994
+[1].excel_row,76
+[1].region,Республика Дагестан
+[1].market_buyers,351.0
+[1].market_orders,545.0
+[1].partner_buyers,1257
+[1].partner_orders,1853
+[1].market_orders_per_buyer,1.5527065527065527
+[1].partner_orders_per_buyer,1.4741447891805888
+[2].excel_row,80
+[2].region,Чеченская Республика
+[2].market_buyers,180.0
+[2].market_orders,267.0
+[2].partner_buyers,326
+[2].partner_orders,480
+[2].market_orders_per_buyer,1.4833333333333334
+[2].partner_orders_per_buyer,1.4723926380368098
+[3].excel_row,86
+[3].region,Магаданская область
+[3].market_buyers,115.0
+[3].market_orders,186.0
+[3].partner_buyers,589
+[3].partner_orders,886
+[3].market_orders_per_buyer,1.617391304347826
+[3].partner_orders_per_buyer,1.5042444821731749
