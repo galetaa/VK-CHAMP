@@ -1,0 +1,67 @@
+{
+  "schema": "PurchaseRequest",
+  "provenance": "CONSTRUCTED_CONTRACT_EXAMPLE_NOT_LIVE_API",
+  "payload": {
+    "scenario_revision_id": "11111111-1111-4111-8111-111111111111",
+    "guest_count": 4,
+    "budget_minor": 500000,
+    "currency": "RUB",
+    "fulfillment": {
+      "mode": "PICKUP",
+      "zone": null
+    },
+    "needed_by": "2026-11-27",
+    "table_dimensions": null,
+    "slots": [
+      {
+        "slot_id": "dinner_plate",
+        "enabled": true,
+        "owned_units": 0,
+        "selection_mode": "APPROVED_ALTERNATIVES",
+        "allowed_colors": [],
+        "preferred_color": null
+      },
+      {
+        "slot_id": "dessert_plate",
+        "enabled": false,
+        "owned_units": 0,
+        "selection_mode": "APPROVED_ALTERNATIVES",
+        "allowed_colors": [],
+        "preferred_color": null
+      },
+      {
+        "slot_id": "drinking_glass",
+        "enabled": true,
+        "owned_units": 0,
+        "selection_mode": "APPROVED_ALTERNATIVES",
+        "allowed_colors": [],
+        "preferred_color": null
+      },
+      {
+        "slot_id": "cutlery_set",
+        "enabled": true,
+        "owned_units": 0,
+        "selection_mode": "APPROVED_ALTERNATIVES",
+        "allowed_colors": [],
+        "preferred_color": null
+      },
+      {
+        "slot_id": "napkin",
+        "enabled": true,
+        "owned_units": 0,
+        "selection_mode": "APPROVED_ALTERNATIVES",
+        "allowed_colors": [],
+        "preferred_color": null
+      },
+      {
+        "slot_id": "tablecloth",
+        "enabled": true,
+        "owned_units": 1,
+        "selection_mode": "APPROVED_ALTERNATIVES",
+        "allowed_colors": [],
+        "preferred_color": null
+      }
+    ],
+    "client_run_id": "33333333-3333-4333-8333-333333333333"
+  }
+}

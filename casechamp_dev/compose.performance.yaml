@@ -1,0 +1,13 @@
+services:
+  db:
+    cpus: 1.0
+    mem_limit: 2048m
+  api:
+    cpus: 2.0
+    mem_limit: 4096m
+  worker:
+    cpus: 0.75
+    mem_limit: 1792m
+  web:
+    cpus: 0.25
+    mem_limit: 256m

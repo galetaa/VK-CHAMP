@@ -1,0 +1,88 @@
+x-app: &app
+  build:
+    context: .
+    dockerfile: infra/Dockerfile
+  image: casechamp-backend:1.0.0
+  init: true
+
+x-settings: &settings
+  APP_MODE: ${CASECHAMP_APP_MODE:-development}
+  WEB_ORIGIN: ${CASECHAMP_WEB_ORIGIN:-http://localhost:8080}
+  DATABASE_URL: postgresql+psycopg://casechamp_app:${CASECHAMP_DB_APP_PASSWORD:?Set CASECHAMP_DB_APP_PASSWORD}@db:5432/casechamp
+  SESSION_SECRET: ${CASECHAMP_SESSION_SECRET:?Set CASECHAMP_SESSION_SECRET}
+  MEDIA_ROOT: /data/media
+  ML_MODE: ${CASECHAMP_ML_MODE:-DISABLED}
+  MODEL_ROOT: /data/models
+
+services:
+  db:
+    image: postgres:17.12-bookworm@sha256:837bed18782820fe967067cb5328b02b0d9992c1be9a37ee0c9c492cfc03af3b
+    environment:
+      POSTGRES_DB: casechamp
+      POSTGRES_USER: casechamp_owner
+      POSTGRES_PASSWORD: ${CASECHAMP_DB_OWNER_PASSWORD:?Set CASECHAMP_DB_OWNER_PASSWORD}
+      CASECHAMP_DB_APP_PASSWORD: ${CASECHAMP_DB_APP_PASSWORD}
+      CASECHAMP_DB_MAINTENANCE_PASSWORD: ${CASECHAMP_DB_MAINTENANCE_PASSWORD:?Set CASECHAMP_DB_MAINTENANCE_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./infra/init-db.sh:/docker-entrypoint-initdb.d/10-roles.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U casechamp_owner -d casechamp"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  migrate:
+    <<: *app
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      <<: *settings
+      MIGRATION_DATABASE_URL: postgresql+psycopg://casechamp_owner:${CASECHAMP_DB_OWNER_PASSWORD}@db:5432/casechamp
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    <<: *app
+    environment: *settings
+    volumes:
+      - media:/data/media
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health/ready', timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  worker:
+    <<: *app
+    command: ["python", "-m", "app.worker"]
+    environment:
+      <<: *settings
+      MAINTENANCE_DATABASE_URL: postgresql+psycopg://casechamp_maintenance:${CASECHAMP_DB_MAINTENANCE_PASSWORD}@db:5432/casechamp
+    volumes:
+      - media:/data/media
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  web:
+    image: caddy:2.7@sha256:236c6a30ccb84fa412a5360ca8b586d804faba0621ea182fb45902608cd8a563
+    environment:
+      CASECHAMP_SITE_ADDRESS: ${CASECHAMP_SITE_ADDRESS:-http://localhost:8080}
+    ports:
+      - "${CASECHAMP_BIND_ADDRESS:-127.0.0.1}:${CASECHAMP_PORT:-8080}:8080"
+    volumes:
+      - ./infra/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ${CASECHAMP_WEB_DIST:-./apps/web/dist}:/srv/web:ro
+      - caddy-data:/data
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  postgres:
+  media:
+  caddy-data:

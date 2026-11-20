@@ -1,0 +1,16 @@
+{
+  "schema": "Job",
+  "provenance": "CONSTRUCTED_CONTRACT_EXAMPLE_NOT_LIVE_API",
+  "payload": {
+    "job_id": "77777777-7777-4777-8777-777777777777",
+    "kind": "ANALYZE_SCENARIO",
+    "status": "QUEUED",
+    "created_at": "2026-11-20T10:00:00.000Z",
+    "started_at": null,
+    "deadline_at": "2026-11-20T10:03:00.000Z",
+    "finished_at": null,
+    "source_draft_version": 1,
+    "result": null,
+    "failure_code": null
+  }
+}

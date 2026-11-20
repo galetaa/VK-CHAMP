@@ -1,0 +1,18 @@
+sku_id,slot_id,title,color,pack_units,price_minor,stock_on_hand_packs,active,handling_days,length_cm,width_cm
+PLATE_WHITE1,dinner_plate,Plate White1,WHITE,1,45000,4,true,0,,
+PLATE_WHITE6,dinner_plate,Plate White6,WHITE,6,210000,10,true,0,,
+PLATE_BEIGE1,dinner_plate,Plate Beige1,BEIGE,1,30000,48,true,0,,
+PLATE_BLUE1,dinner_plate,Plate Blue1,BLUE,1,25000,48,true,0,,
+DESSERT_WHITE1,dessert_plate,Dessert White1,WHITE,1,25000,24,true,0,,
+DESSERT_WHITE6,dessert_plate,Dessert White6,WHITE,6,120000,10,true,0,,
+GLASS_CLEAR2,drinking_glass,Glass Clear2,TRANSPARENT,2,40000,20,true,0,,
+GLASS_CLEAR1,drinking_glass,Glass Clear1,TRANSPARENT,1,25000,24,true,0,,
+GLASS_BLUE2,drinking_glass,Glass Blue2,BLUE,2,30000,20,true,0,,
+CUTLERY_SILVER1,cutlery_set,Cutlery Silver1,SILVER,1,30000,24,true,0,,
+CUTLERY_SILVER6,cutlery_set,Cutlery Silver6,SILVER,6,150000,10,true,0,,
+NAPKIN_BEIGE6,napkin,Napkin Beige6,BEIGE,6,60000,20,true,0,,
+NAPKIN_WHITE6,napkin,Napkin White6,WHITE,6,50000,20,true,0,,
+NAPKIN_WHITE1,napkin,Napkin White1,WHITE,1,12000,48,true,0,,
+TABLECLOTH_WHITE140220,tablecloth,Tablecloth White140220,WHITE,1,120000,10,true,1,220,140
+TABLECLOTH_BEIGE160240,tablecloth,Tablecloth Beige160240,BEIGE,1,90000,10,true,0,240,160
+TABLECLOTH_WHITE140180,tablecloth,Tablecloth White140180,WHITE,1,70000,10,true,0,180,140

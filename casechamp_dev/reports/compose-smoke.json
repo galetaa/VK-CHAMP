@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "quote_total_minor": 440000,
+  "milestones": [
+    "EMPTY_V1 → CSV preview → commit",
+    "Media → six manual mappings → publication",
+    "Quote 4400 RUB → verification → reserve → confirm → cancel → stock restored",
+    "Committed cancellation → outbox worker → events projection",
+    "LAST_STOCK_RACE",
+    "PRICE_CHANGE",
+    "EXPIRED_RESERVATION",
+    "Recorded intent → asynchronous worker → REPLAY provenance"
+  ]
+}

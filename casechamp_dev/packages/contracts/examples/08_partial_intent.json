@@ -1,0 +1,8 @@
+{
+  "schema": "IntentDraft",
+  "provenance": "CONSTRUCTED_CONTRACT_EXAMPLE_NOT_LIVE_API",
+  "payload": {
+    "guest_count": 6,
+    "budget_minor": 500000
+  }
+}

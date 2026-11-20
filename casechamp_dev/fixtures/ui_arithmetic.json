@@ -1,0 +1,55 @@
+{
+  "fixture_id": "UI-ARITH-01",
+  "guest_count": 6,
+  "budget_minor": 700000,
+  "shipping_minor": 30000,
+  "subtotal_minor": 610000,
+  "total_minor": 640000,
+  "lines": [
+    {
+      "sku_id": "UI_ARITH_DINNER",
+      "pack_units": 4,
+      "price_minor": 120000,
+      "required_units": 6,
+      "owned_units": 2,
+      "pack_count": 1,
+      "line_total_minor": 120000
+    },
+    {
+      "sku_id": "UI_ARITH_GLASS",
+      "pack_units": 6,
+      "price_minor": 90000,
+      "required_units": 6,
+      "owned_units": 0,
+      "pack_count": 1,
+      "line_total_minor": 90000
+    },
+    {
+      "sku_id": "UI_ARITH_CUTLERY",
+      "pack_units": 1,
+      "price_minor": 35000,
+      "required_units": 6,
+      "owned_units": 0,
+      "pack_count": 6,
+      "line_total_minor": 210000
+    },
+    {
+      "sku_id": "UI_ARITH_NAPKIN",
+      "pack_units": 4,
+      "price_minor": 20000,
+      "required_units": 6,
+      "owned_units": 0,
+      "pack_count": 2,
+      "line_total_minor": 40000
+    },
+    {
+      "sku_id": "UI_ARITH_CLOTH",
+      "pack_units": 1,
+      "price_minor": 150000,
+      "required_units": 1,
+      "owned_units": 0,
+      "pack_count": 1,
+      "line_total_minor": 150000
+    }
+  ]
+}

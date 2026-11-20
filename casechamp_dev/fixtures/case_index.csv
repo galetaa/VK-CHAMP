@@ -1,0 +1,52 @@
+﻿case_id,name,family,outcome,total_minor
+G001,Базовый комплект на четыре персоны,business,QUOTED,440000
+G002,Бюджет равен цене выбранного комплекта,business,QUOTED,440000
+G003,Бюджет на копейку ниже исходного требует пересборки,business,QUOTED,428000
+G004,Минимальный бюджет не позволяет полный комплект,business,INFEASIBLE,
+G005,Шесть персон и ограниченный остаток основного SKU,business,QUOTED,480000
+G006,Белые тарелки и прозрачные стаканы при недостаточном бюджете,business,INFEASIBLE,
+G007,Белый мягкий приоритет при достаточном бюджете,business,QUOTED,570000
+G008,Точное совпадение при нехватке основной тарелки,business,INFEASIBLE,
+G009,Все товары уже есть у покупателя,business,NO_PURCHASE_REQUIRED,0
+G010,Все товары есть доставка не создаёт платеж,business,NO_PURCHASE_REQUIRED,0
+G011,Доставка включена в общую сумму,business,QUOTED,470000
+G012,Северная зона доставки,business,QUOTED,470000
+G013,Неподдерживаемая зона,business,VALIDATION_ERROR,
+G014,У самовывоза zone обязан быть null,business,VALIDATION_ERROR,
+G015,Покупка скатерти с подходящими размерами,business,QUOTED,560000
+G016,Поворот скатерти разрешён,business,QUOTED,560000
+G017,Неизвестны размеры стола,business,VALIDATION_ERROR,
+G018,Нет подходящей скатерти по геометрии,business,INFEASIBLE,
+G019,Скатерть отключена размеры не требуются,business,QUOTED,440000
+G020,Добавлены десертные тарелки,business,QUOTED,540000
+G021,Часть тарелок уже есть,business,QUOTED,350000
+G022,Избыток owned не образует отрицательное количество,business,QUOTED,260000
+G023,Основной SKU деактивирован,business,QUOTED,360000
+G024,Остаток есть но полностью зарезервирован,business,QUOTED,360000
+G025,Альтернативы не одобрены продавцом,business,INFEASIBLE,
+G026,Жёсткий цвет не представлен,business,INFEASIBLE,
+G027,Мягкий цвет противоречит жёсткому,business,VALIDATION_ERROR,
+G028,Самовывоз сегодня возможен без скатерти,business,QUOTED,440000
+G029,Доставка сегодня невозможна,business,INFEASIBLE,
+G030,Нет жёсткого срока,business,QUOTED,440000
+G031,Прошедшая дата запрещена,business,VALIDATION_ERROR,
+G032,Дата дальше тридцати дней запрещена,business,VALIDATION_ERROR,
+G033,Граница даты плюс тридцать дней,business,QUOTED,440000
+G034,Ноль гостей запрещён,business,VALIDATION_ERROR,
+G035,Тринадцать гостей запрещены,business,VALIDATION_ERROR,
+G036,Бюджет ниже диапазона,business,VALIDATION_ERROR,
+G037,Бюджет выше диапазона,business,VALIDATION_ERROR,
+G038,Валюта отличается от RUB,business,VALIDATION_ERROR,
+G039,Нельзя отключить обязательный слот,business,VALIDATION_ERROR,
+G040,Нельзя повторять слот,business,VALIDATION_ERROR,
+G041,Owned меньше нуля,business,VALIDATION_ERROR,
+G042,Owned больше максимума,business,VALIDATION_ERROR,
+G043,Порядок товаров не меняет решение,metamorphic,QUOTED,440000
+G044,Порядок слотов не меняет решение,metamorphic,QUOTED,440000
+G045,Точная копия по атрибутам выбирается по ASCII SKU,tie_break,QUOTED,360000
+G046,Пять персон проверка упаковок,business,QUOTED,455000
+G047,Максимальное количество персон,business,QUOTED,1020000
+G048,Дешёвый SKU вне разрешённого списка игнорируется,metamorphic,QUOTED,440000
+G049,Строгий цвет исключает UNKNOWN,business,QUOTED,470000
+G050,Готовность товара влияет на срок,business,QUOTED,360000
+G051,Отключённый слот игнорирует противоречивые предпочтения,metamorphic,QUOTED,440000

@@ -1,0 +1,2884 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:vk-case:spec:1.0.0",
+  "$defs": {
+    "SlotId": {
+      "type": "string",
+      "enum": [
+        "dinner_plate",
+        "dessert_plate",
+        "drinking_glass",
+        "cutlery_set",
+        "napkin",
+        "tablecloth"
+      ]
+    },
+    "Color": {
+      "type": "string",
+      "enum": [
+        "WHITE",
+        "BEIGE",
+        "BLACK",
+        "BLUE",
+        "GREEN",
+        "RED",
+        "TRANSPARENT",
+        "SILVER",
+        "GOLD",
+        "MULTICOLOR"
+      ]
+    },
+    "Meta": {
+      "type": "object",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "server_now": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sandbox_epoch": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "idempotency_replayed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "request_id",
+        "server_now",
+        "sandbox_epoch",
+        "idempotency_replayed"
+      ],
+      "additionalProperties": false
+    },
+    "FieldError": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "path",
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "enum": [
+                "MALFORMED_JSON",
+                "ORIGIN_NOT_ALLOWED",
+                "DEMO_SESSION_REQUIRED",
+                "DEMO_SESSION_EXPIRED",
+                "RESOURCE_NOT_FOUND",
+                "SANDBOX_EPOCH_MISMATCH",
+                "INVALID_STATE",
+                "IDEMPOTENCY_KEY_REUSED",
+                "IDEMPOTENCY_IN_PROGRESS",
+                "QUOTE_STALE",
+                "STOCK_CHANGED",
+                "ACCEPTED_QUOTE_HASH_MISMATCH",
+                "TEMPLATE_WITHDRAWN",
+                "PRODUCT_WITHDRAWN",
+                "MAPPING_UNCONFIRMED",
+                "CONCURRENT_VERSION_CHANGE",
+                "STOCK_BELOW_RESERVED",
+                "IMPORT_NOT_VALID",
+                "CATALOG_LIMIT_EXCEEDED",
+                "QUOTE_EXPIRED",
+                "RESERVATION_EXPIRED",
+                "IMPORT_EXPIRED",
+                "PAYLOAD_TOO_LARGE",
+                "UNSUPPORTED_MEDIA_TYPE",
+                "VALIDATION_ERROR",
+                "CONTRADICTORY_PREFERENCES",
+                "UNSUPPORTED_ZONE",
+                "IMPORT_VALIDATION_FAILED",
+                "INVALID_MEDIA",
+                "MAPPING_INVALID",
+                "RATE_LIMITED",
+                "COMPUTATION_LIMIT",
+                "COMPUTATION_ABORTED",
+                "STORE_BUSY",
+                "ML_UNAVAILABLE",
+                "INTERNAL_INVARIANT_FAILED"
+              ]
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "field_errors": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/FieldError"
+              },
+              "minItems": 0,
+              "maxItems": 1000
+            },
+            "details": {
+              "type": "object",
+              "properties": {
+                "reason_codes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  },
+                  "minItems": 0,
+                  "maxItems": 100
+                },
+                "refresh_required": {
+                  "type": "boolean"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "retry_after_ms": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 60000
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "reason_codes",
+                "refresh_required",
+                "retryable",
+                "retry_after_ms"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "field_errors",
+            "details"
+          ],
+          "additionalProperties": false
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "error",
+        "meta"
+      ],
+      "additionalProperties": false
+    },
+    "SlotRequest": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/SlotId"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "owned_units": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99
+        },
+        "selection_mode": {
+          "type": "string",
+          "enum": [
+            "EXACT_ONLY",
+            "APPROVED_ALTERNATIVES"
+          ]
+        },
+        "allowed_colors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Color"
+          },
+          "minItems": 0,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "preferred_color": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Color"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "slot_id",
+        "enabled",
+        "owned_units",
+        "selection_mode",
+        "allowed_colors",
+        "preferred_color"
+      ],
+      "additionalProperties": false
+    },
+    "FulfillmentRequest": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "PICKUP",
+            "LOCAL_DELIVERY"
+          ]
+        },
+        "zone": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "CENTER",
+                "NORTH",
+                "OUTSIDE"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "mode",
+        "zone"
+      ],
+      "additionalProperties": false
+    },
+    "TableDimensions": {
+      "type": "object",
+      "properties": {
+        "length_cm": {
+          "type": "integer",
+          "minimum": 60,
+          "maximum": 300
+        },
+        "width_cm": {
+          "type": "integer",
+          "minimum": 40,
+          "maximum": 150
+        }
+      },
+      "required": [
+        "length_cm",
+        "width_cm"
+      ],
+      "additionalProperties": false
+    },
+    "PurchaseRequest": {
+      "type": "object",
+      "properties": {
+        "scenario_revision_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "guest_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "budget_minor": {
+          "type": "integer",
+          "minimum": 50000,
+          "maximum": 5000000
+        },
+        "currency": {
+          "const": "RUB"
+        },
+        "fulfillment": {
+          "$ref": "#/$defs/FulfillmentRequest"
+        },
+        "needed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "table_dimensions": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TableDimensions"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SlotRequest"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "client_run_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "scenario_revision_id",
+        "guest_count",
+        "budget_minor",
+        "currency",
+        "fulfillment",
+        "needed_by",
+        "table_dimensions",
+        "slots",
+        "client_run_id"
+      ],
+      "additionalProperties": false
+    },
+    "Sku": {
+      "type": "object",
+      "properties": {
+        "sku_id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9_-]{0,63}$"
+        },
+        "slot_id": {
+          "$ref": "#/$defs/SlotId"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "color": {
+          "type": "string",
+          "enum": [
+            "WHITE",
+            "BEIGE",
+            "BLACK",
+            "BLUE",
+            "GREEN",
+            "RED",
+            "TRANSPARENT",
+            "SILVER",
+            "GOLD",
+            "MULTICOLOR",
+            "UNKNOWN"
+          ]
+        },
+        "pack_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 24
+        },
+        "price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "currency": {
+          "const": "RUB"
+        },
+        "stock_on_hand_packs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "reserved_packs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "available_packs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "handling_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "length_cm": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 400
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "width_cm": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 400
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "image_asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "product_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "inventory_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "sku_id",
+        "slot_id",
+        "title",
+        "color",
+        "pack_units",
+        "price_minor",
+        "currency",
+        "stock_on_hand_packs",
+        "reserved_packs",
+        "available_packs",
+        "active",
+        "handling_days",
+        "length_cm",
+        "width_cm",
+        "image_asset_id",
+        "product_version",
+        "inventory_version"
+      ],
+      "additionalProperties": false
+    },
+    "SkuPatch": {
+      "type": "object",
+      "properties": {
+        "expected_product_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "expected_inventory_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "stock_on_hand_packs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "handling_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "image_asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "expected_product_version"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "stock_on_hand_packs"
+            ]
+          },
+          "then": {
+            "required": [
+              "expected_inventory_version"
+            ]
+          }
+        }
+      ]
+    },
+    "Catalog": {
+      "type": "object",
+      "properties": {
+        "catalog_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Sku"
+          },
+          "minItems": 0,
+          "maxItems": 500
+        }
+      },
+      "required": [
+        "catalog_version",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "CatalogImport": {
+      "type": "object",
+      "properties": {
+        "import_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "VALID",
+            "INVALID",
+            "COMMITTED",
+            "EXPIRED"
+          ]
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "base_catalog_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "row_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500
+        },
+        "insert_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500
+        },
+        "update_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500
+        },
+        "unchanged_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldError"
+          },
+          "minItems": 0,
+          "maxItems": 1000
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldError"
+          },
+          "minItems": 0,
+          "maxItems": 1000
+        }
+      },
+      "required": [
+        "import_id",
+        "status",
+        "source_sha256",
+        "created_at",
+        "expires_at",
+        "base_catalog_version",
+        "row_count",
+        "insert_count",
+        "update_count",
+        "unchanged_count",
+        "errors",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "ImportCommit": {
+      "type": "object",
+      "properties": {
+        "expected_catalog_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "expected_catalog_version"
+      ],
+      "additionalProperties": false
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "asset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "IMAGE",
+            "VIDEO",
+            "PRODUCT_IMAGE"
+          ]
+        },
+        "content_type": {
+          "type": "string",
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "video/mp4"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 52428800
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "duration_ms": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 60000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "read_url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "asset_id",
+        "kind",
+        "content_type",
+        "sha256",
+        "size_bytes",
+        "width",
+        "height",
+        "duration_ms",
+        "read_url"
+      ],
+      "additionalProperties": false
+    },
+    "ScenarioSlot": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/SlotId"
+        },
+        "primary_sku_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9][A-Z0-9_-]{0,63}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "alternative_sku_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z0-9][A-Z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 499,
+          "uniqueItems": true
+        },
+        "mapping_status": {
+          "type": "string",
+          "enum": [
+            "UNCONFIRMED",
+            "CONFIRMED"
+          ]
+        },
+        "mapping_source": {
+          "type": "string",
+          "enum": [
+            "MANUAL",
+            "ML_REVIEWED"
+          ]
+        },
+        "source_job_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "slot_id",
+        "primary_sku_id",
+        "alternative_sku_ids",
+        "mapping_status",
+        "mapping_source",
+        "source_job_id"
+      ],
+      "additionalProperties": false
+    },
+    "ScenarioCreate": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5000
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "caption",
+        "asset_id"
+      ],
+      "additionalProperties": false
+    },
+    "ScenarioPatch": {
+      "type": "object",
+      "properties": {
+        "expected_draft_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5000
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ScenarioSlot"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        }
+      },
+      "required": [
+        "expected_draft_version"
+      ],
+      "additionalProperties": false
+    },
+    "Scenario": {
+      "type": "object",
+      "properties": {
+        "scenario_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "draft_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5000
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ScenarioSlot"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "latest_published_revision_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "draft_version",
+        "title",
+        "caption",
+        "asset_id",
+        "slots",
+        "latest_published_revision_id",
+        "updated_at"
+      ],
+      "additionalProperties": false
+    },
+    "ScenarioRevision": {
+      "type": "object",
+      "properties": {
+        "scenario_revision_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "scenario_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision_number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PUBLISHED",
+            "WITHDRAWN"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5000
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ScenarioSlot"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "withdrawn_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "template_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "scenario_revision_id",
+        "scenario_id",
+        "revision_number",
+        "status",
+        "title",
+        "caption",
+        "asset_id",
+        "slots",
+        "published_at",
+        "withdrawn_at",
+        "template_hash"
+      ],
+      "additionalProperties": false
+    },
+    "PublishRequest": {
+      "type": "object",
+      "properties": {
+        "expected_draft_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "expected_draft_version"
+      ],
+      "additionalProperties": false
+    },
+    "Reason": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "slot_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SlotId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sku_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9][A-Z0-9_-]{0,63}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "slot_id",
+        "message",
+        "sku_id"
+      ],
+      "additionalProperties": false
+    },
+    "ClothFit": {
+      "type": "object",
+      "properties": {
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "NORMAL",
+            "ROTATED"
+          ]
+        },
+        "drop_length_mm": {
+          "type": "integer",
+          "minimum": 150,
+          "maximum": 300
+        },
+        "drop_width_mm": {
+          "type": "integer",
+          "minimum": 150,
+          "maximum": 300
+        },
+        "cloth_length_cm": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 400
+        },
+        "cloth_width_cm": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 400
+        },
+        "table_dimensions": {
+          "$ref": "#/$defs/TableDimensions"
+        }
+      },
+      "required": [
+        "orientation",
+        "drop_length_mm",
+        "drop_width_mm",
+        "cloth_length_cm",
+        "cloth_width_cm",
+        "table_dimensions"
+      ],
+      "additionalProperties": false
+    },
+    "QuoteLine": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/SlotId"
+        },
+        "sku_id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9_-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "color": {
+          "type": "string",
+          "enum": [
+            "WHITE",
+            "BEIGE",
+            "BLACK",
+            "BLUE",
+            "GREEN",
+            "RED",
+            "TRANSPARENT",
+            "SILVER",
+            "GOLD",
+            "MULTICOLOR",
+            "UNKNOWN"
+          ]
+        },
+        "image_asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cloth_fit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ClothFit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "product_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pack_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 24
+        },
+        "pack_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "delivered_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 288
+        },
+        "required_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "effective_owned_units": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "excess_units": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "unit_pack_price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "line_total_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120000000
+        },
+        "substitution": {
+          "type": "boolean"
+        },
+        "soft_color_mismatch": {
+          "type": "boolean"
+        },
+        "handling_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        }
+      },
+      "required": [
+        "slot_id",
+        "sku_id",
+        "title",
+        "color",
+        "image_asset_id",
+        "cloth_fit",
+        "product_version",
+        "pack_units",
+        "pack_count",
+        "delivered_units",
+        "required_units",
+        "effective_owned_units",
+        "excess_units",
+        "unit_pack_price_minor",
+        "line_total_minor",
+        "substitution",
+        "soft_color_mismatch",
+        "handling_days"
+      ],
+      "additionalProperties": false
+    },
+    "Objective": {
+      "type": "object",
+      "properties": {
+        "substituted_slots": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "soft_color_mismatches": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "excess_units": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 138
+        },
+        "total_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000000
+        },
+        "sku_tuple": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 64
+          },
+          "minItems": 6,
+          "maxItems": 6
+        }
+      },
+      "required": [
+        "substituted_slots",
+        "soft_color_mismatches",
+        "excess_units",
+        "total_minor",
+        "sku_tuple"
+      ],
+      "additionalProperties": false
+    },
+    "Quote": {
+      "type": "object",
+      "properties": {
+        "quote_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "RESERVED",
+            "CONFIRMED",
+            "EXPIRED",
+            "STALE",
+            "CANCELED"
+          ]
+        },
+        "scenario_revision_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "request_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "quote_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "algorithm_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "snapshot_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "currency": {
+          "const": "RUB"
+        },
+        "purchase_request": {
+          "$ref": "#/$defs/PurchaseRequest"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuoteLine"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "subtotal_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000000
+        },
+        "shipping_minor": {
+          "type": "integer",
+          "enum": [
+            0,
+            30000
+          ]
+        },
+        "total_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000000
+        },
+        "earliest_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "needed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fulfillment_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "objective": {
+          "$ref": "#/$defs/Objective"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Reason"
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "reservation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "quote_id",
+        "status",
+        "scenario_revision_id",
+        "request_hash",
+        "quote_hash",
+        "algorithm_version",
+        "snapshot_hash",
+        "created_at",
+        "expires_at",
+        "currency",
+        "purchase_request",
+        "lines",
+        "subtotal_minor",
+        "shipping_minor",
+        "total_minor",
+        "earliest_date",
+        "needed_by",
+        "fulfillment_version",
+        "objective",
+        "reasons",
+        "reservation_id"
+      ],
+      "additionalProperties": false
+    },
+    "SolveResult": {
+      "type": "object",
+      "properties": {
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "QUOTED",
+            "INFEASIBLE",
+            "NO_PURCHASE_REQUIRED"
+          ]
+        },
+        "quote": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quote"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Reason"
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "minimum_total_minor": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "verification_passed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "outcome",
+        "quote",
+        "reasons",
+        "minimum_total_minor",
+        "verification_passed"
+      ],
+      "additionalProperties": false
+    },
+    "ReserveRequest": {
+      "type": "object",
+      "properties": {
+        "quote_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "accepted_quote_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "quote_id",
+        "accepted_quote_hash"
+      ],
+      "additionalProperties": false
+    },
+    "Reservation": {
+      "type": "object",
+      "properties": {
+        "reservation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "quote_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "quote_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "CONFIRMED",
+            "CANCELED",
+            "EXPIRED",
+            "INVALIDATED"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "reservation_id",
+        "quote_id",
+        "quote_hash",
+        "status",
+        "created_at",
+        "expires_at",
+        "completed_at",
+        "order_id",
+        "reason_code"
+      ],
+      "additionalProperties": false
+    },
+    "ConfirmRequest": {
+      "type": "object",
+      "properties": {
+        "reservation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "accepted_quote_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "reservation_id",
+        "accepted_quote_hash"
+      ],
+      "additionalProperties": false
+    },
+    "CancelRequest": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": [
+            "BUYER_CANCELED",
+            "SELLER_CANCELED",
+            "DEMO_RESET"
+          ]
+        }
+      },
+      "required": [
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "order_number": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "TEST_CONFIRMED",
+            "CANCELED"
+          ]
+        },
+        "is_test": {
+          "const": true
+        },
+        "payment_status": {
+          "const": "NOT_APPLICABLE"
+        },
+        "native_vk_order_id": {
+          "type": "null"
+        },
+        "reservation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "quote_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "canceled_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuoteLine"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "currency": {
+          "const": "RUB"
+        },
+        "subtotal_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000000
+        },
+        "shipping_minor": {
+          "type": "integer",
+          "enum": [
+            0,
+            30000
+          ]
+        },
+        "total_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000000
+        },
+        "earliest_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "needed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "order_id",
+        "order_number",
+        "status",
+        "is_test",
+        "payment_status",
+        "native_vk_order_id",
+        "reservation_id",
+        "quote_id",
+        "created_at",
+        "canceled_at",
+        "lines",
+        "currency",
+        "subtotal_minor",
+        "shipping_minor",
+        "total_minor",
+        "earliest_date",
+        "needed_by"
+      ],
+      "additionalProperties": false
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "sandbox_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sandbox_epoch": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "business_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "timezone": {
+          "const": "Europe/Moscow"
+        },
+        "capabilities": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "DEMO"
+            },
+            "ml_mode": {
+              "type": "string",
+              "enum": [
+                "DISABLED",
+                "LOCAL",
+                "REPLAY"
+              ]
+            },
+            "native_checkout": {
+              "const": false
+            },
+            "live_payment": {
+              "const": false
+            }
+          },
+          "required": [
+            "mode",
+            "ml_mode",
+            "native_checkout",
+            "live_payment"
+          ],
+          "additionalProperties": false
+        },
+        "latest_scenario_revision_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "constants": {
+          "type": "object",
+          "properties": {
+            "guest_min": {
+              "const": 1
+            },
+            "guest_max": {
+              "const": 12
+            },
+            "budget_min_minor": {
+              "const": 50000
+            },
+            "budget_max_minor": {
+              "const": 5000000
+            },
+            "quote_ttl_seconds": {
+              "const": 900
+            },
+            "reservation_ttl_seconds": {
+              "const": 600
+            }
+          },
+          "required": [
+            "guest_min",
+            "guest_max",
+            "budget_min_minor",
+            "budget_max_minor",
+            "quote_ttl_seconds",
+            "reservation_ttl_seconds"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "sandbox_id",
+        "sandbox_epoch",
+        "expires_at",
+        "business_date",
+        "timezone",
+        "capabilities",
+        "latest_scenario_revision_id",
+        "constants"
+      ],
+      "additionalProperties": false
+    },
+    "CreateSandbox": {
+      "type": "object",
+      "properties": {
+        "fixture_id": {
+          "type": "string",
+          "enum": [
+            "TABLE_DEMO_V1",
+            "EMPTY_V1"
+          ]
+        }
+      },
+      "required": [
+        "fixture_id"
+      ],
+      "additionalProperties": false
+    },
+    "EpochRequest": {
+      "type": "object",
+      "properties": {
+        "expected_epoch": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "expected_epoch"
+      ],
+      "additionalProperties": false
+    },
+    "MutationResult": {
+      "type": "object",
+      "properties": {
+        "resource_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "invalidated_reservations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      },
+      "required": [
+        "resource_id",
+        "status",
+        "invalidated_reservations"
+      ],
+      "additionalProperties": false
+    },
+    "WithdrawRequest": {
+      "type": "object",
+      "properties": {
+        "expected_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "expected_version",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "AnalyzeRequest": {
+      "type": "object",
+      "properties": {
+        "expected_draft_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "expected_draft_version"
+      ],
+      "additionalProperties": false
+    },
+    "ParseIntentRequest": {
+      "type": "object",
+      "properties": {
+        "scenario_revision_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "scenario_revision_id",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "Candidate": {
+      "type": "object",
+      "properties": {
+        "sku_id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9_-]{0,63}$"
+        },
+        "rank": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "similarity_score": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_asset_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "frame_ms": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 60000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bbox_1000": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "sku_id",
+        "rank",
+        "similarity_score",
+        "source_asset_id",
+        "frame_ms",
+        "bbox_1000"
+      ],
+      "additionalProperties": false
+    },
+    "MappingSuggestion": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/SlotId"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          },
+          "minItems": 0,
+          "maxItems": 5
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "needs_review": {
+          "const": true
+        }
+      },
+      "required": [
+        "slot_id",
+        "candidates",
+        "evidence_text",
+        "needs_review"
+      ],
+      "additionalProperties": false
+    },
+    "IntentSlotDraft": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/SlotId"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "owned_units": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99
+        },
+        "selection_mode": {
+          "type": "string",
+          "enum": [
+            "EXACT_ONLY",
+            "APPROVED_ALTERNATIVES"
+          ]
+        },
+        "allowed_colors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Color"
+          },
+          "minItems": 0,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "preferred_color": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Color"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "slot_id"
+      ],
+      "additionalProperties": false
+    },
+    "IntentDraft": {
+      "type": "object",
+      "properties": {
+        "guest_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "budget_minor": {
+          "type": "integer",
+          "minimum": 50000,
+          "maximum": 5000000
+        },
+        "fulfillment": {
+          "$ref": "#/$defs/FulfillmentRequest"
+        },
+        "needed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "table_dimensions": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TableDimensions"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntentSlotDraft"
+          },
+          "minItems": 0,
+          "maxItems": 6
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "MlResult": {
+      "type": "object",
+      "properties": {
+        "mapping_suggestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MappingSuggestion"
+          },
+          "minItems": 0,
+          "maxItems": 6
+        },
+        "intent_draft": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IntentDraft"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unresolved_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "quote": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "field",
+              "quote"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "provider_mode": {
+          "type": "string",
+          "enum": [
+            "LOCAL",
+            "REPLAY"
+          ]
+        },
+        "model_revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "prompt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "input_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "raw_output_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "schema_valid": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mapping_suggestions",
+        "intent_draft",
+        "unresolved_fields",
+        "evidence",
+        "provider_mode",
+        "model_revision",
+        "prompt_sha256",
+        "input_sha256",
+        "raw_output_sha256",
+        "schema_valid"
+      ],
+      "additionalProperties": false
+    },
+    "Job": {
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "ANALYZE_SCENARIO",
+            "PARSE_INTENT"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "QUEUED",
+            "RUNNING",
+            "SUCCEEDED",
+            "FAILED",
+            "TIMED_OUT",
+            "CANCELED"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deadline_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finished_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_draft_version": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MlResult"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "failure_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "job_id",
+        "kind",
+        "status",
+        "created_at",
+        "started_at",
+        "deadline_at",
+        "finished_at",
+        "source_draft_version",
+        "result",
+        "failure_code"
+      ],
+      "additionalProperties": false
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "SERVER",
+            "CLIENT"
+          ]
+        },
+        "correlation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "client_run_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resource_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1000000000
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "duration_ms": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 120000
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "code",
+            "value",
+            "duration_ms"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "source",
+        "correlation_id",
+        "client_run_id",
+        "resource_id",
+        "properties"
+      ],
+      "additionalProperties": false
+    },
+    "ClientEvent": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_name": {
+          "type": "string",
+          "enum": [
+            "scenario_viewed",
+            "request_form_started",
+            "proposal_viewed",
+            "checkout_viewed"
+          ]
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "client_run_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "resource_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "event_id",
+        "event_name",
+        "occurred_at",
+        "client_run_id",
+        "resource_id"
+      ],
+      "additionalProperties": false
+    },
+    "EventBatch": {
+      "type": "object",
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ClientEvent"
+          },
+          "minItems": 1,
+          "maxItems": 50
+        }
+      },
+      "required": [
+        "events"
+      ],
+      "additionalProperties": false
+    },
+    "EventList": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Event"
+          },
+          "minItems": 0,
+          "maxItems": 1000
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ],
+      "additionalProperties": false
+    },
+    "Metrics": {
+      "type": "object",
+      "properties": {
+        "is_test": {
+          "const": true
+        },
+        "scenario_views": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "solve_requests": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "quoted": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "infeasible": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "no_purchase_required": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "reserved": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "test_orders_confirmed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "test_orders_canceled": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "net_active_test_orders": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "gross_test_order_value_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "canceled_test_order_value_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "is_test",
+        "scenario_views",
+        "solve_requests",
+        "quoted",
+        "infeasible",
+        "no_purchase_required",
+        "reserved",
+        "test_orders_confirmed",
+        "test_orders_canceled",
+        "net_active_test_orders",
+        "gross_test_order_value_minor",
+        "canceled_test_order_value_minor"
+      ],
+      "additionalProperties": false
+    },
+    "Health": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "ok",
+            "degraded"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "database": {
+          "type": "string",
+          "enum": [
+            "ok",
+            "unavailable"
+          ]
+        },
+        "worker_last_heartbeat": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "version",
+        "database",
+        "worker_last_heartbeat"
+      ],
+      "additionalProperties": false
+    },
+    "SimulationRequest": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "enum": [
+            "LAST_STOCK_RACE",
+            "PRICE_CHANGE",
+            "EXPIRED_RESERVATION"
+          ]
+        },
+        "scenario_revision_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "case_id",
+        "scenario_revision_id"
+      ],
+      "additionalProperties": false
+    },
+    "SimulationResult": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "enum": [
+            "LAST_STOCK_RACE",
+            "PRICE_CHANGE",
+            "EXPIRED_RESERVATION"
+          ]
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "assertions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "passed": {
+                "type": "boolean"
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "id",
+              "passed",
+              "message"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 30
+        },
+        "trace_resource_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "test_execution_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "case_id",
+        "passed",
+        "assertions",
+        "trace_resource_ids",
+        "test_execution_id"
+      ],
+      "additionalProperties": false
+    },
+    "Verification": {
+      "type": "object",
+      "properties": {
+        "quote_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "checked_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "snapshot_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "check_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "passed": {
+                "type": "boolean"
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              }
+            },
+            "required": [
+              "check_id",
+              "passed",
+              "message"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 50
+        }
+      },
+      "required": [
+        "quote_id",
+        "passed",
+        "checked_at",
+        "snapshot_hash",
+        "checks"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

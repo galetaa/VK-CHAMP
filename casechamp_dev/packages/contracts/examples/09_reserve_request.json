@@ -1,0 +1,8 @@
+{
+  "schema": "ReserveRequest",
+  "provenance": "CONSTRUCTED_CONTRACT_EXAMPLE_NOT_LIVE_API",
+  "payload": {
+    "quote_id": "44444444-4444-4444-8444-444444444444",
+    "accepted_quote_hash": "015096627b5721cac8920c727562396e8a4e14d17b19ffa7cff466c6af31a9cd"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "kind": "CONTROLLED_SYNTHETIC",
+  "author": "Project specification",
+  "purpose": "Deterministic rules verification, not demand or sales evidence",
+  "prices": "Invented fixed test inputs in RUB minor units",
+  "inventory": "Invented fixed pack counts",
+  "media": "No real product photographs or live ML outputs included",
+  "case_dataset_usage": "Source business XLSX is not used as item catalog or model training data"
+}

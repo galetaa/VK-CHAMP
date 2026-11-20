@@ -1,0 +1,10 @@
+.venv
+.env
+.git
+__pycache__
+.pytest_cache
+.ruff_cache
+.hypothesis
+var
+reports
+VK_CaseChamp_TZ_v1

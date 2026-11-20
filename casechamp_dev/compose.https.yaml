@@ -1,0 +1,5 @@
+services:
+  web:
+    ports: !override
+      - "${CASECHAMP_BIND_ADDRESS:-0.0.0.0}:80:80"
+      - "${CASECHAMP_BIND_ADDRESS:-0.0.0.0}:443:443"

@@ -1,0 +1,11 @@
+{
+  "schema": "SolveResult",
+  "provenance": "CONSTRUCTED_CONTRACT_EXAMPLE_NOT_LIVE_API",
+  "payload": {
+    "outcome": "NO_PURCHASE_REQUIRED",
+    "quote": null,
+    "reasons": [],
+    "minimum_total_minor": 0,
+    "verification_passed": true
+  }
+}

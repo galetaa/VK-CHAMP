@@ -1,0 +1,147 @@
+{
+  "spec_version": "1.0.0",
+  "product": "Собрать как в посте",
+  "environment": "demonstration_only",
+  "stack": {
+    "developer_1": "TypeScript React Vite VKUI",
+    "developer_2": "Python 3.12 uv FastAPI OR-Tools",
+    "database": "PostgreSQL 17",
+    "node": "24 LTS",
+    "api": "REST JSON OpenAPI 3.1 /api/v1"
+  },
+  "limits": {
+    "guests_min": 1,
+    "guests_max": 12,
+    "budget_minor_min": 50000,
+    "budget_minor_max": 5000000,
+    "owned_units_max": 99,
+    "catalog_sku_max": 500,
+    "pack_units_min": 1,
+    "pack_units_max": 24,
+    "price_minor_max": 10000000,
+    "stock_packs_max": 10000,
+    "quote_ttl_seconds": 900,
+    "reservation_ttl_seconds": 600,
+    "sandbox_ttl_hours": 24,
+    "price_minor_min": 1
+  },
+  "slot_order": [
+    "dinner_plate",
+    "dessert_plate",
+    "drinking_glass",
+    "cutlery_set",
+    "napkin",
+    "tablecloth"
+  ],
+  "required_slots": [
+    "dinner_plate",
+    "drinking_glass",
+    "cutlery_set",
+    "napkin"
+  ],
+  "optional_slots": {
+    "dessert_plate": {
+      "default_enabled": false,
+      "units": "guest_count"
+    },
+    "tablecloth": {
+      "default_enabled": true,
+      "units": 1
+    }
+  },
+  "quantity_rules": "Each SKU belongs to exactly one slot. At most one SKU per slot. required_units per guest for 5 slots, tablecloth 1. owned_units are accepted 0..99 and effective_owned=min(owned,required). Select ceil((required-effective_owned)/pack_units) packs. No mixed SKU inside slot; alternatives require seller approval. Owned products are buyer-declared, not verified for quality or geometry.",
+  "geometry": "Rectangular table only. Buyer table length_cm 60..300 and width_cm 40..150 when buying tablecloth. Cloth length/width allows rotation; drop per side 15..30 cm inclusive. Hard checks integer: table_dimension+30 <= cloth_dimension <= table_dimension+60. Skip when tablecloth disabled or fully owned.",
+  "preferences": "Hard color allowlist by slot optional, exact prelinked SKU if buyer sets EXACT_ONLY. Default seller-approved alternatives allowed. Soft color target optional. Do not infer material/compatibility beyond schema.",
+  "objective_order": [
+    "min number of substituted slots relative to seller confirmed primary SKU",
+    "min number of soft color mismatches",
+    "min total excess units from pack rounding",
+    "min total price including fixed shipping",
+    "min tuple of SKU ids in slot_order ASCII; zero purchase represented empty string"
+  ],
+  "fulfillment": {
+    "modes": [
+      "PICKUP",
+      "LOCAL_DELIVERY"
+    ],
+    "pickup_fee_minor": 0,
+    "local_delivery_fee_minor": 30000,
+    "local_delivery_zones": [
+      "CENTER",
+      "NORTH"
+    ],
+    "zone_selection": "explicit enum, no address/phone/payment in demo; unsupported zone rejects delivery, no silent mode switch"
+  },
+  "determinism": "Pure solve request + immutable catalog/template/inventory snapshot + algorithm version -> same canonical solution. IDs/timestamps excluded from equality. ML output not assumed deterministic. Only seller-confirmed mappings can publish. CP-SAT single worker, fixed seed 42, lexicographic phases; every objective must prove optimal before sellable quote. Limit -> COMPUTATION_LIMIT no fake INFEASIBLE. Frozen environment/package lock mandatory.",
+  "commerce": "quote immutable snapshot, up to15min no stock/pricehold; reserve refresh relevantproduct_version and fulfillment_version, stockavailability only; price/items fixed up to10min, deadline cap. Confirm createsTEST_CONFIRMED. Explicit order cancel returns stock once; consumedreservationremainsCONFIRMED; withdrawal does notcancelorders.",
+  "auth": "isolated sandbox per visit; opaque random HttpOnly SameSite=Lax cookie. Sandbox role is demo role, not real authorization; seller/buyer switching allowed inside own sandbox only. All operations scoped server-side. No VK auth required.",
+  "modes": [
+    "CORE deterministic import, manual confirmed mapping, selection, test checkout, verification",
+    "ML assisted extraction and candidate retrieval, fails back to manual; required for full showcase but cannot block core",
+    "VK native integration outside v1 scope until official permissions verified"
+  ],
+  "notes": "Authority: this baseline overrides draft differences. No entrepreneur interviews mandatory. No fabricated commercial lift. No website/app implementation requested yet; deliver spec+contracts+fixtures+acceptance.",
+  "deadline": {
+    "timezone": "Europe/Moscow",
+    "needed_by": "nullable ISO date, today..today+30 inclusive",
+    "form_default": "business_date+7 days",
+    "sku_handling_days": "integer 0..14",
+    "transit_days": {
+      "PICKUP": 0,
+      "LOCAL_DELIVERY": 1
+    },
+    "earliest_date": "business_date + max(selected sku handling_days) + transit_days",
+    "latest_start_date": "needed_by - lead_days",
+    "expiry_cap": "midnight Europe/Moscow after latest_start_date; quote/reservation expires_at=min(now+ttl,cap); null deadline has no cap"
+  },
+  "selection_mode": "per-slot enum EXACT_ONLY or APPROVED_ALTERNATIVES, default APPROVED_ALTERNATIVES",
+  "no_purchase": "all selected slots covered by owned_units => NO_PURCHASE_REQUIRED, all totals0, noquote/reserve/order",
+  "operational": {
+    "solver_workers": 1,
+    "solver_seed": 42,
+    "max_deterministic_time_per_phase": 0.2,
+    "wall_watchdog_seconds": 5,
+    "db_lock_timeout_seconds": 2,
+    "db_statement_timeout_seconds": 5,
+    "expiry_worker_interval_seconds": 1
+  },
+  "concurrency": "sandbox row mutex first, then SKU rows in ASCII order; solve/ML outside transaction; clock sampled after locks; changes serialized per sandbox",
+  "identity_immutable": [
+    "slot_id",
+    "pack_units",
+    "color",
+    "length_cm",
+    "width_cm"
+  ],
+  "stock_constraint": "0 <= reserved_packs <= stock_on_hand_packs; stock_on_hand_packs+returnable_packs<=10000; returnable=sum active TEST_CONFIRMED order packs",
+  "idempotency_namespace": [
+    "sandbox_id",
+    "epoch",
+    "operationId",
+    "Idempotency-Key"
+  ],
+  "api_counts": {
+    "operations": 36,
+    "schemas": 54
+  },
+  "ui_defaults": {
+    "guest_count": 4,
+    "budget_minor": 500000,
+    "owned_units": 0,
+    "table_dimensions": {
+      "length_cm": 160,
+      "width_cm": 80
+    },
+    "needed_by": "business_date+7",
+    "fulfillment": {
+      "mode": "PICKUP",
+      "zone": null
+    }
+  },
+  "normalization": {
+    "allowed_colors": "array unique enum strings; []meansnohardfilter; nullinvalid",
+    "PICKUP_zone": "mustbenull otherwise422",
+    "disabled_slot": "all shapevalidation first; then irrelevant prefs/owned normalized todefaults",
+    "all_owned": "skip shipping-zone andgeometrybusinesschecks; outcomeNO_PURCHASE_REQUIRED"
+  }
+}

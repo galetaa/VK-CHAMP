@@ -1,0 +1,402 @@
+{
+  "origin": "http://localhost:18080",
+  "platform": "Linux-6.12.117+deb13-amd64-x86_64-with-glibc2.41",
+  "scope": "API wall time at the declared rate limits; first quote after creating a new sandbox",
+  "summary": {
+    "17": {
+      "first_quote": {
+        "attempts": 1,
+        "p50_ms": 2320.843,
+        "p95_ms": 2320.843,
+        "max_ms": 2320.843,
+        "quoted_p95_ms": 2320.843,
+        "outcomes": {
+          "QUOTED": 1
+        }
+      },
+      "sequential": {
+        "attempts": 3,
+        "p50_ms": 278.47,
+        "p95_ms": 305.241,
+        "max_ms": 305.241,
+        "quoted_p95_ms": 305.241,
+        "outcomes": {
+          "QUOTED": 3
+        }
+      },
+      "concurrent_10": {
+        "attempts": 10,
+        "p50_ms": 104.369,
+        "p95_ms": 984.474,
+        "max_ms": 984.474,
+        "quoted_p95_ms": 984.474,
+        "outcomes": {
+          "RATE_LIMITED": 5,
+          "QUOTED": 5
+        }
+      }
+    },
+    "100": {
+      "first_quote": {
+        "attempts": 1,
+        "p50_ms": 310.063,
+        "p95_ms": 310.063,
+        "max_ms": 310.063,
+        "quoted_p95_ms": 310.063,
+        "outcomes": {
+          "QUOTED": 1
+        }
+      },
+      "sequential": {
+        "attempts": 3,
+        "p50_ms": 276.057,
+        "p95_ms": 331.478,
+        "max_ms": 331.478,
+        "quoted_p95_ms": 331.478,
+        "outcomes": {
+          "QUOTED": 3
+        }
+      },
+      "concurrent_10": {
+        "attempts": 10,
+        "p50_ms": 69.649,
+        "p95_ms": 899.38,
+        "max_ms": 899.38,
+        "quoted_p95_ms": 899.38,
+        "outcomes": {
+          "RATE_LIMITED": 5,
+          "QUOTED": 5
+        }
+      }
+    },
+    "500": {
+      "first_quote": {
+        "attempts": 1,
+        "p50_ms": 378.263,
+        "p95_ms": 378.263,
+        "max_ms": 378.263,
+        "quoted_p95_ms": 378.263,
+        "outcomes": {
+          "QUOTED": 1
+        }
+      },
+      "sequential": {
+        "attempts": 3,
+        "p50_ms": 396.247,
+        "p95_ms": 399.167,
+        "max_ms": 399.167,
+        "quoted_p95_ms": 399.167,
+        "outcomes": {
+          "QUOTED": 3
+        }
+      },
+      "concurrent_10": {
+        "attempts": 10,
+        "p50_ms": 58.937,
+        "p95_ms": 1209.363,
+        "max_ms": 1209.363,
+        "quoted_p95_ms": 1209.363,
+        "outcomes": {
+          "RATE_LIMITED": 5,
+          "QUOTED": 5
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "sku_count": 17,
+      "phase": "first_quote",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 2320.843
+    },
+    {
+      "sku_count": 17,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 278.238
+    },
+    {
+      "sku_count": 17,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 278.47
+    },
+    {
+      "sku_count": 17,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 305.241
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 80.003
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 826.694
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 968.324
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 96.369
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 984.474
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 898.438
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 921.993
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 80.633
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 104.369
+    },
+    {
+      "sku_count": 17,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 103.854
+    },
+    {
+      "sku_count": 100,
+      "phase": "first_quote",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 310.063
+    },
+    {
+      "sku_count": 100,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 263.81
+    },
+    {
+      "sku_count": 100,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 331.478
+    },
+    {
+      "sku_count": 100,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 276.057
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 69.649
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 66.214
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 825.137
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 57.701
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 841.757
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 899.38
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 880.344
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 52.609
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 67.069
+    },
+    {
+      "sku_count": 100,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 864.631
+    },
+    {
+      "sku_count": 500,
+      "phase": "first_quote",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 378.263
+    },
+    {
+      "sku_count": 500,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 396.247
+    },
+    {
+      "sku_count": 500,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 399.167
+    },
+    {
+      "sku_count": 500,
+      "phase": "sequential",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 393.233
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 56.083
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 1178.257
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 56.231
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 1131.476
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 1209.363
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 874.865
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 48.09
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 200,
+      "outcome": "QUOTED",
+      "wall_ms": 1098.839
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 45.269
+    },
+    {
+      "sku_count": 500,
+      "phase": "concurrent_10",
+      "http_status": 429,
+      "outcome": "RATE_LIMITED",
+      "wall_ms": 58.937
+    }
+  ]
+}

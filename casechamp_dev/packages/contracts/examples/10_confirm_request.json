@@ -1,0 +1,8 @@
+{
+  "schema": "ConfirmRequest",
+  "provenance": "CONSTRUCTED_CONTRACT_EXAMPLE_NOT_LIVE_API",
+  "payload": {
+    "reservation_id": "55555555-5555-4555-8555-555555555555",
+    "accepted_quote_hash": "015096627b5721cac8920c727562396e8a4e14d17b19ffa7cff466c6af31a9cd"
+  }
+}

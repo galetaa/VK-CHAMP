@@ -1,0 +1,25 @@
+{
+  "schema": "Error",
+  "provenance": "CONSTRUCTED_CONTRACT_EXAMPLE_NOT_LIVE_API",
+  "payload": {
+    "error": {
+      "code": "QUOTE_STALE",
+      "message": "Условия предложения изменились. Получите новый расчёт.",
+      "field_errors": [],
+      "details": {
+        "reason_codes": [
+          "PRODUCT_VERSION_CHANGED"
+        ],
+        "refresh_required": true,
+        "retryable": false,
+        "retry_after_ms": null
+      }
+    },
+    "meta": {
+      "request_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "server_now": "2026-11-20T10:01:00.000Z",
+      "sandbox_epoch": 1,
+      "idempotency_replayed": false
+    }
+  }
+}

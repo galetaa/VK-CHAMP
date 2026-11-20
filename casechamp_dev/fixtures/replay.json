@@ -1,0 +1,62 @@
+{
+  "provenance": "Hand-authored control response for exact-input REPLAY, no live model output.",
+  "records": {
+    "cadb4842df64585c5eaaed7a99eca0380126f86f85a893f28d349da79680fe38": {
+      "origin_revision": "fixture-authored-1.0.0",
+      "data": {
+        "intent_draft": {
+          "guest_count": 6
+        },
+        "evidence": [
+          {
+            "field": "guest_count",
+            "quote": "6 гостей"
+          }
+        ],
+        "unresolved_fields": []
+      }
+    },
+    "c1d90e86aa8416ba3faf9d35468da22bc0d55d372c2f2717f3d678f054d4e35b": {
+      "origin_revision": "fixture-authored-1.0.0",
+      "data": {
+        "mapping_suggestions": [
+          {
+            "slot_id": "dinner_plate",
+            "evidence_text": "Белая тарелка на изображении.",
+            "needs_review": true,
+            "candidates": [
+              {
+                "sku_id": "PLATE_WHITE1",
+                "rank": 1,
+                "similarity_score": null,
+                "source_asset_id": null,
+                "frame_ms": null,
+                "bbox_1000": [
+                  243,
+                  250,
+                  781,
+                  787
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "e7ab26ee708018867787be0e89764d7f15e8d90e5de8c53e42025c02946cc9e6": {
+      "origin_revision": "fixture-authored-1.0.0",
+      "data": {
+        "intent_draft": {
+          "guest_count": 6
+        },
+        "evidence": [
+          {
+            "field": "guest_count",
+            "quote": "6 гостей"
+          }
+        ],
+        "unresolved_fields": []
+      }
+    }
+  }
+}

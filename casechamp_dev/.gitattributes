@@ -1,0 +1,4 @@
+# Preserve the byte representation of the versioned CSV contracts and fixtures.
+packages/contracts/*.csv -text whitespace=cr-at-eol
+fixtures/*.csv -text whitespace=cr-at-eol
+tests/reference_oracle.py whitespace=-blank-at-eof

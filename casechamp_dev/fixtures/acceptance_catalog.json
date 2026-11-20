@@ -1,0 +1,1268 @@
+{
+  "fixture_id": "AC-FIX-01",
+  "cases": [
+    {
+      "id": "base",
+      "snapshot": {
+        "business_date": "2026-11-20",
+        "currency": "RUB",
+        "catalog": [
+          {
+            "sku_id": "AC-PL-01",
+            "slot_id": "dinner_plate",
+            "title": "AC-PL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 25000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-DS-01",
+            "slot_id": "dessert_plate",
+            "title": "AC-DS-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-GL-01",
+            "slot_id": "drinking_glass",
+            "title": "AC-GL-01",
+            "color": "TRANSPARENT",
+            "pack_units": 1,
+            "price_minor": 10000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CU-01",
+            "slot_id": "cutlery_set",
+            "title": "AC-CU-01",
+            "color": "SILVER",
+            "pack_units": 4,
+            "price_minor": 36000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-NA-01",
+            "slot_id": "napkin",
+            "title": "AC-NA-01",
+            "color": "WHITE",
+            "pack_units": 4,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CL-01",
+            "slot_id": "tablecloth",
+            "title": "AC-CL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 50000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": 190,
+            "width_cm": 130,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          }
+        ],
+        "template_slots": [
+          {
+            "slot_id": "dinner_plate",
+            "primary_sku_id": "AC-PL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "primary_sku_id": "AC-DS-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "primary_sku_id": "AC-GL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "primary_sku_id": "AC-CU-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "napkin",
+            "primary_sku_id": "AC-NA-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "primary_sku_id": "AC-CL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          }
+        ],
+        "fulfillment_version": 1
+      },
+      "request": {
+        "scenario_revision_id": "11111111-1111-4111-8111-111111111111",
+        "guest_count": 4,
+        "budget_minor": 250000,
+        "currency": "RUB",
+        "fulfillment": {
+          "mode": "PICKUP",
+          "zone": null
+        },
+        "needed_by": "2026-11-27",
+        "table_dimensions": {
+          "length_cm": 140,
+          "width_cm": 80
+        },
+        "slots": [
+          {
+            "slot_id": "dinner_plate",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "enabled": false,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "napkin",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          }
+        ],
+        "client_run_id": "33333333-3333-4333-8333-333333333333"
+      },
+      "expected": {
+        "outcome": "QUOTED",
+        "lines": [
+          {
+            "slot_id": "dinner_plate",
+            "sku_id": "AC-PL-01",
+            "pack_count": 4,
+            "pack_units": 1,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 25000,
+            "line_total_minor": 100000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "drinking_glass",
+            "sku_id": "AC-GL-01",
+            "pack_count": 4,
+            "pack_units": 1,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 10000,
+            "line_total_minor": 40000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "cutlery_set",
+            "sku_id": "AC-CU-01",
+            "pack_count": 1,
+            "pack_units": 4,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 36000,
+            "line_total_minor": 36000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "napkin",
+            "sku_id": "AC-NA-01",
+            "pack_count": 1,
+            "pack_units": 4,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 12000,
+            "line_total_minor": 12000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "tablecloth",
+            "sku_id": "AC-CL-01",
+            "pack_count": 1,
+            "pack_units": 1,
+            "delivered_units": 1,
+            "required_units": 1,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 50000,
+            "line_total_minor": 50000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          }
+        ],
+        "subtotal_minor": 238000,
+        "shipping_minor": 0,
+        "total_minor": 238000,
+        "objective": {
+          "substituted_slots": 0,
+          "soft_color_mismatches": 0,
+          "excess_units": 0,
+          "total_minor": 238000,
+          "sku_tuple": [
+            "AC-PL-01",
+            "",
+            "AC-GL-01",
+            "AC-CU-01",
+            "AC-NA-01",
+            "AC-CL-01"
+          ]
+        },
+        "earliest_date": "2026-11-20",
+        "minimum_total_minor": 238000
+      }
+    },
+    {
+      "id": "delivery",
+      "snapshot": {
+        "business_date": "2026-11-20",
+        "currency": "RUB",
+        "catalog": [
+          {
+            "sku_id": "AC-PL-01",
+            "slot_id": "dinner_plate",
+            "title": "AC-PL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 25000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-DS-01",
+            "slot_id": "dessert_plate",
+            "title": "AC-DS-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-GL-01",
+            "slot_id": "drinking_glass",
+            "title": "AC-GL-01",
+            "color": "TRANSPARENT",
+            "pack_units": 1,
+            "price_minor": 10000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CU-01",
+            "slot_id": "cutlery_set",
+            "title": "AC-CU-01",
+            "color": "SILVER",
+            "pack_units": 4,
+            "price_minor": 36000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-NA-01",
+            "slot_id": "napkin",
+            "title": "AC-NA-01",
+            "color": "WHITE",
+            "pack_units": 4,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CL-01",
+            "slot_id": "tablecloth",
+            "title": "AC-CL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 50000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": 190,
+            "width_cm": 130,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          }
+        ],
+        "template_slots": [
+          {
+            "slot_id": "dinner_plate",
+            "primary_sku_id": "AC-PL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "primary_sku_id": "AC-DS-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "primary_sku_id": "AC-GL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "primary_sku_id": "AC-CU-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "napkin",
+            "primary_sku_id": "AC-NA-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "primary_sku_id": "AC-CL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          }
+        ],
+        "fulfillment_version": 1
+      },
+      "request": {
+        "scenario_revision_id": "11111111-1111-4111-8111-111111111111",
+        "guest_count": 4,
+        "budget_minor": 270000,
+        "currency": "RUB",
+        "fulfillment": {
+          "mode": "LOCAL_DELIVERY",
+          "zone": "CENTER"
+        },
+        "needed_by": "2026-11-27",
+        "table_dimensions": {
+          "length_cm": 140,
+          "width_cm": 80
+        },
+        "slots": [
+          {
+            "slot_id": "dinner_plate",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "enabled": false,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "napkin",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          }
+        ],
+        "client_run_id": "33333333-3333-4333-8333-333333333333"
+      },
+      "expected": {
+        "outcome": "QUOTED",
+        "lines": [
+          {
+            "slot_id": "dinner_plate",
+            "sku_id": "AC-PL-01",
+            "pack_count": 4,
+            "pack_units": 1,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 25000,
+            "line_total_minor": 100000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "drinking_glass",
+            "sku_id": "AC-GL-01",
+            "pack_count": 4,
+            "pack_units": 1,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 10000,
+            "line_total_minor": 40000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "cutlery_set",
+            "sku_id": "AC-CU-01",
+            "pack_count": 1,
+            "pack_units": 4,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 36000,
+            "line_total_minor": 36000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "napkin",
+            "sku_id": "AC-NA-01",
+            "pack_count": 1,
+            "pack_units": 4,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 12000,
+            "line_total_minor": 12000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "tablecloth",
+            "sku_id": "AC-CL-01",
+            "pack_count": 1,
+            "pack_units": 1,
+            "delivered_units": 1,
+            "required_units": 1,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 50000,
+            "line_total_minor": 50000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          }
+        ],
+        "subtotal_minor": 238000,
+        "shipping_minor": 30000,
+        "total_minor": 268000,
+        "objective": {
+          "substituted_slots": 0,
+          "soft_color_mismatches": 0,
+          "excess_units": 0,
+          "total_minor": 268000,
+          "sku_tuple": [
+            "AC-PL-01",
+            "",
+            "AC-GL-01",
+            "AC-CU-01",
+            "AC-NA-01",
+            "AC-CL-01"
+          ]
+        },
+        "earliest_date": "2026-11-21",
+        "minimum_total_minor": 268000
+      }
+    },
+    {
+      "id": "price_12000",
+      "snapshot": {
+        "business_date": "2026-11-20",
+        "currency": "RUB",
+        "catalog": [
+          {
+            "sku_id": "AC-PL-01",
+            "slot_id": "dinner_plate",
+            "title": "AC-PL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 25000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-DS-01",
+            "slot_id": "dessert_plate",
+            "title": "AC-DS-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-GL-01",
+            "slot_id": "drinking_glass",
+            "title": "AC-GL-01",
+            "color": "TRANSPARENT",
+            "pack_units": 1,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CU-01",
+            "slot_id": "cutlery_set",
+            "title": "AC-CU-01",
+            "color": "SILVER",
+            "pack_units": 4,
+            "price_minor": 36000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-NA-01",
+            "slot_id": "napkin",
+            "title": "AC-NA-01",
+            "color": "WHITE",
+            "pack_units": 4,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CL-01",
+            "slot_id": "tablecloth",
+            "title": "AC-CL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 50000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": 190,
+            "width_cm": 130,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          }
+        ],
+        "template_slots": [
+          {
+            "slot_id": "dinner_plate",
+            "primary_sku_id": "AC-PL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "primary_sku_id": "AC-DS-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "primary_sku_id": "AC-GL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "primary_sku_id": "AC-CU-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "napkin",
+            "primary_sku_id": "AC-NA-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "primary_sku_id": "AC-CL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          }
+        ],
+        "fulfillment_version": 1
+      },
+      "request": {
+        "scenario_revision_id": "11111111-1111-4111-8111-111111111111",
+        "guest_count": 4,
+        "budget_minor": 250000,
+        "currency": "RUB",
+        "fulfillment": {
+          "mode": "PICKUP",
+          "zone": null
+        },
+        "needed_by": "2026-11-27",
+        "table_dimensions": {
+          "length_cm": 140,
+          "width_cm": 80
+        },
+        "slots": [
+          {
+            "slot_id": "dinner_plate",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "enabled": false,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "napkin",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          }
+        ],
+        "client_run_id": "33333333-3333-4333-8333-333333333333"
+      },
+      "expected": {
+        "outcome": "QUOTED",
+        "lines": [
+          {
+            "slot_id": "dinner_plate",
+            "sku_id": "AC-PL-01",
+            "pack_count": 4,
+            "pack_units": 1,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 25000,
+            "line_total_minor": 100000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "drinking_glass",
+            "sku_id": "AC-GL-01",
+            "pack_count": 4,
+            "pack_units": 1,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 12000,
+            "line_total_minor": 48000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "cutlery_set",
+            "sku_id": "AC-CU-01",
+            "pack_count": 1,
+            "pack_units": 4,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 36000,
+            "line_total_minor": 36000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "napkin",
+            "sku_id": "AC-NA-01",
+            "pack_count": 1,
+            "pack_units": 4,
+            "delivered_units": 4,
+            "required_units": 4,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 12000,
+            "line_total_minor": 12000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          },
+          {
+            "slot_id": "tablecloth",
+            "sku_id": "AC-CL-01",
+            "pack_count": 1,
+            "pack_units": 1,
+            "delivered_units": 1,
+            "required_units": 1,
+            "effective_owned_units": 0,
+            "excess_units": 0,
+            "unit_pack_price_minor": 50000,
+            "line_total_minor": 50000,
+            "substitution": false,
+            "soft_color_mismatch": false,
+            "handling_days": 0
+          }
+        ],
+        "subtotal_minor": 246000,
+        "shipping_minor": 0,
+        "total_minor": 246000,
+        "objective": {
+          "substituted_slots": 0,
+          "soft_color_mismatches": 0,
+          "excess_units": 0,
+          "total_minor": 246000,
+          "sku_tuple": [
+            "AC-PL-01",
+            "",
+            "AC-GL-01",
+            "AC-CU-01",
+            "AC-NA-01",
+            "AC-CL-01"
+          ]
+        },
+        "earliest_date": "2026-11-20",
+        "minimum_total_minor": 246000
+      }
+    },
+    {
+      "id": "price_15000",
+      "snapshot": {
+        "business_date": "2026-11-20",
+        "currency": "RUB",
+        "catalog": [
+          {
+            "sku_id": "AC-PL-01",
+            "slot_id": "dinner_plate",
+            "title": "AC-PL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 25000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-DS-01",
+            "slot_id": "dessert_plate",
+            "title": "AC-DS-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-GL-01",
+            "slot_id": "drinking_glass",
+            "title": "AC-GL-01",
+            "color": "TRANSPARENT",
+            "pack_units": 1,
+            "price_minor": 15000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 4,
+            "reserved_packs": 0,
+            "available_packs": 4,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CU-01",
+            "slot_id": "cutlery_set",
+            "title": "AC-CU-01",
+            "color": "SILVER",
+            "pack_units": 4,
+            "price_minor": 36000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-NA-01",
+            "slot_id": "napkin",
+            "title": "AC-NA-01",
+            "color": "WHITE",
+            "pack_units": 4,
+            "price_minor": 12000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": null,
+            "width_cm": null,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          },
+          {
+            "sku_id": "AC-CL-01",
+            "slot_id": "tablecloth",
+            "title": "AC-CL-01",
+            "color": "WHITE",
+            "pack_units": 1,
+            "price_minor": 50000,
+            "currency": "RUB",
+            "stock_on_hand_packs": 1,
+            "reserved_packs": 0,
+            "available_packs": 1,
+            "active": true,
+            "handling_days": 0,
+            "length_cm": 190,
+            "width_cm": 130,
+            "image_asset_id": null,
+            "product_version": 1,
+            "inventory_version": 1
+          }
+        ],
+        "template_slots": [
+          {
+            "slot_id": "dinner_plate",
+            "primary_sku_id": "AC-PL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "primary_sku_id": "AC-DS-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "primary_sku_id": "AC-GL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "primary_sku_id": "AC-CU-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "napkin",
+            "primary_sku_id": "AC-NA-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "primary_sku_id": "AC-CL-01",
+            "alternative_sku_ids": [],
+            "mapping_status": "CONFIRMED",
+            "mapping_source": "MANUAL",
+            "source_job_id": null
+          }
+        ],
+        "fulfillment_version": 1
+      },
+      "request": {
+        "scenario_revision_id": "11111111-1111-4111-8111-111111111111",
+        "guest_count": 4,
+        "budget_minor": 250000,
+        "currency": "RUB",
+        "fulfillment": {
+          "mode": "PICKUP",
+          "zone": null
+        },
+        "needed_by": "2026-11-27",
+        "table_dimensions": {
+          "length_cm": 140,
+          "width_cm": 80
+        },
+        "slots": [
+          {
+            "slot_id": "dinner_plate",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "dessert_plate",
+            "enabled": false,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "drinking_glass",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "cutlery_set",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "napkin",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          },
+          {
+            "slot_id": "tablecloth",
+            "enabled": true,
+            "owned_units": 0,
+            "selection_mode": "EXACT_ONLY",
+            "allowed_colors": [],
+            "preferred_color": null
+          }
+        ],
+        "client_run_id": "33333333-3333-4333-8333-333333333333"
+      },
+      "expected": {
+        "outcome": "INFEASIBLE",
+        "reason_code": "BUDGET_TOO_LOW",
+        "slot_id": null,
+        "minimum_total_minor": 258000
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "scope": "dedicated synthetic demonstration database only",
+  "dump_sha256": "8abd7bd866c622b63cf6cc0c5d1e335c54ec2d360b3a7a44e26f7a64602ec40e",
+  "source": {
+    "products": 1303,
+    "scenario_revisions": 18,
+    "quotes": 57,
+    "reservations": 12,
+    "orders": 3,
+    "outbox_events": 111,
+    "test_order_total_minor": 1320000
+  },
+  "restored": {
+    "products": 1303,
+    "scenario_revisions": 18,
+    "quotes": 57,
+    "reservations": 12,
+    "orders": 3,
+    "outbox_events": 111,
+    "test_order_total_minor": 1320000
+  }
+}
