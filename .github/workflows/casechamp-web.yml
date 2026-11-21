@@ -1,0 +1,49 @@
+name: CaseChamp web v2
+
+on:
+  pull_request:
+    paths:
+      - 'casechamp_dev/**'
+      - '.github/workflows/casechamp-web.yml'
+  push:
+    paths:
+      - 'casechamp_dev/**'
+      - '.github/workflows/casechamp-web.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CASECHAMP_TEST_ORIGIN: http://localhost:18081
+    defaults:
+      run:
+        working-directory: casechamp_dev/apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: casechamp_dev/apps/web/.node-version
+          cache: npm
+          cache-dependency-path: casechamp_dev/apps/web/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - name: Launch v2
+        working-directory: casechamp_dev
+        run: |
+          mkdir -p var
+          python3 scripts/setup_demo_env.py --output var/compose-web-ci.env --port 18081
+          docker compose --env-file var/compose-web-ci.env -p casechamp-web-ci -f compose.yaml -f compose.v2.yaml up --build -d --wait
+      - run: npm run test:e2e
+      - name: Stop v2
+        if: always()
+        working-directory: casechamp_dev
+        run: |
+          if test -f var/compose-web-ci.env; then
+            docker compose --env-file var/compose-web-ci.env -p casechamp-web-ci -f compose.yaml -f compose.v2.yaml down --volumes
+          fi

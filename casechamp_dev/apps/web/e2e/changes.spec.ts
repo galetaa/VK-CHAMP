@@ -1,0 +1,120 @@
+import { expect, test } from '@playwright/test';
+import { button, draft, heading, join, link, publish, start, total } from './helpers';
+
+test('UI-03/04/06 · поля, сохранение, конфликт и предпросмотр пустого черновика', async ({ page, browser }) => {
+  await start(page);
+  await page.goto('/app/catalog');
+  await button(page, 'Новый SKU').click();
+  await button(page, 'Сохранить товар').click();
+  await expect(page.getByText(/Введите 1–40 символов/)).toBeVisible();
+  await expect(page.getByLabel('Код SKU · обязательно')).toBeFocused();
+  await page.getByLabel('Код SKU · обязательно').fill('DEMO_TEST');
+  await page.getByLabel(/Название/).fill('Новая чашка');
+  const price = page.getByLabel(/Цена, ₽/);
+  await price.fill('0,001');
+  await button(page, 'Сохранить товар').click();
+  await expect(price).toBeFocused();
+  await price.fill('12,05');
+  await button(page, 'Сохранить товар').click();
+  await expect(page.getByText('Товар сохранён.')).toBeVisible();
+  await expect(page.getByText('12,05 ₽')).toBeVisible();
+
+  await page.goto('/app/offers/new');
+  await button(page, 'Создать черновик').click();
+  await expect(heading(page, 'Мастер предложения')).toBeVisible();
+  const empty = new URL(page.url()).pathname;
+  await page.goto(empty.replace(/\/edit$/, '/preview'));
+  await expect(button(page, 'Опубликовать в демонстрации')).toBeDisabled();
+  await expect(page.getByText('Предпросмотр · заказ недоступен')).toBeVisible();
+  await expect(page.getByText('Проверьте условия перед публикацией.')).toBeVisible();
+
+  const collaborator = await join(page, browser, 'оператора');
+  try {
+    const editing = await draft(page, 'Первый черновик');
+    await button(page, 'Сохранить черновик').click();
+    await expect(page.getByText('Черновик сохранён.')).toBeVisible();
+    await collaborator.user.goto(editing);
+    const title = 'Название для публикации (обязательно)';
+    await expect(collaborator.user.getByLabel(title)).toHaveValue('Первый черновик');
+    await collaborator.user.getByLabel(title).fill('Правка оператора');
+    await page.getByRole('button', { name: '1 Задача' }).click();
+    await page.getByLabel(title).fill('Правка владельца');
+    await button(page, 'Сохранить черновик').click();
+    await expect(page.getByText('Черновик сохранён.')).toBeVisible();
+    await button(collaborator.user, 'Сохранить черновик').click();
+    const comparison = collaborator.user.getByRole('heading', { name: 'Сравнение черновиков' });
+    const load = button(collaborator.user, 'Загрузить и сравнить');
+    await expect(comparison.or(load)).toBeVisible();
+    if (await load.isVisible()) await load.click();
+    await expect(comparison).toBeVisible();
+    await expect(collaborator.user.getByText('Правка оператора', { exact: true })).toBeVisible();
+    await expect(collaborator.user.getByText('Правка владельца', { exact: true })).toBeVisible();
+    await expect(button(collaborator.user, 'Сохранить черновик')).toBeDisabled();
+    await button(collaborator.user, 'Вернуться к своим правкам').click();
+    await expect(collaborator.user.getByLabel(title)).toHaveValue('Правка оператора');
+    await link(collaborator.user, 'К карточке предложения').click();
+    await expect(collaborator.user.getByRole('dialog')).toContainText('Введённые изменения ещё не сохранены.');
+    await collaborator.user.keyboard.press('Escape');
+    await button(collaborator.user, 'Сохранить черновик').click();
+    await expect(collaborator.user.getByText('Черновик сохранён.')).toBeVisible();
+  } finally { await collaborator.context.close(); }
+});
+
+test('UI-07/08/15 · новая цена, нехватка товара и архивирование активного резерва', async ({ page, browser }) => {
+  await start(page);
+  const offer = await publish(page, 'Чай с кружками');
+  const buyer = await join(page, browser, 'покупателя');
+  try {
+    await buyer.user.goto(offer.share);
+    await buyer.user.getByLabel(/Количество одинаковых/).fill('2');
+    await buyer.user.getByLabel(/Способ получения/).selectOption('COURIER_ZONE_A');
+    await button(buyer.user, 'Проверить условия').click();
+    await total(buyer.user, '4 680,00 ₽');
+
+    await page.goto('/app/catalog');
+    await button(page, 'Редактировать MUG').click();
+    await page.getByLabel(/Цена, ₽/).fill('1390,00');
+    await button(page, 'Сохранить товар').click();
+    await expect(page.getByText('Товар сохранён.')).toBeVisible();
+    await button(buyer.user, 'Зарезервировать на 5 минут').click();
+    await expect(buyer.user.getByText('Условия изменились. Проверьте новый расчёт.')).toBeVisible();
+    await expect(buyer.user.getByRole('heading', { name: 'История расчёта' })).toBeVisible();
+    await total(buyer.user, '4 680,00 ₽');
+    await expect(button(buyer.user, 'Зарезервировать на 5 минут')).toHaveCount(0);
+    await link(buyer.user, 'Проверить условия заново').click();
+    await expect(buyer.user.getByText('Продавцу нужно обновить условия предложения.')).toBeVisible();
+    await expect(button(buyer.user, 'Проверить условия')).toBeDisabled();
+    await page.goto(offer.detail + '/preview');
+    await button(page, 'Опубликовать в демонстрации').click();
+    await expect(page.getByRole('heading', { name: 'Опубликованная версия 2' })).toBeVisible();
+    await buyer.user.reload();
+    await button(buyer.user, 'Проверить условия').click();
+    await total(buyer.user, '2 290,00 ₽');
+    await button(buyer.user, 'Зарезервировать на 5 минут').click();
+    await expect(heading(buyer.user, 'Резерв товаров')).toBeVisible();
+    await total(buyer.user, '2 290,00 ₽');
+    const held = new URL(buyer.user.url()).pathname;
+    await page.goto('/app/catalog');
+    await button(page, 'Редактировать MUG').click();
+    await page.getByLabel(/остаток/).fill('0');
+    await button(page, 'Сохранить товар').click();
+    await expect(page.getByRole('alert')).toContainText('Часть товара уже зарезервирована.');
+    await page.getByLabel(/остаток/).fill('1');
+    await button(page, 'Сохранить товар').click();
+    await expect(page.getByText('Товар сохранён.')).toBeVisible();
+    await buyer.user.goto(offer.share);
+    await expect(buyer.user.getByText('Не хватает товара для этого состава.')).toBeVisible();
+    await expect(button(buyer.user, 'Проверить условия')).toBeDisabled();
+    await button(buyer.user, 'Обновить наличие').click();
+    await expect(button(buyer.user, 'Проверить условия')).toBeDisabled();
+    await page.goto(offer.detail);
+    await button(page, 'Архивировать').click();
+    await expect(page.getByRole('dialog')).toContainText('Активные резервы этого предложения будут отменены.');
+    await page.getByRole('dialog').getByRole('button', { name: 'Архивировать', exact: true }).click();
+    await expect(page.locator('.tag')).toHaveText('В архиве');
+    await buyer.user.goto(held);
+    await expect(buyer.user.getByText('Продавец остановил предложение. Резерв отменён.')).toBeVisible();
+    await expect(button(buyer.user, 'Подтвердить тестовый заказ')).toHaveCount(0);
+    await total(buyer.user, '2 290,00 ₽');
+  } finally { await buyer.context.close(); }
+});

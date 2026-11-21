@@ -1,0 +1,26 @@
+{
+  "chromium": "145.0.7632.6",
+  "viewport": {
+    "width": 1440,
+    "height": 960
+  },
+  "seed": "CORE-001",
+  "measure": "responseEnd to frame with rendered data",
+  "workers": 1,
+  "warmed_up_per_screen": 5,
+  "threshold_p95_ms": 200,
+  "stats": [
+    {
+      "screen": "Каталог",
+      "samples": 25,
+      "p50_ms": 11.3,
+      "p95_ms": 17.7
+    },
+    {
+      "screen": "Рабочий стол",
+      "samples": 25,
+      "p50_ms": 11.8,
+      "p95_ms": 17.9
+    }
+  ]
+}

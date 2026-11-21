@@ -1,0 +1,32 @@
+<testsuites id="" name="" tests="9" failures="0" skipped="0" errors="0" time="45.000324">
+<testsuite name="bundles.spec.ts" timestamp="2026-11-21T23:33:36.443Z" hostname="" tests="1" failures="0" skipped="0" time="3.813" errors="0">
+<testcase name="B001 · предпочтительный комплект, компромисс, NO_SOLUTION, 503 и заказ" classname="bundles.spec.ts" time="3.813">
+</testcase>
+</testsuite>
+<testsuite name="changes.spec.ts" timestamp="2026-11-21T23:33:36.443Z" hostname="" tests="2" failures="0" skipped="0" time="7.506" errors="0">
+<testcase name="UI-03/04/06 · поля, сохранение, конфликт и предпросмотр пустого черновика" classname="changes.spec.ts" time="3.238">
+</testcase>
+<testcase name="UI-07/08/15 · новая цена, нехватка товара и архивирование активного резерва" classname="changes.spec.ts" time="4.268">
+</testcase>
+</testsuite>
+<testsuite name="core.spec.ts" timestamp="2026-11-21T23:33:36.443Z" hostname="" tests="1" failures="0" skipped="0" time="6.762" errors="0">
+<testcase name="CORE-01 · владелец, покупатель и оператор · потеря ответа confirm и сброс" classname="core.spec.ts" time="6.762">
+</testcase>
+</testsuite>
+<testsuite name="render.spec.ts" timestamp="2026-11-21T23:33:36.443Z" hostname="" tests="1" failures="0" skipped="0" time="12.708" errors="0">
+<testcase name="Локальная задержка между ответом и отрисовкой каталога и сводки" classname="render.spec.ts" time="12.708">
+</testcase>
+</testsuite>
+<testsuite name="sessions.spec.ts" timestamp="2026-11-21T23:33:36.443Z" hostname="" tests="2" failures="0" skipped="0" time="4.918" errors="0">
+<testcase name="UI-01/20 · одноразовая ссылка и восстановление сброса после перезагрузки" classname="sessions.spec.ts" time="1.898">
+</testcase>
+<testcase name="UI-12/20 · запоздалый расчёт и очистка ожидания при смене покупателя" classname="sessions.spec.ts" time="3.02">
+</testcase>
+</testsuite>
+<testsuite name="state.spec.ts" timestamp="2026-11-21T23:33:36.443Z" hostname="" tests="2" failures="0" skipped="0" time="8.136" errors="0">
+<testcase name="UI-09/10/12 · серверные часы, точное истечение и GET после replay резерва" classname="state.spec.ts" time="2.703">
+</testcase>
+<testcase name="UI-02/13/14/18 · очередь, конкурирующая отмена, остатки и события" classname="state.spec.ts" time="5.433">
+</testcase>
+</testsuite>
+</testsuites>

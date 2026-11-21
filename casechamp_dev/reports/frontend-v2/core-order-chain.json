@@ -1,0 +1,24 @@
+{
+  "scenario": "CORE-01",
+  "seed": "CORE-001",
+  "server_now": "2026-11-21T23:33:54.467Z",
+  "offer_id": "5b181ed8-3b8b-468f-bd5f-6e40dfb8e207",
+  "offer_version_no": 1,
+  "quote_id": "d27ea572-c796-451a-ad91-e308e8f2dffa",
+  "reservation_id": "4465e1ae-a136-4e0d-b3d2-f45c43d9325e",
+  "order_id": "e470ab67-6bbe-4183-9a99-2866ccc417cb",
+  "subtotal_minor": 219000,
+  "fulfillment_fee_minor": 30000,
+  "total_minor": 249000,
+  "observed_order_statuses": [
+    "CREATED",
+    "ACCEPTED",
+    "FULFILLED"
+  ],
+  "order_kind": "DEMO",
+  "is_test": true,
+  "paid_at": null,
+  "native_vk_order_id": null,
+  "confirm_attempts": 2,
+  "exact_confirm_replay": true
+}

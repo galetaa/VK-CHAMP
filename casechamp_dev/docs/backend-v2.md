@@ -14,7 +14,7 @@ docker compose --env-file var/compose-v2.env -p casechamp-d2-v2 \
   -f compose.yaml -f compose.v2.yaml -f compose.performance.yaml up -d --build --wait
 ```
 
-Swagger доступен по адресу `http://localhost:18081/api/v2/docs`. `GET /api/v2/health` проверяет миграцию, БД и heartbeat worker. Для запуска клиента D1 положите его сборку в `apps/web/dist` или укажите `CASECHAMP_WEB_DIST`. Прокси обслуживает сайт и API с одного origin. Конфигурация внешнего HTTPS описана в основном README.
+Swagger доступен по адресу `http://localhost:18081/api/v2/docs`. `GET /api/v2/health` проверяет миграцию, БД и heartbeat worker. Соберите клиент D1 по [его инструкции](../apps/web/README.md). Caddy читает сборку из `apps/web/dist` или по пути `CASECHAMP_WEB_DIST`. Прокси обслуживает сайт и API с одного origin. Конфигурация внешнего HTTPS описана в основном README.
 
 При прямом запуске укажите `DATABASE_URL`, `MIGRATION_DATABASE_URL`, `SESSION_SECRET` и `WEB_ORIGIN`. Рабочий worker получает `MAINTENANCE_DATABASE_URL` для удаления истёкших песочниц по окончании срока receipts. `APP_MODE=test` используется тестами вместе с внедряемым Python Clock.
 
