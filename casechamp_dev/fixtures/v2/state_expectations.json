@@ -1,0 +1,34 @@
+{
+  "fixture_id": "V2-STATE",
+  "reservation": {
+    "ACTIVE": [
+      "CONFIRMED",
+      "CANCELLED",
+      "EXPIRED"
+    ],
+    "CONFIRMED": [],
+    "CANCELLED": [],
+    "EXPIRED": []
+  },
+  "order": {
+    "CREATED": [
+      "ACCEPTED",
+      "CANCELLED"
+    ],
+    "ACCEPTED": [
+      "FULFILLED",
+      "CANCELLED"
+    ],
+    "FULFILLED": [],
+    "CANCELLED": []
+  },
+  "business_invariants": [
+    "0 <= stock_reserved <= stock_on_hand",
+    "one order per reservation_id",
+    "all orders order_kind DEMO",
+    "all orders native_vk_order_id null",
+    "all events is_test true",
+    "no stock increment for a repeated CANCELLED command",
+    "pause and confirm share one transaction lock order"
+  ]
+}

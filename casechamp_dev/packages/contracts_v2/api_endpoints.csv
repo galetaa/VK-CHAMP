@@ -1,0 +1,35 @@
+method,path,operation_id,roles,response,request,idempotency,phase,summary,status
+GET,/health,getHealth,PUBLIC,Health,,False,P0,Проверить готовность API,200
+GET,/demo/bootstrap,bootstrapDemo,PUBLIC,Bootstrap,,False,P0,Получить начальный CSRF и cookie bootstrap,200
+POST,/demo/sandboxes,createSandbox,BOOTSTRAP,Session,CreateSandboxRequest,True,P0,Создать изолированный демо магазин и OWNER,201
+POST,/demo/role-links,createRoleLink,OWNER,RoleLink,RoleLinkRequest,True,P0,Создать одноразовую ссылку OPERATOR или BUYER,201
+POST,/demo/sessions,exchangeRoleLink,BOOTSTRAP,Session,ExchangeRoleLinkRequest,True,P0,Обменять ссылку роли на HttpOnly сессию,200
+GET,/session,getSession,"OWNER,OPERATOR,BUYER",Session,,False,P0,Получить серверную роль и CSRF,200
+GET,/catalog,listCatalog,"OWNER,OPERATOR",CatalogPage,,False,P0,Получить каталог и текущие остатки,200
+POST,/catalog/skus,createSku,OWNER,CatalogSku,CreateSkuRequest,True,P0,Добавить SKU,201
+PATCH,/catalog/skus/{sku},updateSku,OWNER,CatalogSku,UpdateSkuRequest,True,P0,Изменить SKU с контролем revision,200
+GET,/offers,listOffers,"OWNER,OPERATOR",OfferPage,,False,P0,Получить предложения магазина,200
+POST,/offers,createOffer,"OWNER,OPERATOR",Offer,CreateOfferRequest,True,P0,Создать пустой черновик предложения,201
+GET,/offers/{offer_id},getOffer,"OWNER,OPERATOR",Offer,,False,P0,Получить черновик и опубликованную версию,200
+PATCH,/offers/{offer_id}/draft,updateOfferDraft,"OWNER,OPERATOR",Offer,UpdateDraftRequest,True,P0,Полностью заменить содержимое черновика,200
+POST,/offers/{offer_id}/preview,previewOffer,"OWNER,OPERATOR",OfferPreview,ExpectedRevisionRequest,False,P0,Проверить черновик без публикации,200
+POST,/offers/{offer_id}/publish,publishOffer,"OWNER,OPERATOR",Offer,ExpectedRevisionRequest,True,P0,Опубликовать новую неизменяемую версию,200
+POST,/offers/{offer_id}/pause,pauseOffer,"OWNER,OPERATOR",Offer,ExpectedRevisionRequest,True,P0,Приостановить предложение и отменить активные резервы,200
+POST,/offers/{offer_id}/archive,archiveOffer,"OWNER,OPERATOR",Offer,ExpectedRevisionRequest,True,P0,Архивировать предложение и отменить активные резервы,200
+GET,/public/offers/{offer_id},getBuyerOffer,BUYER,PublicOffer,,False,P0,Получить действующее предложение покупателю,200
+POST,/quotes,createQuote,BUYER,Quote,QuoteRequest,True,P0,Зафиксировать стоимость без резервирования,201
+GET,/quotes/{quote_id},getQuote,BUYER,Quote,,False,P0,Получить собственный quote,200
+POST,/reservations,createReservation,BUYER,Reservation,ReservationRequest,True,P0,Атомарно удержать весь состав quote,201
+GET,/reservations/{reservation_id},getReservation,BUYER,Reservation,,False,P0,Получить текущее состояние своего резерва,200
+POST,/reservations/{reservation_id}/cancel,cancelReservation,BUYER,Reservation,ExpectedRevisionRequest,True,P0,Отменить активный резерв,200
+POST,/reservations/{reservation_id}/confirm,confirmReservation,BUYER,Order,ExpectedRevisionRequest,True,P0,Подтвердить резерв и создать один DEMO заказ,201
+GET,/orders,listOrders,"OWNER,OPERATOR,BUYER",OrderPage,,False,P0,Получить заказы роли с фильтром принадлежности,200
+GET,/orders/{order_id},getOrder,"OWNER,OPERATOR,BUYER",Order,,False,P0,Получить доступный роли заказ,200
+POST,/orders/{order_id}/transition,transitionOrder,"OWNER,OPERATOR",Order,OrderTransitionRequest,True,P0,Изменить статус заказа по разрешённому переходу,200
+GET,/dashboard,getDashboard,"OWNER,OPERATOR",Dashboard,,False,P0,Получить статистику только демонстрационных событий,200
+POST,/ui-events,recordUiEvent,"OWNER,OPERATOR,BUYER",UiEventReceipt,UiEventRequest,False,P0,Записать разрешённое UI событие без доверия к данным продаж,200
+GET,/bundle-templates,listBundleTemplates,"OWNER,OPERATOR",BundleTemplateList,,False,P1,Получить фиксированные шаблоны подбора,200
+GET,/bundle-templates/{template_id},getBundleTemplate,"OWNER,OPERATOR",BundleTemplate,,False,P1,Получить неизменяемую версию B001,200
+POST,/bundle-solutions,solveBundle,BUYER,BundleResult,BundleSolveRequest,True,P1,Рассчитать допустимый комплект без резерва,201
+GET,/bundle-solutions/{solution_id},getBundleSolution,BUYER,BundleResult,,False,P1,Получить собственное решение подбора,200
+POST,/demo/reset,resetSandbox,OWNER,ResetResult,ResetRequest,True,P0,Начать новое поколение демо с сохранением OWNER,200

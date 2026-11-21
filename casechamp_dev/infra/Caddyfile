@@ -1,5 +1,5 @@
 {$CASECHAMP_SITE_ADDRESS:http://localhost:8080} {
-    @api path /api/v1/*
+    @api path /api/v1/* /api/v2/*
     handle @api {
         reverse_proxy api:8000
     }

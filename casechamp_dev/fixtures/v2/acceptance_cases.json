@@ -1,0 +1,807 @@
+{
+  "version": "2.0.0",
+  "status": "future_application_acceptance_not_executed",
+  "cases": [
+    {
+      "id": "AC-001",
+      "title": "Изолированная песочница",
+      "steps": "Создать две песочницы A и B",
+      "expected": "ID отличаются; каталог и заказы раздельны; владелец A не читает B",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createSandbox",
+        "listCatalog"
+      ]
+    },
+    {
+      "id": "AC-002",
+      "title": "Роли по серверной сессии",
+      "steps": "OWNER выдаёт отдельные ссылки OPERATOR и BUYER",
+      "expected": "Каждая сессия имеет одну роль; изменение X-Role не повышает права",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createRoleLink",
+        "exchangeRoleLink",
+        "getSession"
+      ]
+    },
+    {
+      "id": "AC-003",
+      "title": "Ограничения оператора",
+      "steps": "OPERATOR читает каталог, пытается изменить цену",
+      "expected": "Чтение разрешено; изменение отклонено; цена неизменна",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "listCatalog",
+        "updateSku"
+      ]
+    },
+    {
+      "id": "AC-004",
+      "title": "Черновик CORE",
+      "steps": "Создать MUG1 и TEA2 с PICKUP/COURIER_ZONE_A",
+      "expected": "Черновик сохранён; опубликованной версии ещё нет",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createOffer",
+        "updateOfferDraft"
+      ]
+    },
+    {
+      "id": "AC-005",
+      "title": "Конкурирующее редактирование",
+      "steps": "Два редактора сохраняют один draft_revision",
+      "expected": "Один PATCH успешен; второй revision conflict; сохранённое не затёрто",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "updateOfferDraft"
+      ]
+    },
+    {
+      "id": "AC-006",
+      "title": "Публикация",
+      "steps": "Опубликовать CORE из актуального draft_revision",
+      "expected": "Создана immutable версия1; ACTIVE; один share_url",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "publishOffer"
+      ]
+    },
+    {
+      "id": "AC-007",
+      "title": "Невалидная публикация",
+      "steps": "Публиковать DISABLED или ZERO",
+      "expected": "Отказ до версии; каталог/версия/остатки не меняются",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "publishOffer"
+      ]
+    },
+    {
+      "id": "AC-008",
+      "title": "Изменение черновика",
+      "steps": "Изменить draft у ACTIVE версии1 без publish",
+      "expected": "Покупатель продолжает видеть версию1; черновик не утёк",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "updateOfferDraft",
+        "getBuyerOffer"
+      ]
+    },
+    {
+      "id": "AC-009",
+      "title": "Версия2",
+      "steps": "Публиковать новый допустимый draft",
+      "expected": "Публичная версия2; quote версии1 больше не создаётся/не резервируется",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "publishOffer",
+        "createQuote",
+        "createReservation"
+      ]
+    },
+    {
+      "id": "AC-010",
+      "title": "Резерв старой версии",
+      "steps": "Создать reserve v1; затем publish v2; confirm до TTL",
+      "expected": "Старый резерв подтверждается по старой цене, если offer не pause/archive",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "publishOffer",
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-011",
+      "title": "Стоимость самовывоза",
+      "steps": "CORE 1 copy PICKUP",
+      "expected": "subtotal219000 fee0 total219000; quote не меняет остатки",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createQuote"
+      ]
+    },
+    {
+      "id": "AC-012",
+      "title": "Стоимость доставки",
+      "steps": "CORE 2 copies COURIER_ZONE_A",
+      "expected": "subtotal438000 fee30000 total468000; fee один раз",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createQuote"
+      ]
+    },
+    {
+      "id": "AC-013",
+      "title": "Строгие целые",
+      "steps": "copies=true, copies=1.0, qty=0, неизвестное поле",
+      "expected": "Каждый недопустимый запрос422; без бизнес-эффекта",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createQuote",
+        "updateOfferDraft"
+      ]
+    },
+    {
+      "id": "AC-014",
+      "title": "Подмена стоимости",
+      "steps": "Передать total_minor в запросе quote",
+      "expected": "422 additional field; сервер не принимает цену покупателя",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createQuote"
+      ]
+    },
+    {
+      "id": "AC-015",
+      "title": "Чужой quote",
+      "steps": "BUYER B резервирует quote BUYER A",
+      "expected": "404 без раскрытия чужой цены/состава/статуса",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createReservation"
+      ]
+    },
+    {
+      "id": "AC-016",
+      "title": "Цена после публикации",
+      "steps": "Изменить MUG129000→139000; запросить quote",
+      "expected": "OFFER_NEEDS_REVIEW; до republish нельзя согласиться со старой ценой",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "updateSku",
+        "createQuote"
+      ]
+    },
+    {
+      "id": "AC-017",
+      "title": "Цена после quote",
+      "steps": "Quote219000; изменить цену до reserve",
+      "expected": "409 с нужным кодом; резерв не создан; нужна новая публикация и quote",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "updateSku",
+        "createReservation"
+      ]
+    },
+    {
+      "id": "AC-018",
+      "title": "Цена после reserve",
+      "steps": "Reserve219000; изменить цену; confirm до TTL",
+      "expected": "Заказ219000; активный резерв защищает согласованную цену",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "updateSku",
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-019",
+      "title": "Истечение quote",
+      "steps": "Reserve в09:09:59.999 и отдельно в09:10:00.000",
+      "expected": "Первый допускается при прочих условиях; второй expired; partial reserve нет",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createReservation"
+      ]
+    },
+    {
+      "id": "AC-020",
+      "title": "Копий больше наличия",
+      "steps": "Запросить/резервировать CORE сверх доступного остатка",
+      "expected": "Недостаток объяснён; ни один SKU частично не удержан",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createQuote",
+        "createReservation"
+      ]
+    },
+    {
+      "id": "AC-021",
+      "title": "Удержание остатка",
+      "steps": "Reserve CORE1 при on_hand10/20",
+      "expected": "reserved1/2; on_hand10/20; available9/18",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createReservation"
+      ]
+    },
+    {
+      "id": "AC-022",
+      "title": "Истечение резерва",
+      "steps": "Резерв09:01; confirm ровно09:06",
+      "expected": "EXPIRED; удержания освобождены; заказа нет",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation",
+        "getReservation"
+      ]
+    },
+    {
+      "id": "AC-023",
+      "title": "Подтверждение до границы",
+      "steps": "Резерв09:01; confirm09:05:59.999",
+      "expected": "Один CREATED DEMO order; on_hand9/18 reserved0/0",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-024",
+      "title": "Отмена резерва",
+      "steps": "BUYER отменяет ACTIVE reserve",
+      "expected": "CANCELLED; on_hand прежний, reserved освобождён один раз",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "cancelReservation"
+      ]
+    },
+    {
+      "id": "AC-025",
+      "title": "Повтор одной команды",
+      "steps": "Два confirm с одинаковым Idempotency-Key и телом",
+      "expected": "Тот же order_id; один order_created; второе списание отсутствует",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-026",
+      "title": "Конфликт ключа",
+      "steps": "Повтор ключа с другим телом в том же scope",
+      "expected": "409 IDEMPOTENCY_CONFLICT; первый результат не изменён",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-027",
+      "title": "Ответ потерян",
+      "steps": "Сервер commit confirm, клиент не получил ответ; retry тем же ключом",
+      "expected": "Возвращается исходный заказ; UI восстанавливает результат",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-028",
+      "title": "Повтор после TTL сущности",
+      "steps": "Успешный reserve replay тем же ключом после expires_at",
+      "expected": "Replay исходного response; затем GET показывает EXPIRED; UI не разрешает confirm по старому ответу",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createReservation",
+        "getReservation"
+      ]
+    },
+    {
+      "id": "AC-029",
+      "title": "Разные ключи confirm",
+      "steps": "Повтор confirm той же reservation с другим ключом",
+      "expected": "409 RESERVATION_STATE_CONFLICT для уже CONFIRMED; новый заказ не создаётся, unique reservation_id сохранён",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-030",
+      "title": "Ошибка до commit",
+      "steps": "Искусственный сбой записи outbox или order",
+      "expected": "Вся транзакция rollback; нет половинного списания или успешной idempotency записи",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-031",
+      "title": "Последний остаток",
+      "steps": "Остаток MUG1, два BUYER одновременно reserve MUG1",
+      "expected": "Ровно один ACTIVE reserve; второй отказ; reserved<=on_hand",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createReservation"
+      ]
+    },
+    {
+      "id": "AC-032",
+      "title": "Pause раньше confirm",
+      "steps": "Pause захватил общую блокировку раньше confirm",
+      "expected": "Резерв CANCELLED OFFER_UNAVAILABLE; заказа нет",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "pauseOffer",
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-033",
+      "title": "Confirm раньше pause",
+      "steps": "Confirm commit раньше pause",
+      "expected": "Один заказ сохраняется; offer PAUSED; новые резервы запрещены",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "pauseOffer",
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-034",
+      "title": "Жизненный цикл заказа",
+      "steps": "CREATED→ACCEPTED→FULFILLED",
+      "expected": "Два допустимых перехода; после FULFILLED состояние терминальное",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "transitionOrder"
+      ]
+    },
+    {
+      "id": "AC-035",
+      "title": "Отмена заказа",
+      "steps": "CREATED или ACCEPTED→CANCELLED; повторить",
+      "expected": "Товар возвращён один раз; повтор не увеличивает остаток",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "transitionOrder"
+      ]
+    },
+    {
+      "id": "AC-036",
+      "title": "Недопустимый переход",
+      "steps": "CREATED→FULFILLED или FULFILLED→CANCELLED",
+      "expected": "409; состояние и остатки неизменны",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "transitionOrder"
+      ]
+    },
+    {
+      "id": "AC-037",
+      "title": "Покупатель меняет заказ",
+      "steps": "BUYER пытается ACCEPTED/CANCELLED после confirm",
+      "expected": "Запрещено; бизнес-эффекта нет",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "transitionOrder"
+      ]
+    },
+    {
+      "id": "AC-038",
+      "title": "События и повтор доставки",
+      "steps": "Outbox message доставлен дважды",
+      "expected": "В аналитике один event_id; бизнес-событие server authoritative",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "getDashboard"
+      ]
+    },
+    {
+      "id": "AC-039",
+      "title": "Истечение при остановленном worker",
+      "steps": "Worker остановлен; запрос confirm на истёкший reserve",
+      "expected": "Проверка времени на write-path отказывает и освобождает резерв; worker не единственная защита",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-040",
+      "title": "Сброс песочницы",
+      "steps": "OWNER reset при активных сущностях",
+      "expected": "generation увеличена; OWNER session сохраняется; остальные actors/sessions отозваны, прежние сущности недоступны; чужая sandbox не затронута",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "resetSandbox",
+        "getSession"
+      ]
+    },
+    {
+      "id": "AC-041",
+      "title": "Серверное время в интерфейсе",
+      "steps": "Локальные часы браузера сдвинуты на1час",
+      "expected": "Таймер основан на server_now; время решения проверяет сервер",
+      "owners": [
+        "D1"
+      ],
+      "priority": "P0",
+      "operations": [
+        "getSession",
+        "getReservation"
+      ]
+    },
+    {
+      "id": "AC-042",
+      "title": "Повторная загрузка браузера",
+      "steps": "Reload на offer/quote/reservation/order",
+      "expected": "Состояние восстановлено с сервера; новая сущность автоматически не создана",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "getBuyerOffer",
+        "getQuote",
+        "getReservation",
+        "getOrder"
+      ]
+    },
+    {
+      "id": "AC-043",
+      "title": "Мобильный и клавиатурный проход",
+      "steps": "Ширина360/768/1280; клавиатура без мыши",
+      "expected": "Основной путь доступен; ошибки связаны с полями; focus не потерян",
+      "owners": [
+        "D1"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createQuote",
+        "createReservation",
+        "confirmReservation"
+      ]
+    },
+    {
+      "id": "AC-044",
+      "title": "Защита ввода",
+      "steps": "Title содержит HTML/script; URL содержит javascript; CSRF отсутствует",
+      "expected": "Текст экранирован; небезопасный URL не исполняется; mutation без CSRF отвергнута",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "updateOfferDraft"
+      ]
+    },
+    {
+      "id": "AC-045",
+      "title": "Секреты и сессии",
+      "steps": "Inspect logs/storage/export после role exchange",
+      "expected": "Токены не попадают в аналитику/логи; cookie HttpOnly; роль не хранится как доверенное значение клиента",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "exchangeRoleLink",
+        "recordUiEvent"
+      ]
+    },
+    {
+      "id": "AC-046",
+      "title": "Изоляция заказа",
+      "steps": "BUYER из другой sandbox обращается к известному order UUID",
+      "expected": "404; невозможно отличить чужой ID от отсутствующего",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "getOrder"
+      ]
+    },
+    {
+      "id": "AC-047",
+      "title": "Демонстрационные подписи",
+      "steps": "Создать и исполнить заказ, открыть dashboard",
+      "expected": "Постоянная подпись демо; native_vk_order_id null; paid_at null; нет реальной выручки",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "getOrder",
+        "getDashboard"
+      ]
+    },
+    {
+      "id": "AC-048",
+      "title": "Проверка производительности",
+      "steps": "Объявленная машина4vCPU8GiB; seed500SKU100offers1000orders;20одновременных пользователей;50warmup;не менее5минут и1000запросов каждого класса",
+      "expected": "Отдельный отчётp50/p95/error rate; пороги приёмки соблюдены; reference speed не заменяет результат",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createQuote",
+        "createReservation",
+        "confirmReservation",
+        "solveBundle"
+      ]
+    },
+    {
+      "id": "AC-049",
+      "title": "Чистое воспроизведение",
+      "steps": "Распаковать пакет; uv sync --locked; verifier",
+      "expected": "Проверка спецификации PASS; отдельно обозначено отсутствие готового приложения",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": []
+    },
+    {
+      "id": "AC-050",
+      "title": "Полный сценарий защиты",
+      "steps": "OWNER предложение; BUYER заказ; OPERATOR исполнение",
+      "expected": "Воспроизводимая демонстрация без ручного изменения БД; все связанные ID доступны в журнале",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createOffer",
+        "publishOffer",
+        "createQuote",
+        "createReservation",
+        "confirmReservation",
+        "transitionOrder"
+      ]
+    },
+    {
+      "id": "AC-051",
+      "title": "Потеря ответа при обмене role link",
+      "steps": "Одноразовая ссылка обменена, ответ потерян; повтор с теми же bootstrap cookie, CSRF, Idempotency-Key и телом",
+      "expected": "Возвращена та же session без нового actor и продления срока; другим ключом ссылка повторно не потребляется",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "exchangeRoleLink"
+      ]
+    },
+    {
+      "id": "AC-052",
+      "title": "Защита существующей сессии владельца",
+      "steps": "Открыть ссылку BUYER в контексте с действующей OWNER session и попытаться обменять",
+      "expected": "409 SESSION_ALREADY_ACTIVE; OWNER session не заменяется; клиент предлагает отдельный браузерный контекст",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "exchangeRoleLink"
+      ]
+    },
+    {
+      "id": "AC-053",
+      "title": "Запрет выдачи владельца через role link",
+      "steps": "OWNER отправляет role=OWNER, BUYER отправляет role=OPERATOR",
+      "expected": "Первый запрос422 по enum, второй403 по полномочиям; новые привилегированные actors не созданы",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createRoleLink"
+      ]
+    },
+    {
+      "id": "AC-054",
+      "title": "Ёмкость возврата при ручном остатке",
+      "steps": "Есть открытые CREATED/ACCEPTED заказы на2MUG; OWNER задаётon_hand99998, затем99997",
+      "expected": "Первое изменение409 STOCK_CAPACITY_CONFLICT; второе допускается; последующая отмена возвращает2 и даёт99999 без переполнения",
+      "owners": [
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "updateSku",
+        "transitionOrder"
+      ]
+    },
+    {
+      "id": "AC-055",
+      "title": "Пустой черновик и строгая публикация",
+      "steps": "Создать mode=FIXED, сохранить пустые title/lines/fulfillment_methods, запросить publish",
+      "expected": "Создание/сохранение черновика разрешено; publish422 DRAFT_INCOMPLETE, новая версия не появляется",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createOffer",
+        "updateOfferDraft",
+        "publishOffer"
+      ]
+    },
+    {
+      "id": "AC-056",
+      "title": "Один резерв на Quote",
+      "steps": "Создать Quote09:00, reserve09:01, отменить09:02; до истеченияQuote отправить новый reserve для того же quote_id с новым ключом",
+      "expected": "409 QUOTE_ALREADY_USED; нельзя повторно удержать по старому Quote, требуется новый Quote",
+      "owners": [
+        "D1",
+        "D2"
+      ],
+      "priority": "P0",
+      "operations": [
+        "createReservation",
+        "cancelReservation",
+        "createQuote"
+      ]
+    }
+  ]
+}

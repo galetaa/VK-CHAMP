@@ -1,0 +1,404 @@
+{
+  "fixture_id": "V2-B001-GOLDEN",
+  "cases": [
+    {
+      "id": "B-001",
+      "description": "Близость образцу при бюджете 5000",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 440000,
+        "preference_penalty": 0,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_A": 4,
+          "GLASS_A": 4,
+          "NAPKIN": 1
+        },
+        "cheapest_feasible_minor": 328000
+      }
+    },
+    {
+      "id": "B-002",
+      "description": "Бюджет 4000, выбор между двумя заменами",
+      "request": {
+        "guests": 4,
+        "budget_minor": 400000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 380000,
+        "preference_penalty": 1,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_B": 4,
+          "GLASS_A": 4,
+          "NAPKIN": 1
+        },
+        "cheapest_feasible_minor": 328000
+      }
+    },
+    {
+      "id": "B-003",
+      "description": "На одну копейку меньше самого дешевого набора",
+      "request": {
+        "guests": 4,
+        "budget_minor": 327999,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "NO_SOLUTION",
+        "reason": "NO_FEASIBLE_COMBINATION"
+      }
+    },
+    {
+      "id": "B-004",
+      "description": "Доставка входит в бюджет",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "COURIER_ZONE_A",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 470000,
+        "preference_penalty": 0,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_A": 4,
+          "GLASS_A": 4,
+          "NAPKIN": 1
+        },
+        "cheapest_feasible_minor": 358000
+      }
+    },
+    {
+      "id": "B-005",
+      "description": "Скатерть требуется",
+      "request": {
+        "guests": 4,
+        "budget_minor": 600000,
+        "owned": [],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 530000,
+        "preference_penalty": 0,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_A": 4,
+          "GLASS_A": 4,
+          "NAPKIN": 1,
+          "TABLECLOTH": 1
+        },
+        "cheapest_feasible_minor": 418000
+      }
+    },
+    {
+      "id": "B-006",
+      "description": "Пять гостей, упаковки салфеток",
+      "request": {
+        "guests": 5,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 490000,
+        "preference_penalty": 1,
+        "surplus_units": 3,
+        "quantities": {
+          "PLATE_B": 5,
+          "GLASS_A": 5,
+          "NAPKIN": 2
+        },
+        "cheapest_feasible_minor": 425000
+      }
+    },
+    {
+      "id": "B-007",
+      "description": "Предпочтительный стакан неактивен",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "catalog_overrides": {
+        "GLASS_A": {
+          "active": false
+        }
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 388000,
+        "preference_penalty": 1,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_A": 4,
+          "GLASS_B": 4,
+          "NAPKIN": 1
+        },
+        "cheapest_feasible_minor": 328000
+      }
+    },
+    {
+      "id": "B-008",
+      "description": "Недостаточно предпочтительных тарелок",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "catalog_overrides": {
+        "PLATE_A": {
+          "stock_on_hand": 3
+        }
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 380000,
+        "preference_penalty": 1,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_B": 4,
+          "GLASS_A": 4,
+          "NAPKIN": 1
+        },
+        "cheapest_feasible_minor": 328000
+      }
+    },
+    {
+      "id": "B-009",
+      "description": "Точный бюджет для дешевого набора с доставкой",
+      "request": {
+        "guests": 4,
+        "budget_minor": 358000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "COURIER_ZONE_A",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 358000,
+        "preference_penalty": 2,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_B": 4,
+          "GLASS_B": 4,
+          "NAPKIN": 1
+        },
+        "cheapest_feasible_minor": 358000
+      }
+    },
+    {
+      "id": "B-010",
+      "description": "Предпочтительная тарелка не успевает к сроку",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "catalog_overrides": {
+        "PLATE_A": {
+          "ready_in_days": 2
+        }
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 380000,
+        "preference_penalty": 1,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_B": 4,
+          "GLASS_A": 4,
+          "NAPKIN": 1
+        }
+      }
+    },
+    {
+      "id": "B-011",
+      "description": "Нет доступных стаканов",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "catalog_overrides": {
+        "GLASS_A": {
+          "stock_on_hand": 3
+        },
+        "GLASS_B": {
+          "stock_on_hand": 3
+        }
+      },
+      "expected": {
+        "status": "NO_SOLUTION",
+        "reason": "NO_FEASIBLE_COMBINATION"
+      }
+    },
+    {
+      "id": "B-012",
+      "description": "Точное равенство целей, ASCII SKU tie break",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "catalog_add": [
+        {
+          "sku": "PLATE_0",
+          "unit_price_minor": 70000,
+          "units_per_pack": 1,
+          "preference_rank": 0,
+          "stock_on_hand": 12,
+          "stock_reserved": 0,
+          "active": true,
+          "ready_in_days": 1
+        }
+      ],
+      "slot_add": {
+        "PLATE": [
+          "PLATE_0"
+        ]
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 440000,
+        "preference_penalty": 0,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_0": 4,
+          "GLASS_A": 4,
+          "NAPKIN": 1
+        }
+      }
+    },
+    {
+      "id": "B-013",
+      "description": "Неподдерживаемая вещь в owned",
+      "request": {
+        "guests": 4,
+        "budget_minor": 500000,
+        "owned": [
+          "NAPKIN"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected_error": "OWNED_INVALID"
+    },
+    {
+      "id": "B-014",
+      "description": "Boolean вместо количества гостей",
+      "request": {
+        "guests": true,
+        "budget_minor": 500000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected_error": "INTEGER_REQUIRED"
+    },
+    {
+      "id": "B-015",
+      "description": "Верхняя граница гостей",
+      "request": {
+        "guests": 12,
+        "budget_minor": 2000000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "expected": {
+        "status": "SOLVED",
+        "total_minor": 1320000,
+        "preference_penalty": 0,
+        "surplus_units": 0,
+        "quantities": {
+          "PLATE_A": 12,
+          "GLASS_A": 12,
+          "NAPKIN": 3
+        },
+        "cheapest_feasible_minor": 984000
+      }
+    },
+    {
+      "id": "B-016",
+      "description": "Все доступные варианты превышают бюджет",
+      "request": {
+        "guests": 4,
+        "budget_minor": 400000,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      },
+      "catalog_overrides": {
+        "PLATE_B": {
+          "active": false
+        },
+        "GLASS_B": {
+          "active": false
+        }
+      },
+      "expected": {
+        "status": "NO_SOLUTION",
+        "reason": "NO_FEASIBLE_COMBINATION"
+      }
+    }
+  ]
+}

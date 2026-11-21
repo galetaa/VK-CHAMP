@@ -9,9 +9,10 @@ COPY pyproject.toml .python-version uv.lock ./
 RUN uv sync --locked --no-dev --no-install-project
 COPY services ./services
 COPY migrations ./migrations
+COPY migrations_v2 ./migrations_v2
 COPY packages ./packages
 COPY fixtures ./fixtures
-COPY alembic.ini ./
+COPY alembic.ini alembic.v2.ini ./
 RUN uv sync --locked --no-dev && mkdir -p /data/media && chown -R 10001:10001 /data
 USER 10001:10001
 ENV PATH=/app/.venv/bin:$PATH

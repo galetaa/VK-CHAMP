@@ -1,0 +1,46 @@
+{
+  "fixture_id": "V2-CORE",
+  "provenance": "synthetic_specification_fixture",
+  "catalog": [
+    {
+      "sku": "MUG",
+      "unit_price_minor": 129000,
+      "stock_on_hand": 10,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "TEA",
+      "unit_price_minor": 45000,
+      "stock_on_hand": 20,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "BOX",
+      "unit_price_minor": 11000,
+      "stock_on_hand": 5,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "DISABLED",
+      "unit_price_minor": 99000,
+      "stock_on_hand": 3,
+      "stock_reserved": 0,
+      "active": false,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "ZERO",
+      "unit_price_minor": 10000,
+      "stock_on_hand": 0,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    }
+  ]
+}

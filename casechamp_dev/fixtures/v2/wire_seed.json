@@ -1,0 +1,217 @@
+{
+  "provenance": "CONSTRUCTED_SEED_NOT_CURRENT_RUNTIME_STATE",
+  "seed": "CORE-001",
+  "catalog": [
+    {
+      "sku": "MUG",
+      "title": "MUG",
+      "price_minor": 129000,
+      "stock_on_hand": 10,
+      "stock_reserved": 0,
+      "stock_available": 10,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "TEA",
+      "title": "TEA",
+      "price_minor": 45000,
+      "stock_on_hand": 20,
+      "stock_reserved": 0,
+      "stock_available": 20,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "BOX",
+      "title": "BOX",
+      "price_minor": 11000,
+      "stock_on_hand": 5,
+      "stock_reserved": 0,
+      "stock_available": 5,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "DISABLED",
+      "title": "DISABLED",
+      "price_minor": 99000,
+      "stock_on_hand": 3,
+      "stock_reserved": 0,
+      "stock_available": 3,
+      "active": false,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "ZERO",
+      "title": "ZERO",
+      "price_minor": 10000,
+      "stock_on_hand": 0,
+      "stock_reserved": 0,
+      "stock_available": 0,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "PLATE_A",
+      "title": "PLATE_A",
+      "price_minor": 70000,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "stock_available": 12,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "PLATE_B",
+      "title": "PLATE_B",
+      "price_minor": 55000,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "stock_available": 12,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "GLASS_A",
+      "title": "GLASS_A",
+      "price_minor": 35000,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "stock_available": 12,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "GLASS_B",
+      "title": "GLASS_B",
+      "price_minor": 22000,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "stock_available": 12,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "NAPKIN",
+      "title": "NAPKIN",
+      "price_minor": 20000,
+      "stock_on_hand": 4,
+      "stock_reserved": 0,
+      "stock_available": 4,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 4,
+      "revision": 1,
+      "terms_revision": 1
+    },
+    {
+      "sku": "TABLECLOTH",
+      "title": "TABLECLOTH",
+      "price_minor": 90000,
+      "stock_on_hand": 2,
+      "stock_reserved": 0,
+      "stock_available": 2,
+      "active": true,
+      "ready_in_days": 1,
+      "units_per_pack": 1,
+      "revision": 1,
+      "terms_revision": 1
+    }
+  ],
+  "bundle_template": {
+    "id": "00000000-0000-4000-8000-000000000008",
+    "code": "B001",
+    "version_no": 1,
+    "title": "Сервировка для гостей",
+    "slots": [
+      {
+        "slot_id": "PLATE",
+        "need_rule": "GUESTS",
+        "owned_key": null,
+        "alternatives": [
+          {
+            "sku": "PLATE_A",
+            "units_per_pack": 1,
+            "preference_rank": 0
+          },
+          {
+            "sku": "PLATE_B",
+            "units_per_pack": 1,
+            "preference_rank": 1
+          }
+        ]
+      },
+      {
+        "slot_id": "GLASS",
+        "need_rule": "GUESTS",
+        "owned_key": null,
+        "alternatives": [
+          {
+            "sku": "GLASS_A",
+            "units_per_pack": 1,
+            "preference_rank": 0
+          },
+          {
+            "sku": "GLASS_B",
+            "units_per_pack": 1,
+            "preference_rank": 1
+          }
+        ]
+      },
+      {
+        "slot_id": "NAPKIN",
+        "need_rule": "GUESTS",
+        "owned_key": null,
+        "alternatives": [
+          {
+            "sku": "NAPKIN",
+            "units_per_pack": 4,
+            "preference_rank": 0
+          }
+        ]
+      },
+      {
+        "slot_id": "TABLECLOTH",
+        "need_rule": "ONE",
+        "owned_key": "TABLECLOTH",
+        "alternatives": [
+          {
+            "sku": "TABLECLOTH",
+            "units_per_pack": 1,
+            "preference_rank": 0
+          }
+        ]
+      }
+    ],
+    "readonly": true,
+    "provenance": "SYNTHETIC_FIXTURE"
+  }
+}

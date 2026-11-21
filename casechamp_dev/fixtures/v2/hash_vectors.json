@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "id": "H-001",
+      "payload": {
+        "b": 2,
+        "a": 1
+      },
+      "canonical_utf8": "{\"a\":1,\"b\":2}",
+      "sha256": "43258cff783fe7036d8a43033f830adfc60ec037382473548ac742b888292777"
+    },
+    {
+      "id": "H-002",
+      "payload": {
+        "title": "Чай",
+        "lines": [
+          {
+            "sku": "TEA",
+            "quantity": 2
+          }
+        ],
+        "notes": null
+      },
+      "canonical_utf8": "{\"lines\":[{\"quantity\":2,\"sku\":\"TEA\"}],\"notes\":null,\"title\":\"Чай\"}",
+      "sha256": "6f2d0aafeb4980a79d4b92de6f14eb4065be09da35ba0489ca6c98ad72a750f0"
+    },
+    {
+      "id": "H-003",
+      "payload": {
+        "active": true,
+        "price_minor": 129000
+      },
+      "canonical_utf8": "{\"active\":true,\"price_minor\":129000}",
+      "sha256": "e06df52b8cbea20b77803e5e5bd0fa55102707e8824ba672837a9199aa249e64"
+    }
+  ],
+  "note": "Vectors use already validated NFC input; canonicalization must not reorder arrays."
+}

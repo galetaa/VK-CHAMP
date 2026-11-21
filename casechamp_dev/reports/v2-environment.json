@@ -1,0 +1,68 @@
+{
+  "contract_version": "2.0.0",
+  "recorded_at": "2026-11-21T17:46:09+00:00",
+  "git_base": "e517bf7c7ff37aa508d904f4fcfca2a0618cc7c2",
+  "source_state": "v2 changes in the working tree",
+  "python": "3.12.14",
+  "uv": "uv 0.13.9 (x86_64-unknown-linux-gnu)",
+  "postgresql": "17.12 (Debian 17.12-1.pgdg12+1)",
+  "platform": "Linux-6.12.117+deb13-amd64-x86_64-with-glibc2.41",
+  "api_workers": 1,
+  "background_workers": 1,
+  "dependencies": {
+    "fastapi": "0.165.0",
+    "sqlalchemy": "2.1.9",
+    "alembic": "1.20.1",
+    "psycopg": "3.3.9",
+    "pydantic": "2.14.4",
+    "uvicorn": "0.54.0"
+  },
+  "images": {
+    "casechamp-d2-v2-api-1": "sha256:cd16f19d81a1c5883af3bf283d4fcfe9f1e37e4289040b11b7bc11e022727e93",
+    "casechamp-d2-v2-worker-1": "sha256:cd16f19d81a1c5883af3bf283d4fcfe9f1e37e4289040b11b7bc11e022727e93",
+    "casechamp-d2-v2-db-1": "sha256:39d36505873241b90584a61078c0a3af0a226a363854fcc2d722a72ce7a00500",
+    "casechamp-d2-v2-web-1": "sha256:f1e21ce508b7f91169630895a0fe9a9f58288e5eb6e899c3462f168229c84193"
+  },
+  "performance_api_image": "sha256:7c1f98cc8a5405b1a8ba634ba360f4a0b907bb1cea9df14f0ed2e0f411f3d24f",
+  "performance_note": "Measured before the final field-error and CSRF precedence alignment; final image passed HTTP smoke.",
+  "container_limits": {
+    "casechamp-d2-v2-api-1": {
+      "vcpus": 2.0,
+      "memory_bytes": 4294967296
+    },
+    "casechamp-d2-v2-worker-1": {
+      "vcpus": 0.75,
+      "memory_bytes": 1879048192
+    },
+    "casechamp-d2-v2-db-1": {
+      "vcpus": 1.0,
+      "memory_bytes": 2147483648
+    },
+    "casechamp-d2-v2-web-1": {
+      "vcpus": 0.25,
+      "memory_bytes": 268435456
+    }
+  },
+  "load_memory_sample_mib": {
+    "api": 78.16,
+    "db": 155.8,
+    "worker": 57.52,
+    "web": 49.89
+  },
+  "uv_lock_sha256": "173c5dafc3f36c8e87366eb58db5c7dbfec77dbb3c9f35137d3a098eb31ab41d",
+  "openapi_sha256": "fae1f0607833ba39bffbedafe2c02926795077bf3a51dce7eca5219b967d5aec",
+  "source_sha256": {
+    "migrations_v2/versions/0001_v2.py": "926991d26a9eb6f907ba7ea64bac7590498e3458167911cdd6fd516a129aa851",
+    "services/api/app/v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "services/api/app/v2/bundle.py": "8faea58fd5ca51dda555b9d9916cdfc01037ff9a6d9bf915d7693cffb98ad1ad",
+    "services/api/app/v2/checkout.py": "01f503268f4152a6e1d031db9bee4edbcad50b732fc18bda40e5718662d38548",
+    "services/api/app/v2/core.py": "7e264026ad98894d9dad01d75645100bf63462d046cd96b2fe6ec50674c20d59",
+    "services/api/app/v2/dto.py": "0b12636047268e1c327fd24117b999d13a74e6eeacaa0a200e7578a7daed5d97",
+    "services/api/app/v2/main.py": "ec9d5c506c69416d09f77038822ef040f0d9313f2e3088509c6772024caee916",
+    "services/api/app/v2/offers.py": "f7bd5f1c999f023164b2e443aca58787ba770f13644e3a80dfd48138be3937ab",
+    "services/api/app/v2/performance_seed.py": "ef40cefadfc7e5916d31f82ec8336c129b907e8e4bf348f0c51b31edd0b53bce",
+    "services/api/app/v2/security.py": "77c6aea1f16d265ab3e27958761bdc1ba76559f03b252c80bc4483e99388b27a",
+    "services/api/app/v2/service.py": "67408e4eabddef5ba63d54c220d5c0522ec44564ef85587d9612260ca11bbf2f",
+    "services/api/app/v2/worker.py": "88d53df8f1009dc53075a8cc9892d54396b7a3367b419e0d17d966feda73c338"
+  }
+}

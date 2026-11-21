@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "serialization": {
+    "encoding": "UTF-8",
+    "sort_keys": true,
+    "separators": [
+      ",",
+      ":"
+    ],
+    "ensure_ascii": false,
+    "allow_nan": false,
+    "numbers": "strict JSON integers only; bool allowed only in boolean fields",
+    "text": "Unicode NFC normalized at validated input; reject control characters except newline in description/source_text"
+  },
+  "hashes": {
+    "request_body_hash": {
+      "payload": "entire validated request JSON including explicit nullable fields",
+      "excludes": [
+        "headers",
+        "cookies",
+        "query"
+      ],
+      "note": "GET not idempotent-store; path and method belong to scope. All POST/PATCH DTO fields required."
+    },
+    "catalog_terms_hash": {
+      "payload": {
+        "sandbox_id": "UUID",
+        "generation": "integer",
+        "terms": "array ordered ASCII sku: sku,price_minor,active,ready_in_days,units_per_pack,terms_revision; title excluded"
+      },
+      "note": "For FIXED includes all offer lines; BUNDLE all candidate SKU in approved template. Stock is excluded. Terms revision changes only on price, active or ready_in_days; title and stock changes excluded; pack units immutable."
+    },
+    "solution_hash": {
+      "payload": {
+        "buyer_id": "UUID",
+        "offer_id": "UUID",
+        "offer_version_no": "integer",
+        "template_id": "UUID",
+        "template_version_no": "integer",
+        "request": "BundleSolveRequest",
+        "lines": "QuoteLine array ordered ASCII SKU",
+        "objective": "BundleObjective",
+        "catalog_terms_hash": "hex SHA256",
+        "total_minor": "integer"
+      },
+      "note": "Hash does not replace server lookup, buyer binding or permission validation."
+    }
+  }
+}

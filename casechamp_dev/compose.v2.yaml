@@ -1,0 +1,12 @@
+services:
+  migrate:
+    image: casechamp-backend:2.0.0
+    command: ["alembic", "-c", "alembic.v2.ini", "upgrade", "head"]
+  api:
+    image: casechamp-backend:2.0.0
+    command: ["uvicorn", "app.v2.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--no-proxy-headers", "--no-access-log"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v2/health', timeout=2)"]
+  worker:
+    image: casechamp-backend:2.0.0
+    command: ["python", "-m", "app.v2.worker"]

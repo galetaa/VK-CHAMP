@@ -1,0 +1,35 @@
+code,http_status,meaning
+INVALID_JSON,400,"Некорректный JSON, повтор ключей, неверный UTF-8 или неверный Content-Type"
+VALIDATION_ERROR,422,"Структура, тип, формат или ограничение поля нарушены"
+AUTH_REQUIRED,401,Сессия отсутствует или истекла
+CSRF_REJECTED,403,Origin или CSRF не совпадает
+FORBIDDEN,403,Роль не разрешает операцию
+NOT_FOUND,404,"Объект не существует либо недоступен этому sandbox, generation или BUYER"
+RATE_LIMITED,429,Ограничение частоты либо пяти активных резервов покупателя
+ROLE_LINK_EXPIRED,410,Истёк срок одноразового приглашения
+ROLE_LINK_CONSUMED,409,Одноразовое приглашение уже использовано другой операцией
+SANDBOX_EXPIRED,410,Срок sandbox истёк
+SESSION_STALE,401,Сессия отозвана сбросом sandbox
+SESSION_ALREADY_ACTIVE,409,В контексте браузера уже есть активная сессия; используйте отдельный контекст
+REVISION_CONFLICT,409,Ожидаемая revision или generation не совпадает
+IDEMPOTENCY_CONFLICT,409,Один ключ использован с другим телом
+DRAFT_INCOMPLETE,422,Черновик нельзя опубликовать: не заполнены обязательные условия
+OFFER_UNAVAILABLE,409,Предложение не ACTIVE
+OFFER_NEEDS_REVIEW,409,Утверждённые условия каталога требуют повторной публикации
+OFFER_VERSION_CHANGED,409,Версия предложения уже не текущая
+SKU_UNAVAILABLE,409,"SKU отсутствует, выключен либо не готов к выбранному сроку"
+INSUFFICIENT_STOCK,409,Недостаточно свободного остатка
+QUOTE_EXPIRED,409,Срок quote истёк
+CATALOG_CHANGED,409,Утверждённые условия каталога изменились после quote
+QUOTE_ALREADY_USED,409,На quote уже создан резерв; нужен новый quote
+RESERVATION_EXPIRED,409,Резерв истёк
+RESERVATION_STATE_CONFLICT,409,Резерв уже не ACTIVE
+ORDER_STATE_CONFLICT,409,Переход статуса заказа запрещён
+STOCK_BELOW_RESERVED,409,Новый физический остаток меньше удержанного
+STOCK_CAPACITY_CONFLICT,409,Остаток с учетом возможных возвратов отменяемых заказов превысит 99999
+BUNDLE_SOLUTION_EXPIRED,409,Срок решения подбора истёк
+BUNDLE_SOLUTION_STALE,409,"Версия предложения, шаблон или условия каталога решения изменились"
+BUNDLE_NOT_SOLVED,409,Результат NO_SOLUTION нельзя превратить в quote
+MODULE_DISABLED,409,P1 выключен для sandbox
+COMPUTATION_UNAVAILABLE,503,"Вычисление прервано, истёк лимит либо произошёл сбой"
+INTERNAL_ERROR,500,Внутренняя ошибка; подробности только в защищённом журнале

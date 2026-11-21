@@ -1,0 +1,39 @@
+{
+  "fixture_id": "V2-B001",
+  "slots": [
+    {
+      "slot_id": "PLATE",
+      "need": "PER_GUEST",
+      "fixed_units": null,
+      "alternatives": [
+        "PLATE_A",
+        "PLATE_B"
+      ]
+    },
+    {
+      "slot_id": "GLASS",
+      "need": "PER_GUEST",
+      "fixed_units": null,
+      "alternatives": [
+        "GLASS_A",
+        "GLASS_B"
+      ]
+    },
+    {
+      "slot_id": "NAPKIN",
+      "need": "PER_GUEST",
+      "fixed_units": null,
+      "alternatives": [
+        "NAPKIN"
+      ]
+    },
+    {
+      "slot_id": "TABLECLOTH",
+      "need": "FIXED",
+      "fixed_units": 1,
+      "alternatives": [
+        "TABLECLOTH"
+      ]
+    }
+  ]
+}

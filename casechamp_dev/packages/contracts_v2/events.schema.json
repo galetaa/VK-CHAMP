@@ -1,0 +1,3336 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/vk-case-v2/events.schema.json",
+  "$ref": "#/$defs/Event",
+  "$defs": {
+    "Meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "server_now": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "replayed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "request_id",
+        "server_now",
+        "replayed"
+      ]
+    },
+    "FieldIssue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "code": {
+          "type": "string",
+          "enum": [
+            "REQUIRED",
+            "TYPE",
+            "FORMAT",
+            "RANGE",
+            "DUPLICATE",
+            "MODE_MISMATCH",
+            "UNKNOWN_SKU",
+            "INCOMPLETE",
+            "TOTAL_UNITS_LIMIT",
+            "MONEY_LIMIT"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        }
+      },
+      "required": [
+        "path",
+        "code",
+        "message"
+      ]
+    },
+    "ErrorDetails": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldIssue"
+          },
+          "minItems": 0,
+          "maxItems": 50
+        },
+        "available_quantity": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "current_revision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "current_state": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retry_after_seconds": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 86400,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "fields",
+        "available_quantity",
+        "current_revision",
+        "current_state",
+        "retry_after_seconds"
+      ]
+    },
+    "ErrorEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "type": "string",
+              "enum": [
+                "INVALID_JSON",
+                "VALIDATION_ERROR",
+                "AUTH_REQUIRED",
+                "CSRF_REJECTED",
+                "FORBIDDEN",
+                "NOT_FOUND",
+                "RATE_LIMITED",
+                "ROLE_LINK_EXPIRED",
+                "ROLE_LINK_CONSUMED",
+                "SANDBOX_EXPIRED",
+                "SESSION_STALE",
+                "SESSION_ALREADY_ACTIVE",
+                "REVISION_CONFLICT",
+                "IDEMPOTENCY_CONFLICT",
+                "DRAFT_INCOMPLETE",
+                "OFFER_UNAVAILABLE",
+                "OFFER_NEEDS_REVIEW",
+                "OFFER_VERSION_CHANGED",
+                "SKU_UNAVAILABLE",
+                "INSUFFICIENT_STOCK",
+                "QUOTE_EXPIRED",
+                "CATALOG_CHANGED",
+                "QUOTE_ALREADY_USED",
+                "RESERVATION_EXPIRED",
+                "RESERVATION_STATE_CONFLICT",
+                "ORDER_STATE_CONFLICT",
+                "STOCK_BELOW_RESERVED",
+                "STOCK_CAPACITY_CONFLICT",
+                "BUNDLE_SOLUTION_EXPIRED",
+                "BUNDLE_SOLUTION_STALE",
+                "BUNDLE_NOT_SOLVED",
+                "MODULE_DISABLED",
+                "COMPUTATION_UNAVAILABLE",
+                "INTERNAL_ERROR"
+              ]
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "details": {
+              "$ref": "#/$defs/ErrorDetails"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details"
+          ]
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "error",
+        "meta"
+      ]
+    },
+    "Health": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "ok",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": "2.0.0",
+          "type": "string"
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "contract_version",
+        "is_test"
+      ]
+    },
+    "Bootstrap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "csrf_token": {
+          "type": "string",
+          "minLength": 43,
+          "maxLength": 43,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        }
+      },
+      "required": [
+        "csrf_token",
+        "expires_at"
+      ]
+    },
+    "Session": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "OWNER",
+            "OPERATOR",
+            "BUYER"
+          ]
+        },
+        "csrf_token": {
+          "type": "string",
+          "minLength": 43,
+          "maxLength": 43,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "sandbox_expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "features": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "bundle": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "bundle"
+          ]
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "actor_id",
+        "sandbox_id",
+        "generation",
+        "role",
+        "csrf_token",
+        "expires_at",
+        "sandbox_expires_at",
+        "features",
+        "is_test"
+      ]
+    },
+    "CreateSandboxRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "seed": {
+          "const": "CORE-001",
+          "type": "string"
+        },
+        "enable_bundle": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "seed",
+        "enable_bundle"
+      ]
+    },
+    "RoleLinkRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "OPERATOR",
+            "BUYER"
+          ]
+        }
+      },
+      "required": [
+        "role"
+      ]
+    },
+    "RoleLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "OPERATOR",
+            "BUYER"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^/join#token=[A-Za-z0-9_-]{43}$"
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        }
+      },
+      "required": [
+        "role",
+        "url",
+        "expires_at"
+      ]
+    },
+    "ExchangeRoleLinkRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "token": {
+          "type": "string",
+          "minLength": 43,
+          "maxLength": 43,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        }
+      },
+      "required": [
+        "token"
+      ]
+    },
+    "CatalogSku": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "stock_on_hand": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99999,
+          "x-strict-json-integer": true
+        },
+        "stock_reserved": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99999,
+          "x-strict-json-integer": true
+        },
+        "stock_available": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99999,
+          "x-strict-json-integer": true
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "ready_in_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        },
+        "units_per_pack": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "x-strict-json-integer": true
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "terms_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "title",
+        "price_minor",
+        "stock_on_hand",
+        "stock_reserved",
+        "stock_available",
+        "active",
+        "ready_in_days",
+        "units_per_pack",
+        "revision",
+        "terms_revision"
+      ]
+    },
+    "CreateSkuRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "stock_on_hand": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99999,
+          "x-strict-json-integer": true
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "ready_in_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        },
+        "units_per_pack": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "title",
+        "price_minor",
+        "stock_on_hand",
+        "active",
+        "ready_in_days",
+        "units_per_pack"
+      ]
+    },
+    "UpdateSkuRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "stock_on_hand": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99999,
+          "x-strict-json-integer": true
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "ready_in_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "expected_revision",
+        "title",
+        "price_minor",
+        "stock_on_hand",
+        "active",
+        "ready_in_days"
+      ]
+    },
+    "DraftLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "quantity"
+      ]
+    },
+    "DraftContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "POST",
+            "CONSULTATION",
+            "MANUAL",
+            "BUNDLE"
+          ]
+        },
+        "source_text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DraftLine"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "bundle_template_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fulfillment_methods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PICKUP",
+              "COURIER_ZONE_A"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 2,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "source",
+        "source_text",
+        "lines",
+        "bundle_template_id",
+        "fulfillment_methods"
+      ]
+    },
+    "CreateOfferRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "FIXED",
+            "BUNDLE"
+          ]
+        }
+      },
+      "required": [
+        "mode"
+      ]
+    },
+    "UpdateDraftRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "draft": {
+          "$ref": "#/$defs/DraftContent"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "draft"
+      ]
+    },
+    "ExpectedRevisionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "expected_revision"
+      ]
+    },
+    "ApprovedSkuTerms": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "ready_in_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        },
+        "units_per_pack": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "x-strict-json-integer": true
+        },
+        "terms_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "title",
+        "price_minor",
+        "active",
+        "ready_in_days",
+        "units_per_pack",
+        "terms_revision"
+      ]
+    },
+    "PricedOfferLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99,
+          "x-strict-json-integer": true
+        },
+        "unit_price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "line_total_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "title",
+        "quantity",
+        "unit_price_minor",
+        "line_total_minor"
+      ]
+    },
+    "BundleAlternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "units_per_pack": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "x-strict-json-integer": true
+        },
+        "preference_rank": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "units_per_pack",
+        "preference_rank"
+      ]
+    },
+    "BundleSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "slot_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 30,
+          "pattern": "^[A-Z0-9_]+$"
+        },
+        "need_rule": {
+          "type": "string",
+          "enum": [
+            "GUESTS",
+            "ONE"
+          ]
+        },
+        "owned_key": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "TABLECLOTH"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BundleAlternative"
+          },
+          "minItems": 1,
+          "maxItems": 8
+        }
+      },
+      "required": [
+        "slot_id",
+        "need_rule",
+        "owned_key",
+        "alternatives"
+      ]
+    },
+    "BundleTemplate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "code": {
+          "const": "B001",
+          "type": "string"
+        },
+        "version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BundleSlot"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "readonly": {
+          "const": true,
+          "type": "boolean"
+        },
+        "provenance": {
+          "const": "SYNTHETIC_FIXTURE",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "code",
+        "version_no",
+        "title",
+        "slots",
+        "readonly",
+        "provenance"
+      ]
+    },
+    "BundleTemplateList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BundleTemplate"
+          },
+          "minItems": 0,
+          "maxItems": 10
+        }
+      },
+      "required": [
+        "items"
+      ]
+    },
+    "OfferVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "POST",
+            "CONSULTATION",
+            "MANUAL",
+            "BUNDLE"
+          ]
+        },
+        "source_text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PricedOfferLine"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "bundle_template": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BundleTemplate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "catalog_terms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ApprovedSkuTerms"
+          },
+          "minItems": 1,
+          "maxItems": 40
+        },
+        "fulfillment_methods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PICKUP",
+              "COURIER_ZONE_A"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "approved_terms_hash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "published_by": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "published_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        }
+      },
+      "required": [
+        "version_no",
+        "title",
+        "description",
+        "source",
+        "source_text",
+        "lines",
+        "bundle_template",
+        "catalog_terms",
+        "fulfillment_methods",
+        "approved_terms_hash",
+        "published_by",
+        "published_at"
+      ]
+    },
+    "Offer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "FIXED",
+            "BUNDLE"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "ACTIVE",
+            "PAUSED",
+            "ARCHIVED"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "draft_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "draft": {
+          "$ref": "#/$defs/DraftContent"
+        },
+        "published_version_no": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "published": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/OfferVersion"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "needs_review": {
+          "type": "boolean"
+        },
+        "share_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^/buy/[0-9a-f-]{36}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "updated_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        }
+      },
+      "required": [
+        "id",
+        "sandbox_id",
+        "mode",
+        "state",
+        "revision",
+        "draft_revision",
+        "draft",
+        "published_version_no",
+        "published",
+        "needs_review",
+        "share_url",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "OfferPreview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "valid": {
+          "type": "boolean"
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldIssue"
+          },
+          "minItems": 0,
+          "maxItems": 50
+        },
+        "priced_lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PricedOfferLine"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "subtotal_minor": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000000,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "const": "RUB",
+          "type": "string"
+        },
+        "bundle_template": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BundleTemplate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "revision",
+        "valid",
+        "issues",
+        "priced_lines",
+        "subtotal_minor",
+        "currency",
+        "bundle_template"
+      ]
+    },
+    "SkuAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "available_quantity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99999,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "available_quantity"
+      ]
+    },
+    "PublicOffer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "FIXED",
+            "BUNDLE"
+          ]
+        },
+        "version": {
+          "$ref": "#/$defs/OfferVersion"
+        },
+        "availability": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SkuAvailability"
+          },
+          "minItems": 1,
+          "maxItems": 40
+        },
+        "needs_review": {
+          "type": "boolean"
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "mode",
+        "version",
+        "availability",
+        "needs_review",
+        "is_test"
+      ]
+    },
+    "OfferQuoteRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "OFFER",
+          "type": "string"
+        },
+        "offer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "copies": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "x-strict-json-integer": true
+        },
+        "fulfillment": {
+          "type": "string",
+          "enum": [
+            "PICKUP",
+            "COURIER_ZONE_A"
+          ]
+        },
+        "requested_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "kind",
+        "offer_id",
+        "offer_version_no",
+        "copies",
+        "fulfillment",
+        "requested_days"
+      ]
+    },
+    "BundleQuoteRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "BUNDLE",
+          "type": "string"
+        },
+        "solution_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        }
+      },
+      "required": [
+        "kind",
+        "solution_id"
+      ]
+    },
+    "QuoteRequest": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/OfferQuoteRequest"
+        },
+        {
+          "$ref": "#/$defs/BundleQuoteRequest"
+        }
+      ],
+      "discriminator": {
+        "propertyName": "kind",
+        "mapping": {
+          "OFFER": "#/$defs/OfferQuoteRequest",
+          "BUNDLE": "#/$defs/BundleQuoteRequest"
+        }
+      }
+    },
+    "QuoteLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 990,
+          "x-strict-json-integer": true
+        },
+        "unit_price_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "line_total_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "sku",
+        "title",
+        "quantity",
+        "unit_price_minor",
+        "line_total_minor"
+      ]
+    },
+    "Quote": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "buyer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "OFFER",
+            "BUNDLE"
+          ]
+        },
+        "offer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "solution_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "template_version_no": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "copies": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "x-strict-json-integer": true
+        },
+        "fulfillment": {
+          "type": "string",
+          "enum": [
+            "PICKUP",
+            "COURIER_ZONE_A"
+          ]
+        },
+        "requested_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuoteLine"
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "subtotal_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "fulfillment_fee_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30000,
+          "x-strict-json-integer": true
+        },
+        "total_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "currency": {
+          "const": "RUB",
+          "type": "string"
+        },
+        "catalog_terms_hash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "sandbox_id",
+        "buyer_id",
+        "kind",
+        "offer_id",
+        "offer_version_no",
+        "solution_id",
+        "template_version_no",
+        "copies",
+        "fulfillment",
+        "requested_days",
+        "lines",
+        "subtotal_minor",
+        "fulfillment_fee_minor",
+        "total_minor",
+        "currency",
+        "catalog_terms_hash",
+        "created_at",
+        "expires_at",
+        "is_test"
+      ]
+    },
+    "ReservationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quote_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        }
+      },
+      "required": [
+        "quote_id"
+      ]
+    },
+    "Reservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "buyer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "quote_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "CONFIRMED",
+            "CANCELLED",
+            "EXPIRED"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "closed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 24,
+              "maxLength": 24,
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cancel_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "BUYER_CANCELLED",
+                "OFFER_UNAVAILABLE"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quote": {
+          "$ref": "#/$defs/Quote"
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "sandbox_id",
+        "buyer_id",
+        "offer_id",
+        "offer_version_no",
+        "quote_id",
+        "state",
+        "revision",
+        "created_at",
+        "expires_at",
+        "closed_at",
+        "cancel_reason",
+        "order_id",
+        "quote",
+        "is_test"
+      ]
+    },
+    "OrderTransitionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "to_status": {
+          "type": "string",
+          "enum": [
+            "ACCEPTED",
+            "FULFILLED",
+            "CANCELLED"
+          ]
+        },
+        "cancel_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "CUSTOMER_REQUEST",
+                "CANNOT_FULFILL",
+                "DEMO_CORRECTION"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "expected_revision",
+        "to_status",
+        "cancel_reason"
+      ]
+    },
+    "Order": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "buyer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "reservation_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "quote_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "CREATED",
+            "ACCEPTED",
+            "FULFILLED",
+            "CANCELLED"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "order_kind": {
+          "const": "DEMO",
+          "type": "string"
+        },
+        "native_vk_order_id": {
+          "type": "null"
+        },
+        "paid_at": {
+          "type": "null"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuoteLine"
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "fulfillment": {
+          "type": "string",
+          "enum": [
+            "PICKUP",
+            "COURIER_ZONE_A"
+          ]
+        },
+        "requested_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        },
+        "subtotal_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "fulfillment_fee_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30000,
+          "x-strict-json-integer": true
+        },
+        "total_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "currency": {
+          "const": "RUB",
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "accepted_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 24,
+              "maxLength": 24,
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fulfilled_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 24,
+              "maxLength": 24,
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cancelled_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 24,
+              "maxLength": 24,
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cancel_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "CUSTOMER_REQUEST",
+                "CANNOT_FULFILL",
+                "DEMO_CORRECTION"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "sandbox_id",
+        "buyer_id",
+        "reservation_id",
+        "quote_id",
+        "offer_id",
+        "offer_version_no",
+        "status",
+        "revision",
+        "order_kind",
+        "native_vk_order_id",
+        "paid_at",
+        "lines",
+        "fulfillment",
+        "requested_days",
+        "subtotal_minor",
+        "fulfillment_fee_minor",
+        "total_minor",
+        "currency",
+        "created_at",
+        "accepted_at",
+        "fulfilled_at",
+        "cancelled_at",
+        "cancel_reason",
+        "is_test"
+      ]
+    },
+    "BundleSolveRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "offer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "guests": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12,
+          "x-strict-json-integer": true
+        },
+        "owned": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "TABLECLOTH"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 1,
+          "uniqueItems": true
+        },
+        "budget_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "fulfillment": {
+          "type": "string",
+          "enum": [
+            "PICKUP",
+            "COURIER_ZONE_A"
+          ]
+        },
+        "requested_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "offer_id",
+        "offer_version_no",
+        "guests",
+        "owned",
+        "budget_minor",
+        "fulfillment",
+        "requested_days"
+      ]
+    },
+    "BundleObjective": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "preference_penalty": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500,
+          "x-strict-json-integer": true
+        },
+        "surplus_units": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500,
+          "x-strict-json-integer": true
+        },
+        "sku_tiebreak": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "pattern": "^[A-Z0-9_-]+$"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "preference_penalty",
+        "surplus_units",
+        "sku_tiebreak"
+      ]
+    },
+    "SolvedBundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "SOLVED",
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "buyer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "template_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "template_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "request": {
+          "$ref": "#/$defs/BundleSolveRequest"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuoteLine"
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "subtotal_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "fulfillment_fee_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30000,
+          "x-strict-json-integer": true
+        },
+        "total_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000,
+          "x-strict-json-integer": true
+        },
+        "currency": {
+          "const": "RUB",
+          "type": "string"
+        },
+        "objective": {
+          "$ref": "#/$defs/BundleObjective"
+        },
+        "catalog_terms_hash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "solution_hash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "status",
+        "id",
+        "sandbox_id",
+        "buyer_id",
+        "offer_id",
+        "offer_version_no",
+        "template_id",
+        "template_version_no",
+        "request",
+        "created_at",
+        "expires_at",
+        "is_test",
+        "lines",
+        "subtotal_minor",
+        "fulfillment_fee_minor",
+        "total_minor",
+        "currency",
+        "objective",
+        "catalog_terms_hash",
+        "solution_hash"
+      ]
+    },
+    "NoSolutionBundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "NO_SOLUTION",
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "buyer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "offer_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "template_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "template_version_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "request": {
+          "$ref": "#/$defs/BundleSolveRequest"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        },
+        "reason": {
+          "const": "NO_FEASIBLE_COMBINATION",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "id",
+        "sandbox_id",
+        "buyer_id",
+        "offer_id",
+        "offer_version_no",
+        "template_id",
+        "template_version_no",
+        "request",
+        "created_at",
+        "expires_at",
+        "is_test",
+        "reason"
+      ]
+    },
+    "BundleResult": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/SolvedBundle"
+        },
+        {
+          "$ref": "#/$defs/NoSolutionBundle"
+        }
+      ],
+      "discriminator": {
+        "propertyName": "status",
+        "mapping": {
+          "SOLVED": "#/$defs/SolvedBundle",
+          "NO_SOLUTION": "#/$defs/NoSolutionBundle"
+        }
+      }
+    },
+    "UiEventRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "offer_view",
+            "cta_click",
+            "wizard_step"
+          ]
+        },
+        "offer_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "offer_version_no": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ui_step": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "TASK",
+                "ITEMS",
+                "TERMS",
+                "PREVIEW",
+                "PUBLISHED",
+                "CHECKOUT"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "event_id",
+        "name",
+        "offer_id",
+        "offer_version_no",
+        "ui_step"
+      ]
+    },
+    "UiEventReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "accepted": {
+          "const": true,
+          "type": "boolean"
+        },
+        "duplicate": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "event_id",
+        "accepted",
+        "duplicate"
+      ]
+    },
+    "Dashboard": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "as_of": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "active_offers": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "published_offers": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "quotes_created": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "active_reservations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "orders_created": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "orders_accepted": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "orders_fulfilled": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "orders_cancelled": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "order_value_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "x-strict-json-integer": true
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        },
+        "native_orders_count": {
+          "const": "NOT_MEASURED",
+          "type": "string"
+        }
+      },
+      "required": [
+        "as_of",
+        "generation",
+        "active_offers",
+        "published_offers",
+        "quotes_created",
+        "active_reservations",
+        "orders_created",
+        "orders_accepted",
+        "orders_fulfilled",
+        "orders_cancelled",
+        "order_value_minor",
+        "is_test",
+        "native_orders_count"
+      ]
+    },
+    "ResetRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        }
+      },
+      "required": [
+        "expected_generation"
+      ]
+    },
+    "ResetResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "seed": {
+          "const": "CORE-001",
+          "type": "string"
+        },
+        "owner_actor_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sandbox_id",
+        "generation",
+        "seed",
+        "owner_actor_id",
+        "is_test"
+      ]
+    },
+    "CatalogPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CatalogSku"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "pattern": "^[A-Z0-9_-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "OfferPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Offer"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "OrderPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Order"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "Event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "sandbox_created",
+            "offer_draft_created",
+            "offer_published",
+            "offer_state_changed",
+            "catalog_sku_changed",
+            "quote_created",
+            "reservation_created",
+            "reservation_expired",
+            "reservation_cancelled",
+            "order_created",
+            "order_status_changed",
+            "sandbox_reset",
+            "offer_view",
+            "cta_click",
+            "wizard_step"
+          ]
+        },
+        "origin": {
+          "type": "string",
+          "enum": [
+            "SERVER",
+            "UI"
+          ]
+        },
+        "occurred_at": {
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24,
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "sandbox_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36,
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647,
+          "x-strict-json-integer": true
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "actor_role": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "OWNER",
+                "OPERATOR",
+                "BUYER"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "offer_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "offer_version_no": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quote_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reservation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 36,
+              "maxLength": 36,
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "from_state": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "to_state": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "entity_revision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647,
+              "x-strict-json-integer": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ui_step": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "TASK",
+                "ITEMS",
+                "TERMS",
+                "PREVIEW",
+                "PUBLISHED",
+                "CHECKOUT"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "is_test": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "event_id",
+        "name",
+        "origin",
+        "occurred_at",
+        "sandbox_id",
+        "generation",
+        "actor_id",
+        "actor_role",
+        "offer_id",
+        "offer_version_no",
+        "quote_id",
+        "reservation_id",
+        "order_id",
+        "from_state",
+        "to_state",
+        "reason",
+        "entity_revision",
+        "ui_step",
+        "is_test"
+      ]
+    },
+    "BootstrapEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Bootstrap"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "BundleResultEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/BundleResult"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "BundleTemplateEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/BundleTemplate"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "BundleTemplateListEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/BundleTemplateList"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "CatalogPageEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/CatalogPage"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "CatalogSkuEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/CatalogSku"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "DashboardEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Dashboard"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "HealthEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Health"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "OfferEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Offer"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "OfferPageEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/OfferPage"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "OfferPreviewEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/OfferPreview"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "OrderEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Order"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "OrderPageEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/OrderPage"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "PublicOfferEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/PublicOffer"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "QuoteEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Quote"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "ReservationEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Reservation"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "ResetResultEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/ResetResult"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "RoleLinkEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/RoleLink"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "SessionEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/Session"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    },
+    "UiEventReceiptEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/UiEventReceipt"
+        },
+        "meta": {
+          "$ref": "#/$defs/Meta"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ]
+    }
+  }
+}

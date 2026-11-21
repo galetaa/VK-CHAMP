@@ -1,0 +1,66 @@
+{
+  "fixture_id": "V2-B001-CATALOG",
+  "provenance": "new_v2_synthetic_fixture_not_v1_G001",
+  "catalog": [
+    {
+      "sku": "PLATE_A",
+      "unit_price_minor": 70000,
+      "units_per_pack": 1,
+      "preference_rank": 0,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "PLATE_B",
+      "unit_price_minor": 55000,
+      "units_per_pack": 1,
+      "preference_rank": 1,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "GLASS_A",
+      "unit_price_minor": 35000,
+      "units_per_pack": 1,
+      "preference_rank": 0,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "GLASS_B",
+      "unit_price_minor": 22000,
+      "units_per_pack": 1,
+      "preference_rank": 1,
+      "stock_on_hand": 12,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "NAPKIN",
+      "unit_price_minor": 20000,
+      "units_per_pack": 4,
+      "preference_rank": 0,
+      "stock_on_hand": 4,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    },
+    {
+      "sku": "TABLECLOTH",
+      "unit_price_minor": 90000,
+      "units_per_pack": 1,
+      "preference_rank": 0,
+      "stock_on_hand": 2,
+      "stock_reserved": 0,
+      "active": true,
+      "ready_in_days": 1
+    }
+  ]
+}

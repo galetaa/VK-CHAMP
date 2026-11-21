@@ -1,0 +1,110 @@
+{
+  "fixture_id": "V2-LEDGER",
+  "initial": {
+    "MUG": {
+      "on_hand": 10,
+      "reserved": 0
+    },
+    "TEA": {
+      "on_hand": 20,
+      "reserved": 0
+    }
+  },
+  "lines": [
+    {
+      "sku": "MUG",
+      "qty": 1
+    },
+    {
+      "sku": "TEA",
+      "qty": 2
+    }
+  ],
+  "cases": [
+    {
+      "id": "L-001",
+      "actions": [
+        "reserve"
+      ],
+      "expected": {
+        "MUG": {
+          "on_hand": 10,
+          "reserved": 1
+        },
+        "TEA": {
+          "on_hand": 20,
+          "reserved": 2
+        }
+      }
+    },
+    {
+      "id": "L-002",
+      "actions": [
+        "reserve",
+        "confirm"
+      ],
+      "expected": {
+        "MUG": {
+          "on_hand": 9,
+          "reserved": 0
+        },
+        "TEA": {
+          "on_hand": 18,
+          "reserved": 0
+        }
+      }
+    },
+    {
+      "id": "L-003",
+      "actions": [
+        "reserve",
+        "expire"
+      ],
+      "expected": {
+        "MUG": {
+          "on_hand": 10,
+          "reserved": 0
+        },
+        "TEA": {
+          "on_hand": 20,
+          "reserved": 0
+        }
+      }
+    },
+    {
+      "id": "L-004",
+      "actions": [
+        "reserve",
+        "cancel_reservation"
+      ],
+      "expected": {
+        "MUG": {
+          "on_hand": 10,
+          "reserved": 0
+        },
+        "TEA": {
+          "on_hand": 20,
+          "reserved": 0
+        }
+      }
+    },
+    {
+      "id": "L-005",
+      "actions": [
+        "reserve",
+        "confirm",
+        "cancel_order"
+      ],
+      "expected": {
+        "MUG": {
+          "on_hand": 10,
+          "reserved": 0
+        },
+        "TEA": {
+          "on_hand": 20,
+          "reserved": 0
+        }
+      }
+    }
+  ]
+}

@@ -2,3 +2,4 @@
 packages/contracts/*.csv -text whitespace=cr-at-eol
 fixtures/*.csv -text whitespace=cr-at-eol
 tests/reference_oracle.py whitespace=-blank-at-eof
+packages/contracts_v2/*.csv -text whitespace=cr-at-eol

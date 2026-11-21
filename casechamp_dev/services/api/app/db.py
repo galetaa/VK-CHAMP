@@ -15,6 +15,7 @@ def adapt(value):
 
 
 class DB:
+    schema = "vk_demo"
     def __init__(self, connection):
         self.raw = connection.connection.driver_connection
 
@@ -35,7 +36,7 @@ class DB:
         names = ", ".join(values)
         placeholders = ", ".join(["%s"] * len(values))
         return self.run(
-            f"INSERT INTO vk_demo.{table} ({names}) VALUES ({placeholders}) {conflict}",
+            f"INSERT INTO {self.schema}.{table} ({names}) VALUES ({placeholders}) {conflict}",
             *(adapt(value) for value in values.values()),
         )
 
@@ -43,7 +44,7 @@ class DB:
         setters = ", ".join(f"{key}=%s" for key in values)
         conditions = " AND ".join(f"{key}=%s" for key in where)
         return self.run(
-            f"UPDATE vk_demo.{table} SET {setters} WHERE {conditions}",
+            f"UPDATE {self.schema}.{table} SET {setters} WHERE {conditions}",
             *(adapt(value) for value in (*values.values(), *where.values())),
         )
 

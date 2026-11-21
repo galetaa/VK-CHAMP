@@ -1,0 +1,94 @@
+{
+  "warmup": 50,
+  "duration_seconds": 330.021,
+  "concurrent_users": 20,
+  "seed": {
+    "sku": 500,
+    "offers": 100,
+    "initial_orders": 1000
+  },
+  "bundle_max_shape": [
+    5,
+    8
+  ],
+  "platform": "Linux-6.12.117+deb13-amd64-x86_64-with-glibc2.41",
+  "summary": {
+    "bundle": {
+      "requests": 1000,
+      "statuses": {
+        "201": 1000
+      },
+      "errors": {},
+      "unexpected_5xx_or_transport": 0,
+      "p50_ms": 168.776,
+      "p95_ms": 237.914,
+      "max_ms": 303.45
+    },
+    "catalog": {
+      "requests": 1000,
+      "statuses": {
+        "200": 1000
+      },
+      "errors": {},
+      "unexpected_5xx_or_transport": 0,
+      "p50_ms": 89.773,
+      "p95_ms": 146.537,
+      "max_ms": 243.039
+    },
+    "confirm": {
+      "requests": 1000,
+      "statuses": {
+        "201": 1000
+      },
+      "errors": {},
+      "unexpected_5xx_or_transport": 0,
+      "p50_ms": 143.869,
+      "p95_ms": 191.03,
+      "max_ms": 277.237
+    },
+    "offer": {
+      "requests": 1000,
+      "statuses": {
+        "200": 1000
+      },
+      "errors": {},
+      "unexpected_5xx_or_transport": 0,
+      "p50_ms": 92.473,
+      "p95_ms": 116.407,
+      "max_ms": 183.136
+    },
+    "order": {
+      "requests": 1000,
+      "statuses": {
+        "200": 1000
+      },
+      "errors": {},
+      "unexpected_5xx_or_transport": 0,
+      "p50_ms": 96.933,
+      "p95_ms": 147.908,
+      "max_ms": 266.442
+    },
+    "quote": {
+      "requests": 1000,
+      "statuses": {
+        "201": 1000
+      },
+      "errors": {},
+      "unexpected_5xx_or_transport": 0,
+      "p50_ms": 108.834,
+      "p95_ms": 155.755,
+      "max_ms": 250.477
+    },
+    "reserve": {
+      "requests": 1000,
+      "statuses": {
+        "201": 1000
+      },
+      "errors": {},
+      "unexpected_5xx_or_transport": 0,
+      "p50_ms": 142.067,
+      "p95_ms": 198.941,
+      "max_ms": 260.705
+    }
+  }
+}

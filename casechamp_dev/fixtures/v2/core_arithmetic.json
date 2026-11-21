@@ -1,0 +1,213 @@
+{
+  "fixture_id": "V2-CORE-ARITHMETIC",
+  "cases": [
+    {
+      "id": "C-001",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        },
+        {
+          "sku": "TEA",
+          "qty": 2
+        }
+      ],
+      "copies": 1,
+      "fulfillment": "PICKUP",
+      "expected": {
+        "subtotal_minor": 219000,
+        "fulfillment_fee_minor": 0,
+        "total_minor": 219000
+      }
+    },
+    {
+      "id": "C-002",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        },
+        {
+          "sku": "TEA",
+          "qty": 2
+        }
+      ],
+      "copies": 1,
+      "fulfillment": "COURIER_ZONE_A",
+      "expected": {
+        "subtotal_minor": 219000,
+        "fulfillment_fee_minor": 30000,
+        "total_minor": 249000
+      }
+    },
+    {
+      "id": "C-003",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        },
+        {
+          "sku": "TEA",
+          "qty": 2
+        }
+      ],
+      "copies": 2,
+      "fulfillment": "PICKUP",
+      "expected": {
+        "subtotal_minor": 438000,
+        "fulfillment_fee_minor": 0,
+        "total_minor": 438000
+      }
+    },
+    {
+      "id": "C-004",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        },
+        {
+          "sku": "TEA",
+          "qty": 2
+        }
+      ],
+      "copies": 2,
+      "fulfillment": "COURIER_ZONE_A",
+      "expected": {
+        "subtotal_minor": 438000,
+        "fulfillment_fee_minor": 30000,
+        "total_minor": 468000
+      }
+    },
+    {
+      "id": "C-005",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        }
+      ],
+      "copies": 1,
+      "fulfillment": "PICKUP",
+      "expected": {
+        "subtotal_minor": 129000,
+        "fulfillment_fee_minor": 0,
+        "total_minor": 129000
+      }
+    },
+    {
+      "id": "C-006",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        },
+        {
+          "sku": "MUG",
+          "qty": 1
+        }
+      ],
+      "copies": 1,
+      "fulfillment": "PICKUP",
+      "expected_error": "LINES_INVALID"
+    },
+    {
+      "id": "C-007",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        },
+        {
+          "sku": "TEA",
+          "qty": 2
+        }
+      ],
+      "copies": true,
+      "fulfillment": "PICKUP",
+      "expected_error": "INTEGER_REQUIRED"
+    },
+    {
+      "id": "C-008",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        },
+        {
+          "sku": "TEA",
+          "qty": 2
+        }
+      ],
+      "copies": 1.0,
+      "fulfillment": "PICKUP",
+      "expected_error": "INTEGER_REQUIRED"
+    },
+    {
+      "id": "C-009",
+      "lines": [],
+      "copies": 1,
+      "fulfillment": "PICKUP",
+      "expected_error": "LINES_INVALID"
+    },
+    {
+      "id": "C-010",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 0
+        }
+      ],
+      "copies": 1,
+      "fulfillment": "PICKUP",
+      "expected_error": "INTEGER_REQUIRED"
+    },
+    {
+      "id": "C-011",
+      "lines": [
+        {
+          "sku": "DISABLED",
+          "qty": 1
+        }
+      ],
+      "copies": 1,
+      "fulfillment": "PICKUP",
+      "expected_error": "SKU_UNAVAILABLE"
+    },
+    {
+      "id": "C-012",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 99
+        },
+        {
+          "sku": "TEA",
+          "qty": 99
+        }
+      ],
+      "copies": 10,
+      "fulfillment": "PICKUP",
+      "expected_error": "TOTAL_QUANTITY_LIMIT"
+    },
+    {
+      "id": "C-013",
+      "lines": [
+        {
+          "sku": "MUG",
+          "qty": 1
+        }
+      ],
+      "copies": 1,
+      "fulfillment": "COURIER_ZONE_A",
+      "catalog_overrides": {
+        "MUG": {
+          "unit_price_minor": 100000000
+        }
+      },
+      "expected_error": "TOTAL_PRICE_LIMIT"
+    }
+  ]
+}

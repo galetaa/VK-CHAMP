@@ -1,0 +1,778 @@
+{
+  "contract_version": "2.0.0",
+  "examples": [
+    {
+      "id": "W-001",
+      "schema": "CreateSandboxRequest",
+      "valid": true,
+      "operation_id": "createSandbox",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "seed": "CORE-001",
+        "enable_bundle": true
+      }
+    },
+    {
+      "id": "W-002",
+      "schema": "RoleLinkRequest",
+      "valid": true,
+      "operation_id": "createRoleLink",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "role": "BUYER"
+      }
+    },
+    {
+      "id": "W-003",
+      "schema": "CreateOfferRequest",
+      "valid": true,
+      "operation_id": "createOffer",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "mode": "FIXED"
+      }
+    },
+    {
+      "id": "W-004",
+      "schema": "UpdateDraftRequest",
+      "valid": true,
+      "operation_id": "updateOfferDraft",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "expected_revision": 1,
+        "draft": {
+          "title": "Кружка и чай",
+          "description": "Проверочное предложение",
+          "source": "MANUAL",
+          "source_text": "",
+          "lines": [
+            {
+              "sku": "MUG",
+              "quantity": 1
+            },
+            {
+              "sku": "TEA",
+              "quantity": 2
+            }
+          ],
+          "bundle_template_id": null,
+          "fulfillment_methods": [
+            "PICKUP",
+            "COURIER_ZONE_A"
+          ]
+        }
+      }
+    },
+    {
+      "id": "W-005",
+      "schema": "ExpectedRevisionRequest",
+      "valid": true,
+      "operation_id": "publishOffer",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "expected_revision": 2
+      }
+    },
+    {
+      "id": "W-006",
+      "schema": "QuoteRequest",
+      "valid": true,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "OFFER",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "copies": 1,
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-007",
+      "schema": "QuoteRequest",
+      "valid": true,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "BUNDLE",
+        "solution_id": "00000000-0000-4000-8000-000000000009"
+      }
+    },
+    {
+      "id": "W-008",
+      "schema": "ReservationRequest",
+      "valid": true,
+      "operation_id": "createReservation",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "quote_id": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "W-009",
+      "schema": "OrderTransitionRequest",
+      "valid": true,
+      "operation_id": "transitionOrder",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "expected_revision": 1,
+        "to_status": "ACCEPTED",
+        "cancel_reason": null
+      }
+    },
+    {
+      "id": "W-010",
+      "schema": "ResetRequest",
+      "valid": true,
+      "operation_id": "resetSandbox",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "expected_generation": 1
+      }
+    },
+    {
+      "id": "W-011",
+      "schema": "BundleSolveRequest",
+      "valid": true,
+      "operation_id": "solveBundle",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "guests": 4,
+        "owned": [
+          "TABLECLOTH"
+        ],
+        "budget_minor": 500000,
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-012",
+      "schema": "QuoteRequest",
+      "valid": false,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "OFFER",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "copies": true,
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-013",
+      "schema": "QuoteRequest",
+      "valid": false,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "OFFER",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "copies": 1.0,
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-014",
+      "schema": "QuoteRequest",
+      "valid": false,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "OFFER",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "copies": 1,
+        "fulfillment": "PICKUP",
+        "requested_days": 1,
+        "total_minor": 1
+      }
+    },
+    {
+      "id": "W-015",
+      "schema": "QuoteRequest",
+      "valid": false,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "OFFER",
+        "offer_id": "AB000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "copies": 1,
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-016",
+      "schema": "RoleLinkRequest",
+      "valid": false,
+      "operation_id": "createRoleLink",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "role": "OWNER"
+      }
+    },
+    {
+      "id": "W-017",
+      "schema": "QuoteRequest",
+      "valid": false,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "OFFER",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "copies": 1,
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-018",
+      "schema": "BundleSolveRequest",
+      "valid": false,
+      "operation_id": "solveBundle",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "guests": 4,
+        "owned": [
+          "NAPKIN"
+        ],
+        "budget_minor": 500000,
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-019",
+      "schema": "ExpectedRevisionRequest",
+      "valid": false,
+      "operation_id": "publishOffer",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "expected_revision": 0
+      }
+    },
+    {
+      "id": "W-020",
+      "schema": "QuoteRequest",
+      "valid": false,
+      "operation_id": "createQuote",
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "kind": "OFFER",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "copies": 11,
+        "fulfillment": "PICKUP",
+        "requested_days": 1
+      }
+    },
+    {
+      "id": "W-021",
+      "schema": "Quote",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000005",
+        "sandbox_id": "00000000-0000-4000-8000-000000000001",
+        "buyer_id": "00000000-0000-4000-8000-000000000003",
+        "kind": "OFFER",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "solution_id": null,
+        "template_version_no": null,
+        "copies": 1,
+        "fulfillment": "PICKUP",
+        "requested_days": 1,
+        "lines": [
+          {
+            "sku": "MUG",
+            "title": "Кружка",
+            "quantity": 1,
+            "unit_price_minor": 129000,
+            "line_total_minor": 129000
+          },
+          {
+            "sku": "TEA",
+            "title": "Чай",
+            "quantity": 2,
+            "unit_price_minor": 45000,
+            "line_total_minor": 90000
+          }
+        ],
+        "subtotal_minor": 219000,
+        "fulfillment_fee_minor": 0,
+        "total_minor": 219000,
+        "currency": "RUB",
+        "catalog_terms_hash": "e5ace7651a626173b5543ef1ca1551262100c5f0219e24b12bec6f96ad8cf1e4",
+        "created_at": "2026-11-21T09:00:00.000Z",
+        "expires_at": "2026-11-21T09:10:00.000Z",
+        "is_test": true
+      }
+    },
+    {
+      "id": "W-022",
+      "schema": "Reservation",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000006",
+        "sandbox_id": "00000000-0000-4000-8000-000000000001",
+        "buyer_id": "00000000-0000-4000-8000-000000000003",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "quote_id": "00000000-0000-4000-8000-000000000005",
+        "state": "ACTIVE",
+        "revision": 1,
+        "created_at": "2026-11-21T09:01:00.000Z",
+        "expires_at": "2026-11-21T09:06:00.000Z",
+        "closed_at": null,
+        "cancel_reason": null,
+        "order_id": null,
+        "quote": {
+          "id": "00000000-0000-4000-8000-000000000005",
+          "sandbox_id": "00000000-0000-4000-8000-000000000001",
+          "buyer_id": "00000000-0000-4000-8000-000000000003",
+          "kind": "OFFER",
+          "offer_id": "00000000-0000-4000-8000-000000000004",
+          "offer_version_no": 1,
+          "solution_id": null,
+          "template_version_no": null,
+          "copies": 1,
+          "fulfillment": "PICKUP",
+          "requested_days": 1,
+          "lines": [
+            {
+              "sku": "MUG",
+              "title": "Кружка",
+              "quantity": 1,
+              "unit_price_minor": 129000,
+              "line_total_minor": 129000
+            },
+            {
+              "sku": "TEA",
+              "title": "Чай",
+              "quantity": 2,
+              "unit_price_minor": 45000,
+              "line_total_minor": 90000
+            }
+          ],
+          "subtotal_minor": 219000,
+          "fulfillment_fee_minor": 0,
+          "total_minor": 219000,
+          "currency": "RUB",
+          "catalog_terms_hash": "e5ace7651a626173b5543ef1ca1551262100c5f0219e24b12bec6f96ad8cf1e4",
+          "created_at": "2026-11-21T09:00:00.000Z",
+          "expires_at": "2026-11-21T09:10:00.000Z",
+          "is_test": true
+        },
+        "is_test": true
+      }
+    },
+    {
+      "id": "W-023",
+      "schema": "Order",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000007",
+        "sandbox_id": "00000000-0000-4000-8000-000000000001",
+        "buyer_id": "00000000-0000-4000-8000-000000000003",
+        "reservation_id": "00000000-0000-4000-8000-000000000006",
+        "quote_id": "00000000-0000-4000-8000-000000000005",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "status": "CREATED",
+        "revision": 1,
+        "order_kind": "DEMO",
+        "native_vk_order_id": null,
+        "paid_at": null,
+        "lines": [
+          {
+            "sku": "MUG",
+            "title": "Кружка",
+            "quantity": 1,
+            "unit_price_minor": 129000,
+            "line_total_minor": 129000
+          },
+          {
+            "sku": "TEA",
+            "title": "Чай",
+            "quantity": 2,
+            "unit_price_minor": 45000,
+            "line_total_minor": 90000
+          }
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1,
+        "subtotal_minor": 219000,
+        "fulfillment_fee_minor": 0,
+        "total_minor": 219000,
+        "currency": "RUB",
+        "created_at": "2026-11-21T09:02:00.000Z",
+        "accepted_at": null,
+        "fulfilled_at": null,
+        "cancelled_at": null,
+        "cancel_reason": null,
+        "is_test": true
+      }
+    },
+    {
+      "id": "W-024",
+      "schema": "Order",
+      "valid": false,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000007",
+        "sandbox_id": "00000000-0000-4000-8000-000000000001",
+        "buyer_id": "00000000-0000-4000-8000-000000000003",
+        "reservation_id": "00000000-0000-4000-8000-000000000006",
+        "quote_id": "00000000-0000-4000-8000-000000000005",
+        "offer_id": "00000000-0000-4000-8000-000000000004",
+        "offer_version_no": 1,
+        "status": "CREATED",
+        "revision": 1,
+        "order_kind": "DEMO",
+        "native_vk_order_id": "fake-native-order",
+        "paid_at": null,
+        "lines": [
+          {
+            "sku": "MUG",
+            "title": "Кружка",
+            "quantity": 1,
+            "unit_price_minor": 129000,
+            "line_total_minor": 129000
+          },
+          {
+            "sku": "TEA",
+            "title": "Чай",
+            "quantity": 2,
+            "unit_price_minor": 45000,
+            "line_total_minor": 90000
+          }
+        ],
+        "fulfillment": "PICKUP",
+        "requested_days": 1,
+        "subtotal_minor": 219000,
+        "fulfillment_fee_minor": 0,
+        "total_minor": 219000,
+        "currency": "RUB",
+        "created_at": "2026-11-21T09:02:00.000Z",
+        "accepted_at": null,
+        "fulfilled_at": null,
+        "cancelled_at": null,
+        "cancel_reason": null,
+        "is_test": true
+      }
+    },
+    {
+      "id": "W-025",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "MUG",
+        "title": "MUG",
+        "price_minor": 129000,
+        "stock_on_hand": 10,
+        "stock_reserved": 0,
+        "stock_available": 10,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-026",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "TEA",
+        "title": "TEA",
+        "price_minor": 45000,
+        "stock_on_hand": 20,
+        "stock_reserved": 0,
+        "stock_available": 20,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-027",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "BOX",
+        "title": "BOX",
+        "price_minor": 11000,
+        "stock_on_hand": 5,
+        "stock_reserved": 0,
+        "stock_available": 5,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-028",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "DISABLED",
+        "title": "DISABLED",
+        "price_minor": 99000,
+        "stock_on_hand": 3,
+        "stock_reserved": 0,
+        "stock_available": 3,
+        "active": false,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-029",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "ZERO",
+        "title": "ZERO",
+        "price_minor": 10000,
+        "stock_on_hand": 0,
+        "stock_reserved": 0,
+        "stock_available": 0,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-030",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "PLATE_A",
+        "title": "PLATE_A",
+        "price_minor": 70000,
+        "stock_on_hand": 12,
+        "stock_reserved": 0,
+        "stock_available": 12,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-031",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "PLATE_B",
+        "title": "PLATE_B",
+        "price_minor": 55000,
+        "stock_on_hand": 12,
+        "stock_reserved": 0,
+        "stock_available": 12,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-032",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "GLASS_A",
+        "title": "GLASS_A",
+        "price_minor": 35000,
+        "stock_on_hand": 12,
+        "stock_reserved": 0,
+        "stock_available": 12,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-033",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "GLASS_B",
+        "title": "GLASS_B",
+        "price_minor": 22000,
+        "stock_on_hand": 12,
+        "stock_reserved": 0,
+        "stock_available": 12,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-034",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "NAPKIN",
+        "title": "NAPKIN",
+        "price_minor": 20000,
+        "stock_on_hand": 4,
+        "stock_reserved": 0,
+        "stock_available": 4,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 4,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-035",
+      "schema": "CatalogSku",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "sku": "TABLECLOTH",
+        "title": "TABLECLOTH",
+        "price_minor": 90000,
+        "stock_on_hand": 2,
+        "stock_reserved": 0,
+        "stock_available": 2,
+        "active": true,
+        "ready_in_days": 1,
+        "units_per_pack": 1,
+        "revision": 1,
+        "terms_revision": 1
+      }
+    },
+    {
+      "id": "W-036",
+      "schema": "BundleTemplate",
+      "valid": true,
+      "operation_id": null,
+      "provenance": "CONSTRUCTED_EXAMPLE_NOT_LIVE_SERVER",
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000008",
+        "code": "B001",
+        "version_no": 1,
+        "title": "Сервировка для гостей",
+        "slots": [
+          {
+            "slot_id": "PLATE",
+            "need_rule": "GUESTS",
+            "owned_key": null,
+            "alternatives": [
+              {
+                "sku": "PLATE_A",
+                "units_per_pack": 1,
+                "preference_rank": 0
+              },
+              {
+                "sku": "PLATE_B",
+                "units_per_pack": 1,
+                "preference_rank": 1
+              }
+            ]
+          },
+          {
+            "slot_id": "GLASS",
+            "need_rule": "GUESTS",
+            "owned_key": null,
+            "alternatives": [
+              {
+                "sku": "GLASS_A",
+                "units_per_pack": 1,
+                "preference_rank": 0
+              },
+              {
+                "sku": "GLASS_B",
+                "units_per_pack": 1,
+                "preference_rank": 1
+              }
+            ]
+          },
+          {
+            "slot_id": "NAPKIN",
+            "need_rule": "GUESTS",
+            "owned_key": null,
+            "alternatives": [
+              {
+                "sku": "NAPKIN",
+                "units_per_pack": 4,
+                "preference_rank": 0
+              }
+            ]
+          },
+          {
+            "slot_id": "TABLECLOTH",
+            "need_rule": "ONE",
+            "owned_key": "TABLECLOTH",
+            "alternatives": [
+              {
+                "sku": "TABLECLOTH",
+                "units_per_pack": 1,
+                "preference_rank": 0
+              }
+            ]
+          }
+        ],
+        "readonly": true,
+        "provenance": "SYNTHETIC_FIXTURE"
+      }
+    }
+  ]
+}

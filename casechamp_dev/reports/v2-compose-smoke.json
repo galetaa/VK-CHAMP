@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "contract_version": "2.0.0",
+  "is_test": true,
+  "P0": {
+    "offer_id": "2b601529-4e8e-4570-b75a-05642582d00e",
+    "quote_id": "e721f853-ce19-4600-b2c6-469aefa43010",
+    "reservation_id": "94c182df-6fa5-437d-9733-a184f1c1287d",
+    "order_id": "079ca12e-fbaa-44ad-bd35-be8b0d1354b1",
+    "total_minor": 219000,
+    "final_status": "FULFILLED"
+  },
+  "P1": {
+    "offer_id": "ffbde5a7-9324-42dd-9eea-9206ebee5273",
+    "solution_id": "25105898-2975-4feb-94cf-dce4f60d1b84",
+    "quote_id": "d6a11cf7-2c1a-4a00-9e10-3b6263f88b82",
+    "reservation_id": "30dc8025-9389-4071-a7d6-870f2c55b565",
+    "order_id": "9341c86c-dd28-4f87-8933-7c88e59f81ef",
+    "total_minor": 440000,
+    "alternative_minor": 380000,
+    "low_budget_result": "NO_SOLUTION"
+  },
+  "dashboard": {
+    "active_offers": 2,
+    "published_offers": 2,
+    "orders_created": 2,
+    "orders_accepted": 0,
+    "orders_fulfilled": 1,
+    "orders_cancelled": 0,
+    "order_value_minor": 659000,
+    "as_of": "2026-11-21T17:45:32.859Z",
+    "generation": 1,
+    "quotes_created": 2,
+    "active_reservations": 0,
+    "is_test": true,
+    "native_orders_count": "NOT_MEASURED"
+  }
+}

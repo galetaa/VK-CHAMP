@@ -1,0 +1,221 @@
+{
+  "contract_version": "2.0.0",
+  "api_prefix": "/api/v2",
+  "currency": "RUB",
+  "money_unit": "KOPECK",
+  "strict_json_integer": true,
+  "features": {
+    "P0": "Offer to demo order",
+    "P1": "Confirmed B001 template and exact bundle selection",
+    "P2": "Nonbinding ML suggestions not part of this wire contract"
+  },
+  "limits": {
+    "max_body_bytes": 65536,
+    "max_catalog_skus": 500,
+    "max_offers_per_generation": 100,
+    "max_lines": 20,
+    "max_line_quantity": 99,
+    "max_copies": 10,
+    "max_total_units": 990,
+    "max_quote_total_minor": 100000000,
+    "max_active_reservations_per_buyer": 5,
+    "bundle_slots": 5,
+    "bundle_alternatives_per_slot": 8,
+    "bundle_combinations": 32768,
+    "bundle_guests": 12,
+    "list_limit_default": 50,
+    "list_limit_max": 100,
+    "requested_days_min": 1,
+    "requested_days_max": 30
+  },
+  "ttl_seconds": {
+    "bootstrap": 86400,
+    "session": 86400,
+    "sandbox": 86400,
+    "role_link": 900,
+    "quote": 600,
+    "reservation": 300,
+    "bundle_solution": 600,
+    "idempotency": 86400
+  },
+  "fees_minor": {
+    "PICKUP": 0,
+    "COURIER_ZONE_A": 30000
+  },
+  "states": {
+    "offer": [
+      "DRAFT",
+      "ACTIVE",
+      "PAUSED",
+      "ARCHIVED"
+    ],
+    "reservation": [
+      "ACTIVE",
+      "CONFIRMED",
+      "CANCELLED",
+      "EXPIRED"
+    ],
+    "order": [
+      "CREATED",
+      "ACCEPTED",
+      "FULFILLED",
+      "CANCELLED"
+    ]
+  },
+  "order_transitions": {
+    "CREATED": [
+      "ACCEPTED",
+      "CANCELLED"
+    ],
+    "ACCEPTED": [
+      "FULFILLED",
+      "CANCELLED"
+    ],
+    "FULFILLED": [],
+    "CANCELLED": []
+  },
+  "idempotency": {
+    "key_format": "UUIDv4",
+    "scope": [
+      "sandbox_or_bootstrap_id",
+      "actor_or_bootstrap_id",
+      "method",
+      "normalized_path",
+      "key"
+    ],
+    "body_hash": "SHA256 UTF8 JSON sort_keys=True separators=(comma,colon) ensure_ascii=False allow_nan=False",
+    "record_success_only": true,
+    "replay": "original status and data, refreshed meta, no extended entity TTL",
+    "reset_retains_receipts": true
+  },
+  "stock": {
+    "available": "stock_on_hand - stock_reserved",
+    "reserve": "reserved += quantity",
+    "confirm": "on_hand -= quantity; reserved -= quantity",
+    "cancel_or_expire_reservation": "reserved -= quantity",
+    "cancel_order": "on_hand += quantity exactly once",
+    "catalog_stock_update": "reserved <= new on_hand; new on_hand + sum(quantity in CREATED/ACCEPTED orders) <= 99999"
+  },
+  "validation_order": [
+    "body_bytes_content_type_json_duplicates",
+    "origin_and_csrf",
+    "session_sandbox_generation",
+    "role",
+    "DTO_types_structure",
+    "idempotency_lookup_same_actor",
+    "current_resource_visibility_if_no_receipt",
+    "lock_sandbox_and_expire_due_reservations",
+    "idempotency_lookup_again",
+    "recheck_current_generation_and_resource_visibility",
+    "optimistic_revision",
+    "entity_state_and_ttl",
+    "current_offer_version",
+    "approved_catalog_terms",
+    "fulfillment_ready_days",
+    "total_units_money",
+    "free_stock",
+    "atomic_business_effect_outbox_receipt"
+  ],
+  "create_reservation_validation": [
+    "auth_binding_and_replay",
+    "lock_and_expire_due",
+    "idempotency_lookup_again",
+    "quote_ttl",
+    "quote_already_used",
+    "offer_state_version_terms_and_stock",
+    "atomic_effect"
+  ],
+  "reservation_command_validation": [
+    "auth_and_replay",
+    "lock_and_expire_due",
+    "EXPIRED_to_RESERVATION_EXPIRED",
+    "CANCELLED_or_CONFIRMED_to_RESERVATION_STATE_CONFLICT",
+    "ACTIVE_expected_revision",
+    "remaining_checks_and_effect"
+  ],
+  "clock": {
+    "expiry_rule": "now >= expires_at",
+    "transaction_now": "capture once after sandbox lock",
+    "timestamp_format": "UTC milliseconds Z",
+    "test_clock": "injected only in test deployment, absent from public API"
+  },
+  "bundle": {
+    "template": "B001",
+    "template_editor": false,
+    "approval": "merchant publish BUNDLE offer freezes template version and all candidate terms; each slot needs at least one active alternative with >=1 available pack; all SKU exist and pack units match",
+    "solver_order": [
+      "sum preference_rank per selected slot",
+      "sum surplus_units",
+      "total_minor including fulfillment",
+      "sku tuple in ASCII sorted slot_id"
+    ],
+    "need_rules": [
+      "GUESTS",
+      "ONE"
+    ],
+    "owned": [
+      "TABLECLOTH"
+    ],
+    "packs": "ceil(required_units / units_per_pack)",
+    "mix_variants_in_slot": false,
+    "timeout_is_no_solution": false
+  },
+  "demo": {
+    "order_kind": "DEMO",
+    "native_vk_order_id": null,
+    "paid_at": null,
+    "is_test": true,
+    "real_payment": false,
+    "native_vk_integration": false,
+    "reset": "generation increments; owner session retained; other sessions revoked; all reads use current generation; old receipts kept"
+  },
+  "roles": {
+    "OWNER": [
+      "catalog_write",
+      "role_links",
+      "offer_write",
+      "order_transition",
+      "dashboard",
+      "reset"
+    ],
+    "OPERATOR": [
+      "catalog_read",
+      "offer_write",
+      "order_transition",
+      "dashboard"
+    ],
+    "BUYER": [
+      "public_offer",
+      "own_quote",
+      "own_reservation",
+      "own_order",
+      "bundle_solve"
+    ]
+  },
+  "rate_limits": {
+    "create_sandbox_per_bootstrap_per_hour": 5,
+    "session_mutations_per_minute": 60,
+    "bundle_solves_per_buyer_per_minute": 10,
+    "reset_per_owner_per_minute": 1,
+    "active_reservations_per_buyer": 5
+  },
+  "server_events": [
+    "sandbox_created",
+    "offer_draft_created",
+    "offer_published",
+    "offer_state_changed",
+    "catalog_sku_changed",
+    "quote_created",
+    "reservation_created",
+    "reservation_expired",
+    "reservation_cancelled",
+    "order_created",
+    "order_status_changed",
+    "sandbox_reset"
+  ],
+  "ui_events": [
+    "offer_view",
+    "cta_click",
+    "wizard_step"
+  ]
+}
